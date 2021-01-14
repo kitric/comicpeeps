@@ -35,9 +35,7 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.label1.Font = new System.Drawing.Font("Century Gothic", 25F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
@@ -50,9 +48,8 @@
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.label2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 17F, System.Drawing.FontStyle.Bold);
@@ -67,16 +64,15 @@
             // 
             // qaBtn
             // 
-            this.qaBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.qaBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.qaBtn.AutoSize = true;
             this.qaBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.qaBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.qaBtn.Font = new System.Drawing.Font("Century Gothic", 17F, System.Drawing.FontStyle.Bold);
             this.qaBtn.ForeColor = System.Drawing.Color.White;
             this.qaBtn.Location = new System.Drawing.Point(575, 454);
             this.qaBtn.Name = "qaBtn";
-            this.qaBtn.Size = new System.Drawing.Size(183, 27);
+            this.qaBtn.Size = new System.Drawing.Size(179, 27);
             this.qaBtn.TabIndex = 3;
             this.qaBtn.Text = "QUICK ACCESS";
             this.qaBtn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -93,6 +89,7 @@
             this.Name = "WelcomePage";
             this.Size = new System.Drawing.Size(1332, 749);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
