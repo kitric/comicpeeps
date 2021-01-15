@@ -53,15 +53,19 @@ namespace ComicsReader
             DeserializeHistory();
 
             Directory.CreateDirectory(AppData);
+            Directory.CreateDirectory(AppData + @"\comics\");
 
             //Clear cache | ComicPeeps.AppData + @"\comics\"
-            foreach (var i in Directory.GetDirectories(AppData + @"\comics\"))
+            if (Directory.Exists(AppData + @"\comics\"))
             {
-                try
+                foreach (var i in Directory.GetDirectories(AppData + @"\comics\"))
                 {
-                    Directory.Delete(i, true);
+                    try
+                    {
+                        Directory.Delete(i, true);
+                    }
+                    catch (Exception) { continue; }
                 }
-                catch (Exception) { continue; }
             }
 
             Arguments = Environment.GetCommandLineArgs().ToList<string>();
@@ -242,7 +246,7 @@ namespace ComicsReader
 
         public void SerializeHistory()
         {
-            using (Stream S = new FileStream(AppData + @"\history.dat", FileMode.Truncate, FileAccess.Write))
+            using (Stream S = new FileStream(AppData + @"\history.dat", FileMode.Create, FileAccess.Write))
             {
                 IFormatter formatter = new BinaryFormatter();
 
