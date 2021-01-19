@@ -26,8 +26,8 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="1"
-     inkscape:cx="544.51018"
-     inkscape:cy="260.17797"
+     inkscape:cx="489.27382"
+     inkscape:cy="407.28802"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      inkscape:document-rotation="0"
@@ -173,10 +173,9 @@
       </g>
     </g>
     <g
-       transform="translate(0,-36.639862)"
-       id="g966">
+       id="g988">
       <rect
-         y="221.29994"
+         y="184.66008"
          x="18.754314"
          height="53.86396"
          width="162.49138"
@@ -184,7 +183,7 @@
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:4.47142;stroke-linecap:round" />
       <g
          id="g1030"
-         transform="matrix(0.36844195,0,0,0.36844195,151.26205,167.73302)">
+         transform="matrix(0.36844195,0,0,0.36844195,151.26205,131.09316)">
         <rect
            y="194.05745"
            x="-246.96774"
