@@ -16,5 +16,10 @@ namespace ComicPeeps
 			panel.HorizontalScroll.Visible = false;
 			panel.AutoScroll = true;
 		}
+
+		//public static string GenerateCover(string comic)
+        //{
+
+//        }
 	}
 }
