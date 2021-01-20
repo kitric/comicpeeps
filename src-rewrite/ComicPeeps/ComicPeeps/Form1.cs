@@ -19,19 +19,35 @@ namespace ComicPeeps
         {
             InitializeComponent();
 
-            pnlContent.Controls.Add(new Home() { Dock = DockStyle.Fill });
+            CurrentScreen = new Home() { Dock = DockStyle.Fill };
+
+            pnlContent.Controls.Add(CurrentScreen);
         }
 
         public void ShowNewPage(UserControl ToOpen)
         {
-            ToOpen.Dock = DockStyle.Fill;
+            if (ToOpen.GetType() != CurrentScreen.GetType())
+            {
+                ToOpen.Dock = DockStyle.Fill;
 
-            pnlContent.Controls.Remove(CurrentScreen);
+                CurrentScreen.Dispose();
+                pnlContent.Controls.Remove(CurrentScreen);
 
-            ToOpen.Dock = DockStyle.Fill;
-            pnlContent.Controls.Add(ToOpen);
+                ToOpen.Dock = DockStyle.Fill;
+                pnlContent.Controls.Add(ToOpen);
 
-            CurrentScreen = ToOpen;
+                CurrentScreen = ToOpen;
+            }
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            ShowNewPage(new Home() { Dock = DockStyle.Fill });
+        }
+
+        private void btnLibrary_Click(object sender, EventArgs e)
+        {
+            ShowNewPage(new Library() { Dock = DockStyle.Fill });
         }
     }
 }
