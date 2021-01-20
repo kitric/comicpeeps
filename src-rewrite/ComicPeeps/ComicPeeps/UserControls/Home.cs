@@ -1,5 +1,4 @@
-﻿using ComicPeeps.UserControls;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,15 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ComicPeeps
+namespace ComicPeeps.UserControls
 {
-    public partial class Form1 : Form
+    public partial class Home : UserControl
     {
-        public Form1()
+        public Home()
         {
             InitializeComponent();
-
-            pnlContent.Controls.Add(new Home() { Dock = DockStyle.Fill });
         }
     }
 }
