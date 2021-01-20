@@ -14,9 +14,13 @@ namespace ComicPeeps.UserControls
 {
     public partial class AddComic : UserControl
     {
-        public AddComic()
+        MainScreen mainScreen;
+
+        public AddComic(MainScreen mainScreen)
         {
             InitializeComponent();
+
+            this.mainScreen = mainScreen;
         }
 
         private void AddComic_DoubleClick(object sender, EventArgs e)
@@ -37,7 +41,7 @@ namespace ComicPeeps.UserControls
 
                     comicSeries.Thumbnail = GlobalFunctions.GenerateCover(comicSeries.Issues[0]);
 
-                    MessageBox.Show(comicSeries.FolderPath + " " + comicSeries.Issues.Count + " " + comicSeries.Thumbnail);
+                    mainScreen.ShowNewPage(new Library(mainScreen) { Dock = DockStyle.Fill });
                 }
             }
         }

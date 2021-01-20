@@ -23,7 +23,7 @@ namespace ComicPeeps.UserControls.Components
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            mainScreen.ShowNewPage(new AddComic() { Dock = DockStyle.Fill });
+            mainScreen.ShowNewPage(new AddComic(mainScreen) { Dock = DockStyle.Fill });
         }
     }
 }
