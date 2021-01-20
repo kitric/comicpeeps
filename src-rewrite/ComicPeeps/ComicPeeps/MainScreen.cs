@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,27 @@ namespace ComicPeeps
 {
     public partial class MainScreen : Form
     {
+        //     ______                _      ____                      
+        //    / ____/___  ____ ___  (_)____/ __ \___  ___  ____  _____
+        //   / /   / __ \/ __ `__ \/ / ___/ /_/ / _ \/ _ \/ __ \/ ___/
+        //  / /___/ /_/ / / / / / / / /__/ ____/  __/  __/ /_/ (__  ) 
+        //  \____/\____/_/ /_/ /_/_/\___/_/    \___/\___/ .___/____/  
+        //    ___________  _______________  ____/ /    /_/            
+        //   / ___/ ___/ |/_/ ___/ ___/ _ \/ __  /                    
+        //  / /__/ /  _>  <(__  |__  )  __/ /_/ /                     
+        //  \___/_/  /_/|_/____/____/\___/\__,_/                      
+
+        public static string AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps";
+        public static string ThumbnailPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\thumbs";
+
         UserControl CurrentScreen = new UserControl();
 
         public MainScreen()
         {
             InitializeComponent();
+
+            Directory.CreateDirectory(AppData);
+            Directory.CreateDirectory(ThumbnailPath);
 
             CurrentScreen = new Home() { Dock = DockStyle.Fill };
 

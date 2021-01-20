@@ -39,11 +39,11 @@ namespace ComicPeeps.UserControls
             this.lblNotice.AutoSize = true;
             this.lblNotice.Font = new System.Drawing.Font("Century Gothic", 10.6F, System.Drawing.FontStyle.Bold);
             this.lblNotice.ForeColor = System.Drawing.Color.White;
-            this.lblNotice.Location = new System.Drawing.Point(285, 276);
+            this.lblNotice.Location = new System.Drawing.Point(256, 276);
             this.lblNotice.Name = "lblNotice";
-            this.lblNotice.Size = new System.Drawing.Size(187, 18);
+            this.lblNotice.Size = new System.Drawing.Size(244, 18);
             this.lblNotice.TabIndex = 2;
-            this.lblNotice.Text = "click anywhere to add...";
+            this.lblNotice.Text = "double click anywhere to add...";
             // 
             // label1
             // 
@@ -66,6 +66,7 @@ namespace ComicPeeps.UserControls
             this.Controls.Add(this.lblNotice);
             this.Name = "AddComic";
             this.Size = new System.Drawing.Size(757, 540);
+            this.DoubleClick += new System.EventHandler(this.AddComic_DoubleClick);
             this.ResumeLayout(false);
             this.PerformLayout();
 
