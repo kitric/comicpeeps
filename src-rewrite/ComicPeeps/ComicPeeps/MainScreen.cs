@@ -11,11 +11,11 @@ using System.Windows.Forms;
 
 namespace ComicPeeps
 {
-    public partial class Form1 : Form
+    public partial class MainScreen : Form
     {
         UserControl CurrentScreen = new UserControl();
 
-        public Form1()
+        public MainScreen()
         {
             InitializeComponent();
 
@@ -47,7 +47,7 @@ namespace ComicPeeps
 
         private void btnLibrary_Click(object sender, EventArgs e)
         {
-            ShowNewPage(new Library() { Dock = DockStyle.Fill });
+            ShowNewPage(new Library(this) { Dock = DockStyle.Fill });
         }
     }
 }

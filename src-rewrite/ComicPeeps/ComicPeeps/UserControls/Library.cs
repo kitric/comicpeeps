@@ -13,13 +13,17 @@ namespace ComicPeeps.UserControls
 {
     public partial class Library : UserControl
     {
-        public Library()
+        MainScreen mainScreen;
+
+        public Library(MainScreen mainScreen)
         {
             InitializeComponent();
 
+            this.mainScreen = mainScreen;
+
             GlobalFunctions.HideScrollBars(pnlComics);
 
-            pnlComics.Controls.Add(new AddButton());
+            pnlComics.Controls.Add(new AddButton(mainScreen));
         }
     }
 }

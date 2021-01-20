@@ -12,9 +12,18 @@ namespace ComicPeeps.UserControls.Components
 {
     public partial class AddButton : UserControl
     {
-        public AddButton()
+        MainScreen mainScreen;
+
+        public AddButton(MainScreen mainScreen)
         {
             InitializeComponent();
+
+            this.mainScreen = mainScreen;
+        }
+
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            mainScreen.ShowNewPage(new AddComic() { Dock = DockStyle.Fill });
         }
     }
 }

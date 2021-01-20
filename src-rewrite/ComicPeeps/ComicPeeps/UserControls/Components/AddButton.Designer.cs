@@ -39,6 +39,7 @@ namespace ComicPeeps.UserControls.Components
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "AddButton";
             this.Size = new System.Drawing.Size(83, 127);
+            this.Click += new System.EventHandler(this.AddButton_Click);
             this.ResumeLayout(false);
 
         }
