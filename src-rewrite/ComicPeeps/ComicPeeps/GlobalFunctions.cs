@@ -22,9 +22,8 @@ namespace ComicPeeps
 			panel.AutoScroll = true;
 		}
 
-		public static string GenerateCover(string comic)
+		public static string GenerateCover(string comic, string comicName)
 		{
-			string comicName = Path.GetFileName(Path.GetDirectoryName(comic));
 			Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicName);
 
 			if (comic.EndsWith(".cbz"))

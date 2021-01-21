@@ -13,27 +13,26 @@ namespace ComicPeeps.UserControls.Components
 {
     public partial class ComicButton : UserControl
     {
-        public ComicButton(ComicSeries comicSeries)
+        MainScreen mainScreen;
+        ComicSeries comicSeries;
+
+        public ComicButton(ComicSeries comicSeries, MainScreen mainScreen)
         {
             InitializeComponent();
 
+            this.comicSeries = comicSeries;
+            this.mainScreen = mainScreen;
             this.DoubleBuffered = true;
 
             if (comicSeries.Thumbnail != "")
             {
                 this.BackgroundImage = GlobalFunctions.CompressImage(comicSeries.Thumbnail, 5);
             }
-            lblComicName.Text = comicSeries.ComicName;
         }
 
-        private void ComicButton_MouseEnter(object sender, EventArgs e)
+        private void ComicButton_Click(object sender, EventArgs e)
         {
-            pnlMain.Visible = true;
-        }
-
-        private void ComicButton_MouseLeave(object sender, EventArgs e)
-        {
-            pnlMain.Visible = false;
+            mainScreen.ShowNewPage(new ComicLibrary(comicSeries));
         }
     }
 }

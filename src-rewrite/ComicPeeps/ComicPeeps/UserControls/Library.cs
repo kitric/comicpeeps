@@ -30,7 +30,7 @@ namespace ComicPeeps.UserControls
         {
             foreach (var comic in MainScreen.UserComics)
             {
-                pnlComics.Controls.Add(new ComicButton(comic));
+                pnlComics.Controls.Add(new ComicButton(comic, mainScreen));
             }
 
             pnlComics.Controls.Add(new AddButton(mainScreen));

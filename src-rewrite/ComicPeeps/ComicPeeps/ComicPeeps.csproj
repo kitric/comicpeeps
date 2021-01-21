@@ -87,6 +87,12 @@
     <Compile Include="UserControls\AddComic.Designer.cs">
       <DependentUpon>AddComic.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ComicLibrary.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ComicLibrary.Designer.cs">
+      <DependentUpon>ComicLibrary.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Components\AddButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -126,6 +132,9 @@
     </Compile>
     <EmbeddedResource Include="UserControls\AddComic.resx">
       <DependentUpon>AddComic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ComicLibrary.resx">
+      <DependentUpon>ComicLibrary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Components\AddButton.resx">
       <DependentUpon>AddButton.cs</DependentUpon>

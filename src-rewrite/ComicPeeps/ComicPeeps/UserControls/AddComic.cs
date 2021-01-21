@@ -43,7 +43,7 @@ namespace ComicPeeps.UserControls
 
                     if (comicSeries.Issues.Count != 0)
                     {
-                        comicSeries.Thumbnail = GlobalFunctions.GenerateCover(comicSeries.Issues[0]);
+                        comicSeries.Thumbnail = GlobalFunctions.GenerateCover(comicSeries.Issues[0], Path.GetFileName(Path.GetDirectoryName(comicSeries.Issues[0])));
                     }
 
                     MainScreen.UserComics.Add(comicSeries);
