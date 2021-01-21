@@ -33,17 +33,17 @@ namespace ComicPeeps
 				using (ZipArchive archive = ZipFile.OpenRead(comic))
 				{
 					List<ZipArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.FullName).ToList();
-					if (entries.Count != 0)
-                    {
-						if (entries[0].FullName.EndsWith(".jpg"))
+					foreach (var entry in entries)
+					{
+						if (entry.FullName.EndsWith(".jpg"))
 						{
-							entries[0].ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].FullName);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].FullName;
+							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName);
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName;
 						}
-						else if (entries[0].FullName.EndsWith(".png"))
+						else if (entry.FullName.EndsWith(".png"))
 						{
-							entries[0].ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].FullName);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].FullName;
+							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName);
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName;
 						}
 					}
 				}
@@ -53,18 +53,32 @@ namespace ComicPeeps
 				// its a cbr file 
 				using (RarArchive archive = RarArchive.Open(comic))
 				{
-					List<RarArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.Key).ToList();
-					if (entries.Count != 0)
+					List<RarArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.Key).Where(entry => !entry.IsDirectory).ToList();
+					foreach (var entry in entries)
 					{
-						if (entries[0].Key.EndsWith(".jpg"))
+						if (entry.Key.EndsWith(".jpg"))
 						{
-							entries[0].WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].Key);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].Key;
+							string fileName = entry.Key;
+
+							if (entry.Key.Contains("\\"))
+                            {
+								fileName = entry.Key.Split('\\').Last();
+                            }
+
+							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName;
 						}
-						else if (entries[0].Key.EndsWith(".png"))
+						else if (entry.Key.EndsWith(".png"))
 						{
-							entries[0].WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].Key);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].Key;
+							string fileName = entry.Key;
+
+							if (entry.Key.Contains("\\"))
+							{
+								fileName = entry.Key.Split('\\').Last();
+							}
+
+							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName;
 						}
 					}
 				}
