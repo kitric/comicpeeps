@@ -23,53 +23,55 @@ namespace ComicPeeps
 		}
 
 		public static string GenerateCover(string comic)
-        {
-			string comicName = Path.GetFileNameWithoutExtension(comic);
+		{
+			string comicName = Path.GetFileName(Path.GetDirectoryName(comic));
 			Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicName);
 
 			if (comic.EndsWith(".cbz"))
-            {
+			{
 				// its a cbz file.
 				using (ZipArchive archive = ZipFile.OpenRead(comic))
-                {
-					foreach (var entry in archive.Entries)
+				{
+					List<ZipArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.FullName).ToList();
+					if (entries.Count != 0)
                     {
-						if (entry.FullName.EndsWith(".jpg"))
-                        {
-							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName;
+						if (entries[0].FullName.EndsWith(".jpg"))
+						{
+							entries[0].ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].FullName);
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].FullName;
 						}
-						else if (entry.FullName.EndsWith(".png"))
-                        {
-							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName;
+						else if (entries[0].FullName.EndsWith(".png"))
+						{
+							entries[0].ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].FullName);
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].FullName;
 						}
-                    }
-                }
-            }
+					}
+				}
+			}
 			else if (comic.EndsWith(".cbr"))
-            {
+			{
 				// its a cbr file 
 				using (RarArchive archive = RarArchive.Open(comic))
 				{
-					foreach (var entry in archive.Entries)
+					List<RarArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.Key).ToList();
+					if (entries.Count != 0)
 					{
-						if (entry.Key.EndsWith(".jpg"))
+						if (entries[0].Key.EndsWith(".jpg"))
 						{
-							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.Key);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.Key;
+							entries[0].WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].Key);
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].Key;
 						}
-						else if (entry.Key.EndsWith(".png"))
+						else if (entries[0].Key.EndsWith(".png"))
 						{
-							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.Key);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.Key;
+							entries[0].WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].Key);
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entries[0].Key;
 						}
 					}
 				}
 			}
 
 			return "";
-        }
+		}
 
 		public static Bitmap CompressImage(string ImageFilePath, int CompressSize)
 		{

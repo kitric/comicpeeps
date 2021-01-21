@@ -43,15 +43,17 @@ namespace ComicPeeps.UserControls.Components
             this.pnlMain.Name = "pnlMain";
             this.pnlMain.Size = new System.Drawing.Size(83, 127);
             this.pnlMain.TabIndex = 0;
+            this.pnlMain.Visible = false;
             // 
             // lblComicName
             // 
             this.lblComicName.BackColor = System.Drawing.Color.Transparent;
-            this.lblComicName.Font = new System.Drawing.Font("Century Gothic", 5.2F, System.Drawing.FontStyle.Bold);
+            this.lblComicName.Font = new System.Drawing.Font("Century Gothic", 7F, System.Drawing.FontStyle.Bold);
             this.lblComicName.ForeColor = System.Drawing.Color.White;
-            this.lblComicName.Location = new System.Drawing.Point(0, 5);
+            this.lblComicName.Location = new System.Drawing.Point(0, 0);
             this.lblComicName.Name = "lblComicName";
-            this.lblComicName.Size = new System.Drawing.Size(83, 23);
+            this.lblComicName.Padding = new System.Windows.Forms.Padding(0, 5, 0, 0);
+            this.lblComicName.Size = new System.Drawing.Size(83, 127);
             this.lblComicName.TabIndex = 0;
             this.lblComicName.Text = "Comic Name";
             this.lblComicName.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -66,6 +68,8 @@ namespace ComicPeeps.UserControls.Components
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "ComicButton";
             this.Size = new System.Drawing.Size(83, 127);
+            this.MouseEnter += new System.EventHandler(this.ComicButton_MouseEnter);
+            this.MouseLeave += new System.EventHandler(this.ComicButton_MouseLeave);
             this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
