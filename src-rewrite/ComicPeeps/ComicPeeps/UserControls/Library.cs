@@ -23,6 +23,16 @@ namespace ComicPeeps.UserControls
 
             GlobalFunctions.HideScrollBars(pnlComics);
 
+            LoadComics();
+        }
+
+        void LoadComics()
+        {
+            foreach (var comic in MainScreen.UserComics)
+            {
+                pnlComics.Controls.Add(new ComicButton(comic));
+            }
+
             pnlComics.Controls.Add(new AddButton(mainScreen));
         }
     }

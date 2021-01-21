@@ -31,7 +31,8 @@ namespace ComicPeeps.UserControls
                 {
                     ComicSeries comicSeries = new ComicSeries()
                     {
-                        FolderPath = fbd.SelectedPath
+                        FolderPath = fbd.SelectedPath,
+                        ComicName = Path.GetDirectoryName(fbd.SelectedPath)
                     };
 
                     List<string> cbz = Directory.GetFiles(fbd.SelectedPath, "*.cbz").ToList();
@@ -40,6 +41,8 @@ namespace ComicPeeps.UserControls
                     cbz.Clear();
 
                     comicSeries.Thumbnail = GlobalFunctions.GenerateCover(comicSeries.Issues[0]);
+
+                    MainScreen.UserComics.Add(comicSeries);
 
                     mainScreen.ShowNewPage(new Library(mainScreen) { Dock = DockStyle.Fill });
                 }

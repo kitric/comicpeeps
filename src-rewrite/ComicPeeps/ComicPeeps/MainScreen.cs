@@ -1,4 +1,5 @@
-﻿using ComicPeeps.UserControls;
+﻿using ComicPeeps.Models;
+using ComicPeeps.UserControls;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,6 +27,8 @@ namespace ComicPeeps
 
         public static string AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps";
         public static string ThumbnailPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\thumbs";
+
+        public static List<ComicSeries> UserComics = new List<ComicSeries>();
 
         UserControl CurrentScreen = new UserControl();
 

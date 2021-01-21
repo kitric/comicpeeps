@@ -13,5 +13,7 @@ namespace ComicPeeps.Models
         public List<string> Issues { get; set; } = new List<string>();
 
         public string Thumbnail { get; set; } = "";
+
+        public string ComicName { get; set; } = "";
     }
 }

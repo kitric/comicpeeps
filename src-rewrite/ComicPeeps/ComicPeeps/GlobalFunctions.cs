@@ -1,6 +1,8 @@
-﻿using NUnrar.Archive;
+﻿using SharpCompress.Archives;
+using SharpCompress.Archives.Rar;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -48,23 +50,38 @@ namespace ComicPeeps
 			else if (comic.EndsWith(".cbr"))
             {
 				// its a cbr file 
-				RarArchive archive = RarArchive.Open(comic);
-				foreach (var entry in archive.Entries)
-                {
-					if (entry.FilePath.EndsWith(".jpg"))
-                    {
-						entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FilePath);
-						return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FilePath;
+				using (RarArchive archive = RarArchive.Open(comic))
+				{
+					foreach (var entry in archive.Entries)
+					{
+						if (entry.Key.EndsWith(".jpg"))
+						{
+							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.Key);
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.Key;
+						}
+						else if (entry.Key.EndsWith(".png"))
+						{
+							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.Key);
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.Key;
+						}
 					}
-					else if (entry.FilePath.EndsWith(".png"))
-                    {
-						entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FilePath);
-						return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FilePath;
-					}
-                }
+				}
 			}
 
 			return "";
         }
+
+		public static Bitmap CompressImage(string ImageFilePath, int CompressSize)
+		{
+			using (Image img = Image.FromFile(ImageFilePath))
+			{
+				Bitmap bmp = new Bitmap(img.Width / CompressSize, img.Height / CompressSize);
+				using (Graphics g = Graphics.FromImage(bmp))
+				{
+					g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
+				}
+				return bmp;
+			}
+		}
 	}
 }
