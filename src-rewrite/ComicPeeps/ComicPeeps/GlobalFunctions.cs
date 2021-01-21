@@ -36,12 +36,12 @@ namespace ComicPeeps
 					{
 						if (entry.FullName.EndsWith(".jpg"))
 						{
-							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName);
+							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName, true);
 							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName;
 						}
 						else if (entry.FullName.EndsWith(".png"))
 						{
-							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName);
+							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName, true);
 							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName;
 						}
 					}

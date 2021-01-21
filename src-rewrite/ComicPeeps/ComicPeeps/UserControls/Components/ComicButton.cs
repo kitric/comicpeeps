@@ -26,7 +26,7 @@ namespace ComicPeeps.UserControls.Components
 
             if (comicSeries.Thumbnail != "")
             {
-                this.BackgroundImage = GlobalFunctions.CompressImage(comicSeries.Thumbnail, 5);
+                this.BackgroundImage = GlobalFunctions.CompressImage(comicSeries.Thumbnail, 15);
             }
         }
 

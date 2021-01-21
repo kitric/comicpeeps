@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace ComicPeeps.Models
 {
-    public class ComicSeries
+    public class ComicIssue
     {
-        public string FolderPath { get; set; } = "";
+        public string ComicName { get; set; } = "";
 
-        public List<ComicIssue> Issues { get; set; } = new List<ComicIssue>();
+        public string Location { get; set; } = "";
 
         public string Thumbnail { get; set; } = "";
-
-        public string ComicName { get; set; } = "";
     }
 }

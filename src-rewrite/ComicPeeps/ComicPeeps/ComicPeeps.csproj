@@ -78,6 +78,7 @@
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalFunctions.cs" />
+    <Compile Include="Models\ComicIssue.cs" />
     <Compile Include="Models\ComicSeries.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,6 +105,12 @@
     </Compile>
     <Compile Include="UserControls\Components\ComicButton.Designer.cs">
       <DependentUpon>ComicButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Components\IssueButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Components\IssueButton.Designer.cs">
+      <DependentUpon>IssueButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Home.cs">
       <SubType>UserControl</SubType>
@@ -141,6 +148,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Components\ComicButton.resx">
       <DependentUpon>ComicButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Components\IssueButton.resx">
+      <DependentUpon>IssueButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

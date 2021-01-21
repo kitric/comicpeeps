@@ -37,13 +37,25 @@ namespace ComicPeeps.UserControls
                     };
 
                     List<string> cbz = Directory.GetFiles(fbd.SelectedPath, "*.cbz").ToList();
-                    comicSeries.Issues = Directory.GetFiles(fbd.SelectedPath, "*.cbr").ToList().Concat(cbz).ToList();
-                    comicSeries.Issues.Sort();
+                    List<string> issues = Directory.GetFiles(fbd.SelectedPath, "*.cbr").ToList().Concat(cbz).ToList();
+                    issues.Sort();
                     cbz.Clear();
+
+                    foreach (var issue in issues)
+                    {
+                        ComicIssue comicIssue = new ComicIssue()
+                        {
+                            ComicName = comicSeries.ComicName,
+                            Location = issue,
+                            Thumbnail = GlobalFunctions.GenerateCover(issue, comicSeries.ComicName)
+                        };
+
+                        comicSeries.Issues.Add(comicIssue);
+                    }
 
                     if (comicSeries.Issues.Count != 0)
                     {
-                        comicSeries.Thumbnail = GlobalFunctions.GenerateCover(comicSeries.Issues[0], Path.GetFileName(Path.GetDirectoryName(comicSeries.Issues[0])));
+                        comicSeries.Thumbnail = comicSeries.Issues[0].Thumbnail;
                     }
 
                     MainScreen.UserComics.Add(comicSeries);
