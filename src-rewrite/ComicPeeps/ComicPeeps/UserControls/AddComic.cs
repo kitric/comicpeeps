@@ -41,13 +41,15 @@ namespace ComicPeeps.UserControls
                     issues.Sort();
                     cbz.Clear();
 
-                    foreach (var issue in issues)
+                    for (int i = 0; i < issues.Count; i++)
                     {
                         ComicIssue comicIssue = new ComicIssue()
                         {
                             ComicName = comicSeries.ComicName,
-                            Location = issue,
-                            Thumbnail = GlobalFunctions.GenerateCover(issue, comicSeries.ComicName)
+                            Location = issues[i],
+                            Thumbnail = GlobalFunctions.GenerateCover(issues[i], comicSeries.ComicName),
+                            Pages = GlobalFunctions.GetNumberOfPages(issues[i]),
+                            IssueNumber = i + 1
                         };
 
                         comicSeries.Issues.Add(comicIssue);

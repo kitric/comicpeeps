@@ -86,6 +86,34 @@ namespace ComicPeeps
 			return "";
 		}
 
+		public static int GetNumberOfPages(string comic)
+        {
+			if (comic.EndsWith(".cbz"))
+			{
+				// its a cbz file.
+				using (ZipArchive archive = ZipFile.OpenRead(comic))
+				{
+					List<ZipArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.FullName).Where(entry => entry.FullName.Contains(".jpg")).ToList();
+					List<ZipArchiveEntry> png = archive.Entries.OrderBy(entry => entry.FullName).Where(entry => entry.FullName.Contains(".png")).ToList();
+					entries.Concat(png);
+					return entries.Count;
+				}
+			}
+			else if (comic.EndsWith(".cbr"))
+			{
+				// its a cbr file 
+				using (RarArchive archive = RarArchive.Open(comic))
+				{
+					List<RarArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.Key).Where(entry => !entry.IsDirectory).Where(entry => entry.Key.Contains(".jpg")).ToList();
+					List<RarArchiveEntry> png = archive.Entries.OrderBy(entry => entry.Key).Where(entry => !entry.IsDirectory).Where(entry => entry.Key.Contains(".png")).ToList();
+					entries.Concat(png);
+					return entries.Count;
+				}
+			}
+
+			return 0;
+		}
+
 		public static Bitmap CompressImage(string ImageFilePath, int CompressSize)
 		{
 			using (Image img = Image.FromFile(ImageFilePath))

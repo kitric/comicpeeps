@@ -16,6 +16,8 @@ namespace ComicPeeps.Models
 
         public int CurrentPage { get; set; } = 1;
 
+        public int Pages { get; set; } = 0;
+
         public int IssueNumber { get; set; }
     }
 }
