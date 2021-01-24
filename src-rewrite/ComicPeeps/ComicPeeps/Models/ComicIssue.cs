@@ -13,5 +13,9 @@ namespace ComicPeeps.Models
         public string Location { get; set; } = "";
 
         public string Thumbnail { get; set; } = "";
+
+        public int CurrentPage { get; set; } = 1;
+
+        public int IssueNumber { get; set; }
     }
 }
