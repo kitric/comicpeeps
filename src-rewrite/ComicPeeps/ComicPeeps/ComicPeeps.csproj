@@ -78,6 +78,7 @@
       <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalFunctions.cs" />
+    <Compile Include="Models\ComicInfo.cs" />
     <Compile Include="Models\ComicIssue.cs" />
     <Compile Include="Models\ComicSeries.cs" />
     <Compile Include="Program.cs" />
@@ -118,6 +119,12 @@
     <Compile Include="UserControls\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\IssueDescription.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\IssueDescription.Designer.cs">
+      <DependentUpon>IssueDescription.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Library.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -155,6 +162,9 @@
     <EmbeddedResource Include="UserControls\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\IssueDescription.resx">
+      <DependentUpon>IssueDescription.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Library.resx">
       <DependentUpon>Library.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +199,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\addBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editBtn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\readBtn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

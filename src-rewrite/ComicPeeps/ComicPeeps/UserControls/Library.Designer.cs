@@ -51,7 +51,7 @@ namespace ComicPeeps.UserControls
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlComics.Location = new System.Drawing.Point(36, 95);
             this.pnlComics.Name = "pnlComics";
-            this.pnlComics.Size = new System.Drawing.Size(718, 445);
+            this.pnlComics.Size = new System.Drawing.Size(711, 445);
             this.pnlComics.TabIndex = 4;
             // 
             // Library

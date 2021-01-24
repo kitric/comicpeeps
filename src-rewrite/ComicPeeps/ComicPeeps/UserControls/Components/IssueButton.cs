@@ -13,14 +13,26 @@ namespace ComicPeeps.UserControls.Components
 {
     public partial class IssueButton : UserControl
     {
-        public IssueButton(ComicIssue comicIssue)
+        MainScreen mainScreen;
+
+        ComicIssue issue;
+
+        public IssueButton(ComicIssue comicIssue, MainScreen mainScreen)
         {
             InitializeComponent();
+
+            this.mainScreen = mainScreen;
+            this.issue = comicIssue;
 
             if (comicIssue.Thumbnail != "")
             {
                 this.BackgroundImage = GlobalFunctions.CompressImage(comicIssue.Thumbnail, 15);
             }
+        }
+
+        private void IssueButton_Click(object sender, EventArgs e)
+        {
+            mainScreen.ShowNewPage(new IssueDescription(issue) { Dock = DockStyle.Fill });
         }
     }
 }

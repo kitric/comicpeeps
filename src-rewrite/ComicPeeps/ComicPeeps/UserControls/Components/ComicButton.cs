@@ -32,7 +32,7 @@ namespace ComicPeeps.UserControls.Components
 
         private void ComicButton_Click(object sender, EventArgs e)
         {
-            mainScreen.ShowNewPage(new ComicLibrary(comicSeries));
+            mainScreen.ShowNewPage(new ComicLibrary(comicSeries, mainScreen));
         }
     }
 }

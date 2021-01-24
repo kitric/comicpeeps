@@ -27,6 +27,7 @@ namespace ComicPeeps
 
         public static string AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps";
         public static string ThumbnailPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\thumbs";
+        public static string ComicInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\comicinfo";
 
         public static List<ComicSeries> UserComics = new List<ComicSeries>();
 
@@ -38,6 +39,7 @@ namespace ComicPeeps
 
             Directory.CreateDirectory(AppData);
             Directory.CreateDirectory(ThumbnailPath);
+            Directory.CreateDirectory(ComicInfoPath);
 
             CurrentScreen = new Home() { Dock = DockStyle.Fill };
 
