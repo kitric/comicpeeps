@@ -146,7 +146,7 @@ namespace ComicPeeps
         private System.Windows.Forms.PictureBox btnHome;
         private System.Windows.Forms.PictureBox btnLibrary;
         private System.Windows.Forms.PictureBox btnSettings;
-        private System.Windows.Forms.Panel pnlContent;
+        public System.Windows.Forms.Panel pnlContent;
     }
 }
 

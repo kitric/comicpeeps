@@ -58,7 +58,9 @@ namespace ComicPeeps.UserControls
 
                     MainScreen.UserData.ComicSeries.Add(comicSeries);
 
-                    MainScreen.Instance.ShowNewPage(new Library() { Dock = DockStyle.Fill });
+                    //MainScreen.Instance.ShowNewPage(new Library() { Dock = DockStyle.Fill });
+
+                    GlobalFunctions.SwitchTo<Library>(MainScreen.Instance.pnlContent);
                 }
             }
         }

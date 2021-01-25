@@ -38,13 +38,31 @@ namespace ComicPeeps
 					{
 						if (entry.FullName.EndsWith(".jpg"))
 						{
-							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName, true);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName;
+							string fileName = entry.FullName;
+
+							if (fileName.Contains("\\"))
+							{
+								fileName = entry.FullName.Split('\\').Last();
+							}
+						    if (fileName.Contains("/"))
+                            {
+								fileName = fileName.Split('/').Last();
+							}
+
+							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, true);
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName;
 						}
 						else if (entry.FullName.EndsWith(".png"))
 						{
-							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName, true);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + entry.FullName;
+							string fileName = entry.FullName.Replace('/', '\\');
+
+							if (fileName.Contains("\\"))
+							{
+								fileName = entry.FullName.Split('\\').Last();
+							}
+
+							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, true);
+							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName;
 						}
 					}
 				}
@@ -192,6 +210,30 @@ namespace ComicPeeps
 					g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
 				}
 				return bmp;
+			}
+		}
+
+		/// <summary>
+		/// Now, you only need one function for switching windows.
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <param name="args"></param>
+		public static void SwitchTo<T>(Panel Content, object[] args = null) where T : UserControl
+		{
+			Control topControl = Content.Controls[0];
+
+			//Creates a new UserControl from T. 
+			UserControl control = (UserControl)Activator.CreateInstance(typeof(T), args ?? new object[] { });
+			control.Dock = DockStyle.Fill;
+
+			// If the window on the top is different:
+			if (topControl.GetType() != control.GetType())
+			{
+				foreach (Control x in topControl.Controls) { x.Dispose(); }
+				topControl.Dispose();
+
+				Content.Controls.Clear();
+				Content.Controls.Add(control);
 			}
 		}
 	}

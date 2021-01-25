@@ -19,7 +19,9 @@ namespace ComicPeeps.UserControls.Components
 
         private void AddButton_Click(object sender, EventArgs e)
         {
-            MainScreen.Instance.ShowNewPage(new AddComic() { Dock = DockStyle.Fill });
+            //MainScreen.Instance.ShowNewPage(new AddComic() { Dock = DockStyle.Fill });
+
+            GlobalFunctions.SwitchTo<AddComic>(MainScreen.Instance.pnlContent);
         }
     }
 }
