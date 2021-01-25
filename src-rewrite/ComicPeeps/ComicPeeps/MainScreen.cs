@@ -33,6 +33,8 @@ namespace ComicPeeps
 
         public static UserData UserData = new UserData();
 
+        public static MainScreen Instance;
+
         UserControl CurrentScreen = new UserControl();
 
         public MainScreen()
@@ -46,6 +48,8 @@ namespace ComicPeeps
             CurrentScreen = new Home() { Dock = DockStyle.Fill };
 
             pnlContent.Controls.Add(CurrentScreen);
+
+            Instance = this;
         }
 
         static MainScreen()
@@ -67,6 +71,12 @@ namespace ComicPeeps
 
                 CurrentScreen = ToOpen;
             }
+        }
+
+        public void OpenReader()
+        {
+            ComicViewer viewer = new ComicViewer();
+            viewer.Show();
         }
 
         private void btnHome_Click(object sender, EventArgs e)

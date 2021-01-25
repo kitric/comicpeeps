@@ -25,5 +25,15 @@ namespace ComicPeeps.UserControls
             lblDescription.Text = info.Summary;
             pbThumbnail.Image = GlobalFunctions.CompressImage(comicIssue.Thumbnail, 15);
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+            MainScreen.Instance.OpenReader();
+        }
     }
 }

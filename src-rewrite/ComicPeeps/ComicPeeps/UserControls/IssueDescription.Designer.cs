@@ -75,6 +75,7 @@ namespace ComicPeeps.UserControls
             this.btnRead.Size = new System.Drawing.Size(162, 54);
             this.btnRead.TabIndex = 6;
             this.btnRead.TabStop = false;
+            this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
             // 
             // btnEdit
             // 
@@ -86,6 +87,7 @@ namespace ComicPeeps.UserControls
             this.btnEdit.Size = new System.Drawing.Size(162, 54);
             this.btnEdit.TabIndex = 6;
             this.btnEdit.TabStop = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // pbThumbnail
             // 
