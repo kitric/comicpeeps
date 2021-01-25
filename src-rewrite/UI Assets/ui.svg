@@ -35,9 +35,9 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer2"
      inkscape:document-units="px"
-     inkscape:cy="321.55454"
-     inkscape:cx="68.505449"
-     inkscape:zoom="0.70710678"
+     inkscape:cy="2705.6396"
+     inkscape:cx="1888.3465"
+     inkscape:zoom="1"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0"
      borderopacity="1.0"
@@ -1175,10 +1175,14 @@
        x="1583.9131"
        y="2320" />
     <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        d="m 1350.9246,2569.4939 -20.5061,20.5061 20.5061,20.5061 5.6569,-5.6569 -14.8493,-14.8492 14.8493,-14.8492 z"
        style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:3.806;stroke-linecap:round"
        id="rect1574" />
     <path
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        id="path1008"
        style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:3.806;stroke-linecap:round"
        d="m 2169.0754,2569.4939 20.5061,20.5061 -20.5061,20.5061 -5.6569,-5.6569 14.8493,-14.8492 -14.8493,-14.8492 z" />

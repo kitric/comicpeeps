@@ -123,7 +123,7 @@ namespace ComicPeeps
 		/// <returns></returns>
 		public static ComicInfo GetComicInfo(ComicIssue issue)
         {
-			Directory.CreateDirectory(MainScreen.ComicInfoPath + "\\" + issue.ComicName);
+			string dir = Directory.CreateDirectory(MainScreen.ComicInfoPath + "\\" + issue.ComicName + "\\" + issue.IssueNumber).FullName;
 
 			if (issue.Location.EndsWith(".cbz"))
 			{
@@ -133,9 +133,9 @@ namespace ComicPeeps
                     try
                     {
 						ZipArchiveEntry entry = archive.Entries.Where(e => e.FullName == "ComicInfo.xml").First();
-						entry.ExtractToFile(MainScreen.ComicInfoPath + "\\" + issue.ComicName + "\\ComicInfo.xml");
+						entry.ExtractToFile(dir + "\\" + issue.IssueNumber + "\\ComicInfo.xml");
 
-						using (Stream S = new FileStream(MainScreen.ComicInfoPath + "\\" + issue.ComicName + "\\ComicInfo.xml", FileMode.Open, FileAccess.Read))
+						using (Stream S = new FileStream(dir + "\\ComicInfo.xml", FileMode.Open, FileAccess.Read))
 						{
 							XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
 
@@ -153,9 +153,9 @@ namespace ComicPeeps
                     try
                     {
 						RarArchiveEntry entry = archive.Entries.Where(e => e.Key == "ComicInfo.xml").First();
-						entry.WriteToFile(MainScreen.ComicInfoPath + "\\" + issue.ComicName + "\\ComicInfo.xml");
+						entry.WriteToFile(dir + "\\ComicInfo.xml");
 
-						using (Stream S = new FileStream(MainScreen.ComicInfoPath + "\\" + issue.ComicName + "\\ComicInfo.xml", FileMode.Open, FileAccess.Read))
+						using (Stream S = new FileStream(dir + "\\ComicInfo.xml", FileMode.Open, FileAccess.Read))
 						{
 							XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
 
@@ -170,6 +170,16 @@ namespace ComicPeeps
 			{
 				Summary = "This comic does not have a summary"
 			};
+		}
+
+		public static ComicInfo DesrializeComicInfo(string filePath)
+        {
+			using (Stream S = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+			{
+				XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
+
+				return (ComicInfo)xmlSer.Deserialize(S);
+			}
 		}
 
 		public static Bitmap CompressImage(string ImageFilePath, int CompressSize)

@@ -113,6 +113,16 @@ namespace ComicPeeps.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap leftButton {
+            get {
+                object obj = ResourceManager.GetObject("leftButton", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap libraryBtn {
             get {
                 object obj = ResourceManager.GetObject("libraryBtn", resourceCulture);
@@ -126,6 +136,16 @@ namespace ComicPeeps.Properties {
         internal static System.Drawing.Bitmap readBtn {
             get {
                 object obj = ResourceManager.GetObject("readBtn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rightButton {
+            get {
+                object obj = ResourceManager.GetObject("rightButton", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -43,6 +43,8 @@ namespace ComicPeeps.UserControls
             // 
             // pnlRight
             // 
+            this.pnlRight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlRight.Controls.Add(this.pictureBox2);
             this.pnlRight.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlRight.Location = new System.Drawing.Point(814, 0);
@@ -59,6 +61,8 @@ namespace ComicPeeps.UserControls
             // 
             // pnlLeft
             // 
+            this.pnlLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pnlLeft.Controls.Add(this.pictureBox1);
             this.pnlLeft.Controls.Add(this.label1);
             this.pnlLeft.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -80,6 +84,8 @@ namespace ComicPeeps.UserControls
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pictureBox2.Image = global::ComicPeeps.Properties.Resources.rightButton;
             this.pictureBox2.Location = new System.Drawing.Point(68, 249);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(26, 41);
@@ -88,6 +94,8 @@ namespace ComicPeeps.UserControls
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox1.Image = global::ComicPeeps.Properties.Resources.leftButton;
             this.pictureBox1.Location = new System.Drawing.Point(50, 249);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(26, 41);

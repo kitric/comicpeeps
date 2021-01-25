@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,14 @@ namespace ComicPeeps.UserControls
         {
             InitializeComponent();
 
-            info = GlobalFunctions.GetComicInfo(comicIssue);
+            if (!File.Exists(MainScreen.ComicInfoPath + "\\" + comicIssue.ComicName + "\\" + comicIssue.IssueNumber + "\\ComicInfo.xml"))
+            {
+                info = GlobalFunctions.GetComicInfo(comicIssue);
+            }
+            else
+            {
+                info = GlobalFunctions.DesrializeComicInfo(MainScreen.ComicInfoPath + "\\" + comicIssue.ComicName + "\\" + comicIssue.IssueNumber + "\\ComicInfo.xml");
+            }
 
             lblTitle.Text = comicIssue.ComicName.ToLower() + " - issue " + comicIssue.IssueNumber;
             lblDescription.Text = info.Summary;
