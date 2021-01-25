@@ -86,7 +86,7 @@ namespace ComicPeeps
 
         private void btnLibrary_Click(object sender, EventArgs e)
         {
-            ShowNewPage(new Library(this) { Dock = DockStyle.Fill });
+            ShowNewPage(new Library() { Dock = DockStyle.Fill });
         }
 
         public static void Serialize()

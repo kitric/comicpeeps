@@ -17,13 +17,9 @@ namespace ComicPeeps.UserControls
     {
         ComicSeries comicSeries;
 
-        MainScreen mainScreen;
-
-        public ComicLibrary(ComicSeries comicSeries, MainScreen mainScreen)
+        public ComicLibrary(ComicSeries comicSeries)
         {
             InitializeComponent();
-
-            this.mainScreen = mainScreen;
             this.comicSeries = comicSeries;
 
             GlobalFunctions.HideScrollBars(pnlComics);
@@ -37,7 +33,7 @@ namespace ComicPeeps.UserControls
         {
             foreach (var issue in comicSeries.Issues)
             {
-                pnlComics.Controls.Add(new IssueButton(issue, mainScreen));
+                pnlComics.Controls.Add(new IssueButton(issue));
             }
         }
     }

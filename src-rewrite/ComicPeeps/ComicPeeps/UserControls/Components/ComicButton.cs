@@ -13,15 +13,13 @@ namespace ComicPeeps.UserControls.Components
 {
     public partial class ComicButton : UserControl
     {
-        MainScreen mainScreen;
         ComicSeries comicSeries;
 
-        public ComicButton(ComicSeries comicSeries, MainScreen mainScreen)
+        public ComicButton(ComicSeries comicSeries)
         {
             InitializeComponent();
 
             this.comicSeries = comicSeries;
-            this.mainScreen = mainScreen;
             this.DoubleBuffered = true;
 
             if (comicSeries.Thumbnail != "")
@@ -32,7 +30,7 @@ namespace ComicPeeps.UserControls.Components
 
         private void ComicButton_Click(object sender, EventArgs e)
         {
-            mainScreen.ShowNewPage(new ComicLibrary(comicSeries, mainScreen));
+            MainScreen.Instance.ShowNewPage(new ComicLibrary(comicSeries));
         }
     }
 }

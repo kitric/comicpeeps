@@ -14,13 +14,9 @@ namespace ComicPeeps.UserControls
 {
     public partial class AddComic : UserControl
     {
-        MainScreen mainScreen;
-
-        public AddComic(MainScreen mainScreen)
+        public AddComic()
         {
             InitializeComponent();
-
-            this.mainScreen = mainScreen;
         }
 
         private void AddComic_DoubleClick(object sender, EventArgs e)
@@ -62,7 +58,7 @@ namespace ComicPeeps.UserControls
 
                     MainScreen.UserData.ComicSeries.Add(comicSeries);
 
-                    mainScreen.ShowNewPage(new Library(mainScreen) { Dock = DockStyle.Fill });
+                    MainScreen.Instance.ShowNewPage(new Library() { Dock = DockStyle.Fill });
                 }
             }
         }
