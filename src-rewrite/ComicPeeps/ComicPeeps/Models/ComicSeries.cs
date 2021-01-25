@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ComicPeeps.Models
 {
+    [Serializable]
     public class ComicSeries
     {
         public string FolderPath { get; set; } = "";

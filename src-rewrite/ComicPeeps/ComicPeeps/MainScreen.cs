@@ -7,6 +7,8 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,7 +31,7 @@ namespace ComicPeeps
         public static string ThumbnailPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\thumbs";
         public static string ComicInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\comicinfo";
 
-        public static List<ComicSeries> UserComics = new List<ComicSeries>();
+        public static UserData UserData = new UserData();
 
         UserControl CurrentScreen = new UserControl();
 
@@ -44,6 +46,11 @@ namespace ComicPeeps
             CurrentScreen = new Home() { Dock = DockStyle.Fill };
 
             pnlContent.Controls.Add(CurrentScreen);
+        }
+
+        static MainScreen()
+        {
+            Deserialize();
         }
 
         public void ShowNewPage(UserControl ToOpen)
@@ -70,6 +77,34 @@ namespace ComicPeeps
         private void btnLibrary_Click(object sender, EventArgs e)
         {
             ShowNewPage(new Library(this) { Dock = DockStyle.Fill });
+        }
+
+        public static void Serialize()
+        {
+            IFormatter f = new BinaryFormatter();
+
+            using (Stream stream = new FileStream(AppData + "\\comic.peeps", FileMode.Create, FileAccess.Write))
+            {
+                f.Serialize(stream, UserData);
+            }
+        }
+
+        public static void Deserialize()
+        {
+            if (File.Exists(AppData + "\\comic.peeps"))
+            {
+                IFormatter f = new BinaryFormatter();
+
+                using (Stream stream = new FileStream(AppData + "\\comic.peeps", FileMode.Open, FileAccess.Read))
+                {
+                    UserData = (UserData)f.Deserialize(stream);
+                }
+            }
+        }
+
+        private void MainScreen_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Serialize();
         }
     }
 }

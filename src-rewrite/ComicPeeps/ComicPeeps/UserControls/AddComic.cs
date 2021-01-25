@@ -60,7 +60,7 @@ namespace ComicPeeps.UserControls
                         comicSeries.Thumbnail = comicSeries.Issues[0].Thumbnail;
                     }
 
-                    MainScreen.UserComics.Add(comicSeries);
+                    MainScreen.UserData.ComicSeries.Add(comicSeries);
 
                     mainScreen.ShowNewPage(new Library(mainScreen) { Dock = DockStyle.Fill });
                 }

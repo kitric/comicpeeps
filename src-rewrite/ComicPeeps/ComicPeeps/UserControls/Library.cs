@@ -28,7 +28,7 @@ namespace ComicPeeps.UserControls
 
         void LoadComics()
         {
-            foreach (var comic in MainScreen.UserComics)
+            foreach (var comic in MainScreen.UserData.ComicSeries)
             {
                 pnlComics.Controls.Add(new ComicButton(comic, mainScreen));
             }
