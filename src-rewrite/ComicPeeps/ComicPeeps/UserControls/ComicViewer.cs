@@ -15,6 +15,18 @@ namespace ComicPeeps.UserControls
         public ComicViewer()
         {
             InitializeComponent();
+
+            this.KeyPreview = true;
+        }
+
+        private void ComicViewer_KeyDown(object sender, KeyEventArgs e)
+        {
+            e.SuppressKeyPress = true;
+
+            if (e.KeyCode == Keys.Escape)
+            {
+                this.Close();
+            }
         }
     }
 }
