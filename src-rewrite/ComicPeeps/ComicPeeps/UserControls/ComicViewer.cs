@@ -62,10 +62,10 @@ namespace ComicPeeps.UserControls
                     PreviousPage();
                     break;
                 case Keys.Oemplus:
-                    ZoomInOut(true);
+                    ZoomIn();
                     break;
                 case Keys.OemMinus:
-                    ZoomInOut(false);
+                    ZoomOut();
                     break;
             }
         }
@@ -106,23 +106,43 @@ namespace ComicPeeps.UserControls
             comicIssue.CurrentPage = currentPage + 1;
         }
 
-        private void ZoomInOut(bool zoom)
+        private void ZoomOut()
         {
-            //Zoom ratio by which the images will be zoomed by default
-            int zoomRatio = 10;
-            //Set the zoomed width and height
-            int widthZoom = pbPageImage.Width * zoomRatio / 100;
-            int heightZoom = pbPageImage.Height * zoomRatio / 100;
-            //zoom = true --> zoom in
-            //zoom = false --> zoom out
-            if (!zoom)
+            if (ZoomSize > 1)
             {
+                //Zoom ratio by which the images will be zoomed by default
+                int zoomRatio = 10;
+                //Set the zoomed width and height
+                int widthZoom = pnlPages.Width * zoomRatio / 100;
+                int heightZoom = pnlPages.Height * zoomRatio / 100;
+                //zoom = true --> zoom in
+                //zoom = false --> zoom out
                 widthZoom *= -1;
                 heightZoom *= -1;
+                //Add the width and height to the picture box dimensions
+                pbPageImage.Width += widthZoom;
+                pbPageImage.Height += heightZoom;
+
+                ZoomSize--;
             }
-            //Add the width and height to the picture box dimensions
-            pbPageImage.Width += widthZoom;
-            pbPageImage.Height += heightZoom;
+        }
+
+        private void ZoomIn()
+        {
+            if (ZoomSize < 15)
+            {
+                //Zoom ratio by which the images will be zoomed by default
+                int zoomRatio = 10;
+                //Set the zoomed width and height
+                int widthZoom = pnlPages.Width * zoomRatio / 100;
+                int heightZoom = pnlPages.Height * zoomRatio / 100;
+
+                //Add the width and height to the picture box dimensions
+                pbPageImage.Width += widthZoom;
+                pbPageImage.Height += heightZoom;
+
+                ZoomSize++;
+            }
         }
 
         private void ComicViewer_Load(object sender, EventArgs e)
