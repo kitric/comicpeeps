@@ -126,8 +126,6 @@ namespace ComicPeeps.UserControls
         {
             if (ZoomSize > 1)
             {
-                pnlPages.AutoScroll = true;
-
                 int Left = pbPageImage.Left;
                 int Height = pbPageImage.Height;
                 int Width = pbPageImage.Width;
