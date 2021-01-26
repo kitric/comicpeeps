@@ -32,6 +32,8 @@ namespace ComicPeeps.UserControls
             currentPage = comicIssue.CurrentPage - 1;
 
             pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 5);
+
+            lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
         }
 
         private void ComicViewer_KeyDown(object sender, KeyEventArgs e)
@@ -41,6 +43,7 @@ namespace ComicPeeps.UserControls
             if (e.KeyCode == Keys.Escape)
             {
                 Directory.Delete(MainScreen.ComicExtractLocation + "\\" + comicIssue.ComicName, true);
+                comicIssue.CurrentPage = currentPage + 1;
                 this.Close();
             }
         }
@@ -51,6 +54,7 @@ namespace ComicPeeps.UserControls
             {
                 currentPage++;
                 pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 5);
+                lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
             }
         }
 
@@ -60,6 +64,7 @@ namespace ComicPeeps.UserControls
             {
                 currentPage--;
                 pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 5);
+                lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
             }
         }
     }
