@@ -118,7 +118,7 @@ namespace ComicPeeps.UserControls
             // 
             // pbPageImage
             // 
-            this.pbPageImage.BackColor = System.Drawing.Color.Green;
+            this.pbPageImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
             this.pbPageImage.Location = new System.Drawing.Point(0, 0);
             this.pbPageImage.Name = "pbPageImage";
             this.pbPageImage.Size = new System.Drawing.Size(540, 540);

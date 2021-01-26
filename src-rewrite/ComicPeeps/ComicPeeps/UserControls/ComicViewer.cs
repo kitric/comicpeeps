@@ -35,7 +35,7 @@ namespace ComicPeeps.UserControls
 
             currentPage = comicIssue.CurrentPage - 1;
 
-            pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 5);
+            pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 2);
 
             lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
         }
@@ -85,7 +85,7 @@ namespace ComicPeeps.UserControls
             if (currentPage < comicIssue.Pages - 1)
             {
                 currentPage++;
-                pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 5);
+                pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 2);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
             }
         }
@@ -95,7 +95,7 @@ namespace ComicPeeps.UserControls
             if (currentPage > 0)
             {
                 currentPage--;
-                pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 5);
+                pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 2);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
             }
         }
