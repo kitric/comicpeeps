@@ -50,6 +50,16 @@ namespace ComicPeeps.UserControls
 
         private void pnlRight_Click(object sender, EventArgs e)
         {
+            NextPage();
+        }
+
+        private void pnlLeft_Click(object sender, EventArgs e)
+        {
+            PreviousPage();
+        }
+
+        void NextPage()
+        {
             if (currentPage < comicIssue.Pages - 1)
             {
                 currentPage++;
@@ -58,7 +68,7 @@ namespace ComicPeeps.UserControls
             }
         }
 
-        private void pnlLeft_Click(object sender, EventArgs e)
+        void PreviousPage()
         {
             if (currentPage > 0)
             {
