@@ -30,6 +30,7 @@ namespace ComicPeeps
         public static string AppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps";
         public static string ThumbnailPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\thumbs";
         public static string ComicInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\comicinfo";
+        public static string ComicExtractLocation = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\comics";
 
         public static UserData UserData = new UserData();
 
@@ -44,6 +45,7 @@ namespace ComicPeeps
             Directory.CreateDirectory(AppData);
             Directory.CreateDirectory(ThumbnailPath);
             Directory.CreateDirectory(ComicInfoPath);
+            Directory.CreateDirectory(ComicExtractLocation);
 
             CurrentScreen = new Home() { Dock = DockStyle.Fill };
 
@@ -73,9 +75,9 @@ namespace ComicPeeps
         //    }
         //}
 
-        public void OpenReader()
+        public void OpenReader(ComicIssue comicIssue)
         {
-            ComicViewer viewer = new ComicViewer();
+            ComicViewer viewer = new ComicViewer(comicIssue);
             viewer.Show();
         }
 

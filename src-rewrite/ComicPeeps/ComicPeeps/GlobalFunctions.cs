@@ -236,5 +236,43 @@ namespace ComicPeeps
 				Content.Controls.Add(control);
 			}
 		}
+
+		public static List<string> ReadComic(ComicIssue issue)
+        {
+			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.ComicName).FullName;
+
+			List<string> images = new List<string>();
+
+			if (issue.Location.EndsWith(".cbz"))
+            {
+				using (ZipArchive archive = ZipFile.OpenRead(issue.Location))
+                {
+					archive.ExtractToDirectory(dir);
+
+					images = Directory.GetFiles(dir, "*.jpg", SearchOption.AllDirectories).ToList();
+					if (images.Count == 0)
+					{
+						images = Directory.GetFiles(dir, "*.png", SearchOption.AllDirectories).ToList();
+					}
+					images.Sort();
+				}
+            }
+			else if (issue.Location.EndsWith(".cbr"))
+            {
+				using (RarArchive archive = RarArchive.Open(issue.Location))
+                {
+					archive.WriteToDirectory(dir);
+
+					images = Directory.GetFiles(dir, "*.jpg", SearchOption.AllDirectories).ToList();
+					if (images.Count == 0)
+                    {
+						images = Directory.GetFiles(dir, "*.png", SearchOption.AllDirectories).ToList();
+					}
+					images.Sort();
+				}
+            }
+
+			return images;
+        }
 	}
 }

@@ -16,9 +16,13 @@ namespace ComicPeeps.UserControls
     {
         ComicInfo info = new ComicInfo();
 
+        ComicIssue comicIssue;
+
         public IssueDescription(ComicIssue comicIssue)
         {
             InitializeComponent();
+
+            this.comicIssue = comicIssue;
 
             if (!File.Exists(MainScreen.ComicInfoPath + "\\" + comicIssue.ComicName + "\\" + comicIssue.IssueNumber + "\\ComicInfo.xml"))
             {
@@ -41,7 +45,7 @@ namespace ComicPeeps.UserControls
 
         private void btnRead_Click(object sender, EventArgs e)
         {
-            MainScreen.Instance.OpenReader();
+            MainScreen.Instance.OpenReader(comicIssue);
         }
     }
 }
