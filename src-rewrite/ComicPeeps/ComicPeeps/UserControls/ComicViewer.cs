@@ -44,5 +44,23 @@ namespace ComicPeeps.UserControls
                 this.Close();
             }
         }
+
+        private void pnlRight_Click(object sender, EventArgs e)
+        {
+            if (currentPage < comicIssue.Pages - 1)
+            {
+                currentPage++;
+                pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 5);
+            }
+        }
+
+        private void pnlLeft_Click(object sender, EventArgs e)
+        {
+            if (currentPage > 0)
+            {
+                currentPage--;
+                pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 5);
+            }
+        }
     }
 }

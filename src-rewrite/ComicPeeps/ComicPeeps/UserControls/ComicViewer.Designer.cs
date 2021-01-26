@@ -54,6 +54,7 @@ namespace ComicPeeps.UserControls
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Size = new System.Drawing.Size(145, 540);
             this.pnlRight.TabIndex = 6;
+            this.pnlRight.Click += new System.EventHandler(this.pnlRight_Click);
             // 
             // pbRight
             // 
@@ -88,6 +89,7 @@ namespace ComicPeeps.UserControls
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(145, 540);
             this.pnlLeft.TabIndex = 5;
+            this.pnlLeft.Click += new System.EventHandler(this.pnlLeft_Click);
             // 
             // pbLeft
             // 
