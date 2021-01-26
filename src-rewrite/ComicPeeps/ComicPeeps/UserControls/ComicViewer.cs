@@ -137,5 +137,10 @@ namespace ComicPeeps.UserControls
                 ZoomSize--;
             }
         }
+
+        private void ComicViewer_Load(object sender, EventArgs e)
+        {
+            pbPageImage.Size = pnlPages.Size;
+        }
     }
 }

@@ -73,6 +73,7 @@ namespace ComicPeeps.UserControls
             this.pnlPages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlPages.AutoScroll = true;
             this.pnlPages.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
             this.pnlPages.Controls.Add(this.pbPageImage);
             this.pnlPages.Location = new System.Drawing.Point(211, 0);
@@ -117,10 +118,7 @@ namespace ComicPeeps.UserControls
             // 
             // pbPageImage
             // 
-            this.pbPageImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbPageImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
+            this.pbPageImage.BackColor = System.Drawing.Color.Green;
             this.pbPageImage.Location = new System.Drawing.Point(0, 0);
             this.pbPageImage.Name = "pbPageImage";
             this.pbPageImage.Size = new System.Drawing.Size(540, 540);
@@ -143,6 +141,7 @@ namespace ComicPeeps.UserControls
             this.Text = "ComicViewer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ComicViewer_FormClosing);
+            this.Load += new System.EventHandler(this.ComicViewer_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComicViewer_KeyDown);
             this.pnlRight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbRight)).EndInit();

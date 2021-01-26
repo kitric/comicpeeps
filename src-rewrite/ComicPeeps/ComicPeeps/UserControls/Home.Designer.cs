@@ -51,11 +51,11 @@ namespace ComicPeeps.UserControls
             this.lblNotice.AutoSize = true;
             this.lblNotice.Font = new System.Drawing.Font("Century Gothic", 10.6F, System.Drawing.FontStyle.Bold);
             this.lblNotice.ForeColor = System.Drawing.Color.White;
-            this.lblNotice.Location = new System.Drawing.Point(268, 510);
+            this.lblNotice.Location = new System.Drawing.Point(240, 510);
             this.lblNotice.Name = "lblNotice";
-            this.lblNotice.Size = new System.Drawing.Size(222, 18);
+            this.lblNotice.Size = new System.Drawing.Size(279, 18);
             this.lblNotice.TabIndex = 1;
-            this.lblNotice.Text = "click anywhere to open file...";
+            this.lblNotice.Text = "double click anywhere to open file...";
             // 
             // Home
             // 
