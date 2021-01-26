@@ -42,9 +42,23 @@ namespace ComicPeeps.UserControls
         {
             e.SuppressKeyPress = true;
 
-            if (e.KeyCode == Keys.Escape)
+            switch (e.KeyCode)
             {
-                this.Close();
+                case Keys.Escape:
+                    this.Close();
+                    break;
+                case Keys.Right:
+                    NextPage();
+                    break;
+                case Keys.Left:
+                    PreviousPage();
+                    break;
+                case Keys.Up:
+                    NextPage();
+                    break;
+                case Keys.Down:
+                    PreviousPage();
+                    break;
             }
         }
 
