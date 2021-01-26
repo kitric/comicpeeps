@@ -237,6 +237,7 @@ namespace ComicPeeps
 			}
 		}
 
+		// Read the ComicIssue and return the images
 		public static List<string> ReadComic(ComicIssue issue)
         {
 			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.ComicName).FullName;
