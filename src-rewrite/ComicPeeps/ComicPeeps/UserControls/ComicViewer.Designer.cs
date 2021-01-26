@@ -30,30 +30,48 @@ namespace ComicPeeps.UserControls
         private void InitializeComponent()
         {
             this.pnlRight = new System.Windows.Forms.Panel();
+            this.pbRight = new System.Windows.Forms.PictureBox();
             this.pnlPages = new System.Windows.Forms.Panel();
             this.pnlLeft = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbLeft = new System.Windows.Forms.PictureBox();
+            this.lblPageCount = new System.Windows.Forms.Label();
+            this.pbPageImage = new System.Windows.Forms.PictureBox();
             this.pnlRight.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbRight)).BeginInit();
+            this.pnlPages.SuspendLayout();
             this.pnlLeft.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLeft)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPageImage)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlRight
             // 
             this.pnlRight.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlRight.Controls.Add(this.pictureBox2);
+            this.pnlRight.Controls.Add(this.pbRight);
             this.pnlRight.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlRight.Location = new System.Drawing.Point(814, 0);
             this.pnlRight.Name = "pnlRight";
             this.pnlRight.Size = new System.Drawing.Size(145, 540);
             this.pnlRight.TabIndex = 6;
             // 
+            // pbRight
+            // 
+            this.pbRight.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pbRight.Image = global::ComicPeeps.Properties.Resources.rightButton;
+            this.pbRight.Location = new System.Drawing.Point(68, 249);
+            this.pbRight.Name = "pbRight";
+            this.pbRight.Size = new System.Drawing.Size(26, 41);
+            this.pbRight.TabIndex = 3;
+            this.pbRight.TabStop = false;
+            // 
             // pnlPages
             // 
+            this.pnlPages.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlPages.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
+            this.pnlPages.Controls.Add(this.pbPageImage);
             this.pnlPages.Location = new System.Drawing.Point(211, 0);
             this.pnlPages.Name = "pnlPages";
             this.pnlPages.Size = new System.Drawing.Size(540, 540);
@@ -63,44 +81,47 @@ namespace ComicPeeps.UserControls
             // 
             this.pnlLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.pnlLeft.Controls.Add(this.pictureBox1);
-            this.pnlLeft.Controls.Add(this.label1);
+            this.pnlLeft.Controls.Add(this.pbLeft);
+            this.pnlLeft.Controls.Add(this.lblPageCount);
             this.pnlLeft.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlLeft.Location = new System.Drawing.Point(1, 0);
             this.pnlLeft.Name = "pnlLeft";
             this.pnlLeft.Size = new System.Drawing.Size(145, 540);
             this.pnlLeft.TabIndex = 5;
             // 
-            // label1
+            // pbLeft
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 8.5F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(10, 10);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 16);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "0 / 0";
+            this.pbLeft.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pbLeft.Image = global::ComicPeeps.Properties.Resources.leftButton;
+            this.pbLeft.Location = new System.Drawing.Point(50, 249);
+            this.pbLeft.Name = "pbLeft";
+            this.pbLeft.Size = new System.Drawing.Size(26, 41);
+            this.pbLeft.TabIndex = 2;
+            this.pbLeft.TabStop = false;
             // 
-            // pictureBox2
+            // lblPageCount
             // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBox2.Image = global::ComicPeeps.Properties.Resources.rightButton;
-            this.pictureBox2.Location = new System.Drawing.Point(68, 249);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(26, 41);
-            this.pictureBox2.TabIndex = 3;
-            this.pictureBox2.TabStop = false;
+            this.lblPageCount.AutoSize = true;
+            this.lblPageCount.Font = new System.Drawing.Font("Century Gothic", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblPageCount.ForeColor = System.Drawing.Color.White;
+            this.lblPageCount.Location = new System.Drawing.Point(10, 10);
+            this.lblPageCount.Name = "lblPageCount";
+            this.lblPageCount.Size = new System.Drawing.Size(34, 16);
+            this.lblPageCount.TabIndex = 1;
+            this.lblPageCount.Text = "0 / 0";
             // 
-            // pictureBox1
+            // pbPageImage
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox1.Image = global::ComicPeeps.Properties.Resources.leftButton;
-            this.pictureBox1.Location = new System.Drawing.Point(50, 249);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 41);
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
+            this.pbPageImage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbPageImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
+            this.pbPageImage.Location = new System.Drawing.Point(0, 0);
+            this.pbPageImage.Name = "pbPageImage";
+            this.pbPageImage.Size = new System.Drawing.Size(540, 540);
+            this.pbPageImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPageImage.TabIndex = 0;
+            this.pbPageImage.TabStop = false;
             // 
             // ComicViewer
             // 
@@ -117,10 +138,12 @@ namespace ComicPeeps.UserControls
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComicViewer_KeyDown);
             this.pnlRight.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbRight)).EndInit();
+            this.pnlPages.ResumeLayout(false);
             this.pnlLeft.ResumeLayout(false);
             this.pnlLeft.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLeft)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPageImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -128,10 +151,11 @@ namespace ComicPeeps.UserControls
         #endregion
 
         private System.Windows.Forms.Panel pnlRight;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pbRight;
         private System.Windows.Forms.Panel pnlPages;
         private System.Windows.Forms.Panel pnlLeft;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox pbLeft;
+        private System.Windows.Forms.Label lblPageCount;
+        private System.Windows.Forms.PictureBox pbPageImage;
     }
 }

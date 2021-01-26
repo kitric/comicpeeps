@@ -14,9 +14,11 @@ namespace ComicPeeps.UserControls
 {
     public partial class ComicViewer : Form
     {
-        // 6private int currentPage = 0;
+        private int currentPage = 0;
 
         private ComicIssue comicIssue;
+
+        List<string> images;
 
         public ComicViewer(ComicIssue comicIssue)
         {
@@ -25,11 +27,11 @@ namespace ComicPeeps.UserControls
             this.comicIssue = comicIssue;
             this.KeyPreview = true;
 
-            var images = GlobalFunctions.ReadComic(comicIssue);
-            foreach (var image in images)
-            {
-                MessageBox.Show(image);
-            }
+            images = GlobalFunctions.ReadComic(comicIssue);
+
+            currentPage = comicIssue.CurrentPage - 1;
+
+            pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 5);
         }
 
         private void ComicViewer_KeyDown(object sender, KeyEventArgs e)
