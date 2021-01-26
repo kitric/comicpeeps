@@ -29,6 +29,7 @@ namespace ComicPeeps.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComicViewer));
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pbRight = new System.Windows.Forms.PictureBox();
             this.pnlPages = new System.Windows.Forms.Panel();
@@ -65,6 +66,7 @@ namespace ComicPeeps.UserControls
             this.pbRight.Size = new System.Drawing.Size(26, 41);
             this.pbRight.TabIndex = 3;
             this.pbRight.TabStop = false;
+            this.pbRight.Click += new System.EventHandler(this.pnlRight_Click);
             // 
             // pnlPages
             // 
@@ -100,6 +102,7 @@ namespace ComicPeeps.UserControls
             this.pbLeft.Size = new System.Drawing.Size(26, 41);
             this.pbLeft.TabIndex = 2;
             this.pbLeft.TabStop = false;
+            this.pbLeft.Click += new System.EventHandler(this.pnlLeft_Click);
             // 
             // lblPageCount
             // 
@@ -135,9 +138,11 @@ namespace ComicPeeps.UserControls
             this.Controls.Add(this.pnlPages);
             this.Controls.Add(this.pnlLeft);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "ComicViewer";
             this.Text = "ComicViewer";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ComicViewer_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ComicViewer_KeyDown);
             this.pnlRight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbRight)).EndInit();
