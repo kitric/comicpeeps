@@ -20,6 +20,8 @@ namespace ComicPeeps.UserControls
 
         List<string> images;
 
+        int ZoomSize = 1;
+
         public ComicViewer(ComicIssue comicIssue)
         {
             InitializeComponent();
@@ -59,6 +61,12 @@ namespace ComicPeeps.UserControls
                 case Keys.Down:
                     PreviousPage();
                     break;
+                case Keys.Oemplus:
+                    ZoomInImage();
+                    break;
+                case Keys.OemMinus:
+                    ZoomOutImage();
+                    break;
             }
         }
 
@@ -96,6 +104,38 @@ namespace ComicPeeps.UserControls
         {
             Directory.Delete(MainScreen.ComicExtractLocation + "\\" + comicIssue.ComicName, true);
             comicIssue.CurrentPage = currentPage + 1;
+        }
+
+        public void ZoomInImage()
+        {
+            if (ZoomSize < 15)
+            {
+                int Left = pbPageImage.Left;
+                int Height = pbPageImage.Height;
+                int Width = pbPageImage.Width;
+
+                pbPageImage.Left = (int)(Left - (pnlPages.Width * 0.025));
+                pbPageImage.Height = (int)(Height + (pnlPages.Height * 0.05));
+                pbPageImage.Width = (int)(Width + (pnlPages.Width * 0.05));
+
+                ZoomSize++;
+            }
+        }
+
+        public void ZoomOutImage()
+        {
+            if (ZoomSize > 1)
+            {
+                int Left = pbPageImage.Left;
+                int Height = pbPageImage.Height;
+                int Width = pbPageImage.Width;
+
+                pbPageImage.Left = (int)(Left + (pnlPages.Width * 0.025));
+                pbPageImage.Height = (int)(Height - (pnlPages.Height * 0.05));
+                pbPageImage.Width = (int)(Width - (pnlPages.Width * 0.05));
+
+                ZoomSize--;
+            }
         }
     }
 }
