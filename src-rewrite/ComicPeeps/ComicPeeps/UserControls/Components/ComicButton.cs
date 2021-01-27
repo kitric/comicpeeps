@@ -32,7 +32,7 @@ namespace ComicPeeps.UserControls.Components
         {
             //MainScreen.Instance.ShowNewPage(new ComicLibrary(comicSeries));
 
-            GlobalFunctions.SwitchTo<ComicLibrary>(MainScreen.Instance.pnlContent, new object[] { comicSeries });
+            GlobalFunctions.SwitchTo<ComicLibrary>(MainScreen.Instance.pnlContent, "ComicLibrary", new object[] { comicSeries });
         }
     }
 }

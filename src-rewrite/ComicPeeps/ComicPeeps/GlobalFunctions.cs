@@ -190,17 +190,17 @@ namespace ComicPeeps
 		/// </summary>
 		/// <typeparam name="T"></typeparam>
 		/// <param name="args"></param>
-		public static void SwitchTo<T>(Panel Content, object[] args = null) where T : UserControl
+		public static void SwitchTo<T>(Panel Content, string type, object[] args = null) where T : UserControl
 		{
 			Control topControl = Content.Controls[0];
 
-			//Creates a new UserControl from T. 
-			UserControl control = (UserControl)Activator.CreateInstance(typeof(T), args ?? new object[] { });
-			control.Dock = DockStyle.Fill;
-
 			// If the window on the top is different:
-			if (topControl.GetType() != control.GetType())
+			if (topControl.GetType().Name != type)
 			{
+				//Creates a new UserControl from T. 
+				UserControl control = (UserControl)Activator.CreateInstance(typeof(T), args ?? new object[] { });
+				control.Dock = DockStyle.Fill;
+
 				foreach (Control x in topControl.Controls) { x.Dispose(); }
 				topControl.Dispose();
 

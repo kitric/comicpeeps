@@ -85,14 +85,14 @@ namespace ComicPeeps
         {
             //ShowNewPage(new Home() { Dock = DockStyle.Fill });
 
-            GlobalFunctions.SwitchTo<Home>(this.pnlContent);
+            GlobalFunctions.SwitchTo<Home>(this.pnlContent, "Home");
         }
 
         private void btnLibrary_Click(object sender, EventArgs e)
         {
             //ShowNewPage(new Library() { Dock = DockStyle.Fill });
 
-            GlobalFunctions.SwitchTo<Library>(this.pnlContent);
+            GlobalFunctions.SwitchTo<Library>(this.pnlContent, "Library");
         }
 
         public static void Serialize()

@@ -30,7 +30,7 @@ namespace ComicPeeps.UserControls.Components
         {
             //MainScreen.Instance.ShowNewPage(new IssueDescription(issue) { Dock = DockStyle.Fill });
 
-            GlobalFunctions.SwitchTo<IssueDescription>(MainScreen.Instance.pnlContent, new object[] { issue });
+            GlobalFunctions.SwitchTo<IssueDescription>(MainScreen.Instance.pnlContent, "IssueDescription", new object[] { issue });
         }
     }
 }
