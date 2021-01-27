@@ -21,20 +21,25 @@ namespace ComicPeeps.UserControls
         {
             InitializeComponent();
             this.comicSeries = comicSeries;
-
-            GlobalFunctions.HideScrollBars(pnlComics);
-
-            lblTitle.Text = $"{comicSeries.ComicName.ToLower()}.";
-
-            LoadComics();
         }
 
-        void LoadComics()
+        Task<bool> LoadComics()
         {
             foreach (var issue in comicSeries.Issues)
             {
                 pnlComics.Controls.Add(new IssueButton(issue));
             }
+
+            return Task.FromResult(true);
+        }
+
+        private async void ComicLibrary_Load(object sender, EventArgs e)
+        {
+            lblTitle.Text = $"{comicSeries.ComicName.ToLower()}.";
+
+            await LoadComics();
+
+            GlobalFunctions.HideScrollBars(pnlComics);
         }
     }
 }

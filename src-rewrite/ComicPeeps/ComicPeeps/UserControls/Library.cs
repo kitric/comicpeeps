@@ -16,13 +16,9 @@ namespace ComicPeeps.UserControls
         public Library()
         {
             InitializeComponent();
-
-            GlobalFunctions.HideScrollBars(pnlComics);
-
-            LoadComics();
         }
 
-        void LoadComics()
+        Task<bool> LoadComics()
         {
             foreach (var comic in MainScreen.UserData.ComicSeries)
             {
@@ -30,6 +26,15 @@ namespace ComicPeeps.UserControls
             }
 
             pnlComics.Controls.Add(new AddButton());
+
+            return Task.FromResult(true);
+        }
+
+        private async void Library_Load(object sender, EventArgs e)
+        {
+            await LoadComics();
+
+            GlobalFunctions.HideScrollBars(pnlComics);
         }
     }
 }

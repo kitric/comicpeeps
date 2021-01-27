@@ -63,6 +63,7 @@ namespace ComicPeeps.UserControls
             this.Controls.Add(this.lblTitle);
             this.Name = "Library";
             this.Size = new System.Drawing.Size(757, 540);
+            this.Load += new System.EventHandler(this.Library_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
