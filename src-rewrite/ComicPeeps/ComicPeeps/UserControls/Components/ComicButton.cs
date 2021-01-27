@@ -20,13 +20,10 @@ namespace ComicPeeps.UserControls.Components
             InitializeComponent();
 
             this.comicSeries = comicSeries;
-            this.DoubleBuffered = true;
         }
 
         private void ComicButton_Click(object sender, EventArgs e)
         {
-            //MainScreen.Instance.ShowNewPage(new ComicLibrary(comicSeries));
-
             GlobalFunctions.SwitchTo<ComicLibrary>(MainScreen.Instance.pnlContent, "ComicLibrary", new object[] { comicSeries });
         }
 
