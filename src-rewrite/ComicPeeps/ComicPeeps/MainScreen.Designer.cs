@@ -131,7 +131,7 @@ namespace ComicPeeps
             this.Name = "MainScreen";
             this.Text = "ComicPeeps";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainScreen_FormClosing);
-            this.Load += new System.EventHandler(this.MainScreen_Load);
+            this.Shown += new System.EventHandler(this.MainScreen_Shown);
             this.pnlSideBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLibrary)).EndInit();

@@ -105,7 +105,7 @@ namespace ComicPeeps
             Serialize();
         }
 
-        private void MainScreen_Load(object sender, EventArgs e)
+        private void MainScreen_Shown(object sender, EventArgs e)
         {
             var args = Environment.GetCommandLineArgs();
 
