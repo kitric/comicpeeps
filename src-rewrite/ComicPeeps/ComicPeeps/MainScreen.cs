@@ -59,22 +59,6 @@ namespace ComicPeeps
             Deserialize();
         }
 
-        //public void ShowNewPage(UserControl ToOpen) 
-        //{
-        //    if (ToOpen.GetType() != CurrentScreen.GetType())
-        //    {
-        //        ToOpen.Dock = DockStyle.Fill;
-        //
-        //        CurrentScreen.Dispose();
-        //        pnlContent.Controls.Remove(CurrentScreen);
-        //
-        //        ToOpen.Dock = DockStyle.Fill;
-        //        pnlContent.Controls.Add(ToOpen);
-        //
-        //        CurrentScreen = ToOpen;
-        //    }
-        //}
-
         public void OpenReader(ComicIssue comicIssue)
         {
             ComicViewer viewer = new ComicViewer(comicIssue);
@@ -90,8 +74,6 @@ namespace ComicPeeps
 
         private void btnLibrary_Click(object sender, EventArgs e)
         {
-            //ShowNewPage(new Library() { Dock = DockStyle.Fill });
-
             GlobalFunctions.SwitchTo<Library>(this.pnlContent, "Library");
         }
 

@@ -66,6 +66,7 @@ namespace ComicPeeps.UserControls
             this.Controls.Add(this.pbIconBig);
             this.Name = "Home";
             this.Size = new System.Drawing.Size(757, 540);
+            this.DoubleClick += new System.EventHandler(this.Home_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.pbIconBig)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

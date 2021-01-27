@@ -19,6 +19,6 @@ namespace ComicPeeps.Models
 
         public int Pages { get; set; } = 0;
 
-        public int IssueNumber { get; set; }
+        public int IssueNumber { get; set; } = 0;
     }
 }
