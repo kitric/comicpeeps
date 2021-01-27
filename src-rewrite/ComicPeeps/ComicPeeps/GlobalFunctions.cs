@@ -213,7 +213,7 @@ namespace ComicPeeps
 		public static Task<string[]> ReadComic(ComicIssue issue)
         {
 			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.ComicName).FullName;
-
+			
 			if (issue.Location.EndsWith(".cbz"))
             {
 				using (ZipArchive archive = ZipFile.OpenRead(issue.Location))

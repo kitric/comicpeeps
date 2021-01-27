@@ -142,17 +142,17 @@ namespace ComicPeeps.UserControls
 
         private async void ComicViewer_Load(object sender, EventArgs e)
         {
-            pbPageImage.Size = pnlPages.Size;
-
-            currentPage = comicIssue.CurrentPage - 1;
-
-            pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
-
             images = await GlobalFunctions.ReadComic(comicIssue);
 
             comicIssue.Pages = images.Length;
 
             lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
+
+            pbPageImage.Size = pnlPages.Size;
+
+            currentPage = comicIssue.CurrentPage - 1;
+
+            pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
         }
     }
 }
