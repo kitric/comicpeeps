@@ -30,12 +30,6 @@ namespace ComicPeeps.UserControls
             this.KeyPreview = true;
 
             this.Text = comicIssue.ComicName + " " + comicIssue.IssueNumber;
-
-            images = GlobalFunctions.ReadComic(comicIssue);
-
-            comicIssue.Pages = images.Length;
-
-            lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
         }
 
         private void ComicViewer_KeyDown(object sender, KeyEventArgs e)
@@ -153,6 +147,12 @@ namespace ComicPeeps.UserControls
             currentPage = comicIssue.CurrentPage - 1;
 
             pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
+
+            images = await GlobalFunctions.ReadComic(comicIssue);
+
+            comicIssue.Pages = images.Length;
+
+            lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
         }
     }
 }

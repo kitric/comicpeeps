@@ -24,7 +24,7 @@ namespace ComicPeeps
 			panel.AutoScroll = true;
 		}
 
-		public static string GenerateCover(string comic, string comicName)
+		public static Task<string> GenerateCover(string comic, string comicName)
 		{
 			Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicName);
 
@@ -50,7 +50,7 @@ namespace ComicPeeps
 							}
 
 							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, true);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName;
+							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName);
 						}
 						else if (entry.FullName.EndsWith(".png"))
 						{
@@ -62,7 +62,7 @@ namespace ComicPeeps
 							}
 
 							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, true);
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName;
+							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName);
 						}
 					}
 				}
@@ -85,7 +85,7 @@ namespace ComicPeeps
                             }
 
 							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName;
+							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName);
 						}
 						else if (entry.Key.EndsWith(".png"))
 						{
@@ -97,13 +97,13 @@ namespace ComicPeeps
 							}
 
 							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
-							return MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName;
+							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName);
 						}
 					}
 				}
 			}
 
-			return "";
+			return Task.FromResult("");
 		}
 
 		/// <summary>
@@ -210,7 +210,7 @@ namespace ComicPeeps
 		}
 
 		// Read the ComicIssue and return the images
-		public static string[] ReadComic(ComicIssue issue)
+		public static Task<string[]> ReadComic(ComicIssue issue)
         {
 			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.ComicName).FullName;
 
@@ -222,7 +222,7 @@ namespace ComicPeeps
 
 					var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
 					Array.Sort(result);
-					return result;
+					return Task.FromResult(result);
 				}
             }
 			else if (issue.Location.EndsWith(".cbr"))
@@ -233,11 +233,11 @@ namespace ComicPeeps
 
 					var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
 					Array.Sort(result);
-					return result;
+					return Task.FromResult(result);
 				}
             }
 
-			return new string[0];
+			return Task.FromResult(new string[0]);
         }
 	}
 }

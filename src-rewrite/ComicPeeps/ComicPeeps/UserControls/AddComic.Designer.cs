@@ -44,6 +44,7 @@ namespace ComicPeeps.UserControls
             this.lblNotice.Size = new System.Drawing.Size(244, 18);
             this.lblNotice.TabIndex = 2;
             this.lblNotice.Text = "double click anywhere to add...";
+            this.lblNotice.DoubleClick += new System.EventHandler(this.AddComic_DoubleClick);
             // 
             // label1
             // 
@@ -56,6 +57,7 @@ namespace ComicPeeps.UserControls
             this.label1.Size = new System.Drawing.Size(211, 23);
             this.label1.TabIndex = 3;
             this.label1.Text = "specify folder path...";
+            this.label1.DoubleClick += new System.EventHandler(this.AddComic_DoubleClick);
             // 
             // AddComic
             // 
