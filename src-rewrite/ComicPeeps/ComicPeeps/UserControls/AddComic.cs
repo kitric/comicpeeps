@@ -44,7 +44,6 @@ namespace ComicPeeps.UserControls
                             ComicName = comicSeries.ComicName,
                             Location = issues[i],
                             Thumbnail = GlobalFunctions.GenerateCover(issues[i], comicSeries.ComicName),
-                            Pages = GlobalFunctions.GetNumberOfPages(issues[i]),
                             IssueNumber = i + 1
                         };
 

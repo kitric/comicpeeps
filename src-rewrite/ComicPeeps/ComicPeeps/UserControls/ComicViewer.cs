@@ -18,20 +18,22 @@ namespace ComicPeeps.UserControls
 
         private ComicIssue comicIssue;
 
-        List<string> images;
+        string[] images;
 
         int ZoomSize = 1;
 
         public ComicViewer(ComicIssue comicIssue)
         {
             InitializeComponent();
-
+            
             this.comicIssue = comicIssue;
             this.KeyPreview = true;
 
             this.Text = comicIssue.ComicName + " " + comicIssue.IssueNumber;
 
             images = GlobalFunctions.ReadComic(comicIssue);
+
+            comicIssue.Pages = images.Length;
 
             currentPage = comicIssue.CurrentPage - 1;
 
@@ -47,6 +49,7 @@ namespace ComicPeeps.UserControls
             switch (e.KeyCode)
             {
                 case Keys.Escape:
+                    this.pbPageImage.Image.Dispose();
                     this.Close();
                     break;
                 case Keys.Right:
@@ -85,6 +88,7 @@ namespace ComicPeeps.UserControls
             if (currentPage < comicIssue.Pages - 1)
             {
                 currentPage++;
+                pbPageImage.Image.Dispose();
                 pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 2);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
             }
@@ -95,6 +99,7 @@ namespace ComicPeeps.UserControls
             if (currentPage > 0)
             {
                 currentPage--;
+                pbPageImage.Image.Dispose();
                 pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 2);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
             }

@@ -106,34 +106,6 @@ namespace ComicPeeps
 			return "";
 		}
 
-		public static int GetNumberOfPages(string comic)
-        {
-			if (comic.EndsWith(".cbz"))
-			{
-				// its a cbz file.
-				using (ZipArchive archive = ZipFile.OpenRead(comic))
-				{
-					List<ZipArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.FullName).Where(entry => entry.FullName.Contains(".jpg")).ToList();
-					List<ZipArchiveEntry> png = archive.Entries.OrderBy(entry => entry.FullName).Where(entry => entry.FullName.Contains(".png")).ToList();
-					entries.Concat(png);
-					return entries.Count;
-				}
-			}
-			else if (comic.EndsWith(".cbr"))
-			{
-				// its a cbr file 
-				using (RarArchive archive = RarArchive.Open(comic))
-				{
-					List<RarArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.Key).Where(entry => !entry.IsDirectory).Where(entry => entry.Key.Contains(".jpg")).ToList();
-					List<RarArchiveEntry> png = archive.Entries.OrderBy(entry => entry.Key).Where(entry => !entry.IsDirectory).Where(entry => entry.Key.Contains(".png")).ToList();
-					entries.Concat(png);
-					return entries.Count;
-				}
-			}
-
-			return 0;
-		}
-
 		/// <summary>
 		/// Must call `Directory.Delete(MainScreen.ComicInfoPath + "\\" + issue.ComicName);` after this
 		/// </summary>
@@ -238,11 +210,9 @@ namespace ComicPeeps
 		}
 
 		// Read the ComicIssue and return the images
-		public static List<string> ReadComic(ComicIssue issue)
+		public static string[] ReadComic(ComicIssue issue)
         {
 			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.ComicName).FullName;
-
-			List<string> images = new List<string>();
 
 			if (issue.Location.EndsWith(".cbz"))
             {
@@ -250,12 +220,9 @@ namespace ComicPeeps
                 {
 					archive.ExtractToDirectory(dir);
 
-					images = Directory.GetFiles(dir, "*.jpg", SearchOption.AllDirectories).ToList();
-					if (images.Count == 0)
-					{
-						images = Directory.GetFiles(dir, "*.png", SearchOption.AllDirectories).ToList();
-					}
-					images.Sort();
+					var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
+					Array.Sort(result);
+					return result;
 				}
             }
 			else if (issue.Location.EndsWith(".cbr"))
@@ -264,16 +231,13 @@ namespace ComicPeeps
                 {
 					archive.WriteToDirectory(dir);
 
-					images = Directory.GetFiles(dir, "*.jpg", SearchOption.AllDirectories).ToList();
-					if (images.Count == 0)
-                    {
-						images = Directory.GetFiles(dir, "*.png", SearchOption.AllDirectories).ToList();
-					}
-					images.Sort();
+					var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
+					Array.Sort(result);
+					return result;
 				}
             }
 
-			return images;
+			return new string[0];
         }
 	}
 }
