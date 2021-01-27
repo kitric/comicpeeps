@@ -104,5 +104,24 @@ namespace ComicPeeps
         {
             Serialize();
         }
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
+            var args = Environment.GetCommandLineArgs();
+
+            if (args.Length > 1)
+            {
+                if (args[1].ToLower().EndsWith(".cbr") || args[1].ToLower().EndsWith(".cbr"))
+                {
+                    ComicIssue issue = new ComicIssue()
+                    {
+                        Location = args[1],
+                        ComicName = Path.GetFileName(Path.GetDirectoryName(args[1]))
+                    };
+
+                    OpenReader(issue);
+                }
+            }
+        }
     }
 }
