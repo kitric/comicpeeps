@@ -44,6 +44,7 @@ namespace ComicPeeps.UserControls
             this.pbIconBig.Size = new System.Drawing.Size(158, 158);
             this.pbIconBig.TabIndex = 0;
             this.pbIconBig.TabStop = false;
+            this.pbIconBig.DoubleClick += new System.EventHandler(this.Home_DoubleClick);
             // 
             // lblNotice
             // 
@@ -56,6 +57,7 @@ namespace ComicPeeps.UserControls
             this.lblNotice.Size = new System.Drawing.Size(279, 18);
             this.lblNotice.TabIndex = 1;
             this.lblNotice.Text = "double click anywhere to open file...";
+            this.lblNotice.DoubleClick += new System.EventHandler(this.Home_DoubleClick);
             // 
             // Home
             // 
