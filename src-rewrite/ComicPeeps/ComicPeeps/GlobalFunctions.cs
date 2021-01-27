@@ -172,7 +172,7 @@ namespace ComicPeeps
 			}
 		}
 
-		public static Bitmap CompressImage(string ImageFilePath, int CompressSize)
+		public static Task<Bitmap> CompressImage(string ImageFilePath, int CompressSize)
 		{
 			using (Image img = Image.FromFile(ImageFilePath))
 			{
@@ -181,7 +181,7 @@ namespace ComicPeeps
 				{
 					g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
 				}
-				return bmp;
+				return Task.FromResult(bmp);
 			}
 		}
 

@@ -110,6 +110,7 @@ namespace ComicPeeps.UserControls
             this.Controls.Add(this.lblTitle);
             this.Name = "IssueDescription";
             this.Size = new System.Drawing.Size(757, 540);
+            this.Load += new System.EventHandler(this.IssueDescription_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnRead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbThumbnail)).EndInit();

@@ -35,10 +35,6 @@ namespace ComicPeeps.UserControls
 
             comicIssue.Pages = images.Length;
 
-            currentPage = comicIssue.CurrentPage - 1;
-
-            pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 2);
-
             lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
         }
 
@@ -83,24 +79,24 @@ namespace ComicPeeps.UserControls
             PreviousPage();
         }
 
-        void NextPage()
+        async void NextPage()
         {
             if (currentPage < comicIssue.Pages - 1)
             {
                 currentPage++;
                 pbPageImage.Image.Dispose();
-                pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 2);
+                pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
             }
         }
 
-        void PreviousPage()
+        async void PreviousPage()
         {
             if (currentPage > 0)
             {
                 currentPage--;
                 pbPageImage.Image.Dispose();
-                pbPageImage.Image = GlobalFunctions.CompressImage(images[currentPage], 2);
+                pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
             }
         }
@@ -150,9 +146,13 @@ namespace ComicPeeps.UserControls
             }
         }
 
-        private void ComicViewer_Load(object sender, EventArgs e)
+        private async void ComicViewer_Load(object sender, EventArgs e)
         {
             pbPageImage.Size = pnlPages.Size;
+
+            currentPage = comicIssue.CurrentPage - 1;
+
+            pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
         }
     }
 }

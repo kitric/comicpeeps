@@ -23,7 +23,20 @@ namespace ComicPeeps.UserControls
             InitializeComponent();
 
             this.comicIssue = comicIssue;
+        }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRead_Click(object sender, EventArgs e)
+        {
+            MainScreen.Instance.OpenReader(comicIssue);
+        }
+
+        private async void IssueDescription_Load(object sender, EventArgs e)
+        {
             if (!File.Exists(MainScreen.ComicInfoPath + "\\" + comicIssue.ComicName + "\\" + comicIssue.IssueNumber + "\\ComicInfo.xml"))
             {
                 info = GlobalFunctions.GetComicInfo(comicIssue);
@@ -35,17 +48,7 @@ namespace ComicPeeps.UserControls
 
             lblTitle.Text = comicIssue.ComicName.ToLower() + " - issue " + comicIssue.IssueNumber;
             lblDescription.Text = info.Summary;
-            pbThumbnail.Image = GlobalFunctions.CompressImage(comicIssue.Thumbnail, 15);
-        }
-
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnRead_Click(object sender, EventArgs e)
-        {
-            MainScreen.Instance.OpenReader(comicIssue);
+            pbThumbnail.Image = await GlobalFunctions.CompressImage(comicIssue.Thumbnail, 15);
         }
     }
 }

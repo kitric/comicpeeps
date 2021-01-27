@@ -19,11 +19,6 @@ namespace ComicPeeps.UserControls.Components
         {
             InitializeComponent();
             this.issue = comicIssue;
-
-            if (comicIssue.Thumbnail != "")
-            {
-                this.BackgroundImage = GlobalFunctions.CompressImage(comicIssue.Thumbnail, 15);
-            }
         }
 
         private void IssueButton_Click(object sender, EventArgs e)
@@ -31,6 +26,14 @@ namespace ComicPeeps.UserControls.Components
             //MainScreen.Instance.ShowNewPage(new IssueDescription(issue) { Dock = DockStyle.Fill });
 
             GlobalFunctions.SwitchTo<IssueDescription>(MainScreen.Instance.pnlContent, "IssueDescription", new object[] { issue });
+        }
+
+        private async void IssueButton_Load(object sender, EventArgs e)
+        {
+            if (issue.Thumbnail != "")
+            {
+                this.BackgroundImage = await GlobalFunctions.CompressImage(issue.Thumbnail, 15);
+            }
         }
     }
 }

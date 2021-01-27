@@ -21,11 +21,6 @@ namespace ComicPeeps.UserControls.Components
 
             this.comicSeries = comicSeries;
             this.DoubleBuffered = true;
-
-            if (comicSeries.Thumbnail != "")
-            {
-                this.BackgroundImage = GlobalFunctions.CompressImage(comicSeries.Thumbnail, 15);
-            }
         }
 
         private void ComicButton_Click(object sender, EventArgs e)
@@ -33,6 +28,14 @@ namespace ComicPeeps.UserControls.Components
             //MainScreen.Instance.ShowNewPage(new ComicLibrary(comicSeries));
 
             GlobalFunctions.SwitchTo<ComicLibrary>(MainScreen.Instance.pnlContent, "ComicLibrary", new object[] { comicSeries });
+        }
+
+        private async void ComicButton_Load(object sender, EventArgs e)
+        {
+            if (comicSeries.Thumbnail != "")
+            {
+                this.BackgroundImage = await GlobalFunctions.CompressImage(comicSeries.Thumbnail, 15);
+            }
         }
     }
 }
