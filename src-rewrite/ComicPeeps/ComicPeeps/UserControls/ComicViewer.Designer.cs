@@ -29,20 +29,22 @@ namespace ComicPeeps.UserControls
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ComicViewer));
             this.pnlRight = new System.Windows.Forms.Panel();
             this.pbRight = new System.Windows.Forms.PictureBox();
             this.pnlPages = new System.Windows.Forms.Panel();
+            this.pbPageImage = new System.Windows.Forms.PictureBox();
             this.pnlLeft = new System.Windows.Forms.Panel();
             this.pbLeft = new System.Windows.Forms.PictureBox();
             this.lblPageCount = new System.Windows.Forms.Label();
-            this.pbPageImage = new System.Windows.Forms.PictureBox();
+            this.AutoRead = new System.Windows.Forms.Timer(this.components);
             this.pnlRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRight)).BeginInit();
             this.pnlPages.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPageImage)).BeginInit();
             this.pnlLeft.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLeft)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPageImage)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlRight
@@ -81,6 +83,16 @@ namespace ComicPeeps.UserControls
             this.pnlPages.Size = new System.Drawing.Size(540, 540);
             this.pnlPages.TabIndex = 4;
             // 
+            // pbPageImage
+            // 
+            this.pbPageImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
+            this.pbPageImage.Location = new System.Drawing.Point(0, 0);
+            this.pbPageImage.Name = "pbPageImage";
+            this.pbPageImage.Size = new System.Drawing.Size(540, 540);
+            this.pbPageImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPageImage.TabIndex = 0;
+            this.pbPageImage.TabStop = false;
+            // 
             // pnlLeft
             // 
             this.pnlLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -116,15 +128,9 @@ namespace ComicPeeps.UserControls
             this.lblPageCount.TabIndex = 1;
             this.lblPageCount.Text = "0 / 0";
             // 
-            // pbPageImage
+            // AutoRead
             // 
-            this.pbPageImage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
-            this.pbPageImage.Location = new System.Drawing.Point(0, 0);
-            this.pbPageImage.Name = "pbPageImage";
-            this.pbPageImage.Size = new System.Drawing.Size(540, 540);
-            this.pbPageImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbPageImage.TabIndex = 0;
-            this.pbPageImage.TabStop = false;
+            this.AutoRead.Tick += new System.EventHandler(this.AutoRead_Tick);
             // 
             // ComicViewer
             // 
@@ -146,10 +152,10 @@ namespace ComicPeeps.UserControls
             this.pnlRight.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbRight)).EndInit();
             this.pnlPages.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPageImage)).EndInit();
             this.pnlLeft.ResumeLayout(false);
             this.pnlLeft.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLeft)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPageImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,5 +169,6 @@ namespace ComicPeeps.UserControls
         private System.Windows.Forms.PictureBox pbLeft;
         private System.Windows.Forms.Label lblPageCount;
         private System.Windows.Forms.PictureBox pbPageImage;
+        private System.Windows.Forms.Timer AutoRead;
     }
 }

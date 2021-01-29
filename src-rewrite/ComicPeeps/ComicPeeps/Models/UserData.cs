@@ -11,5 +11,7 @@ namespace ComicPeeps.Models
     public class UserData
     {
         public List<ComicSeries> ComicSeries { get; set; } = new List<ComicSeries>();
+
+        public UserSettings Settings { get; set; } = new UserSettings();
     }
 }

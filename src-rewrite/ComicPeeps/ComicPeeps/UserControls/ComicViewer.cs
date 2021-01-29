@@ -81,6 +81,11 @@ namespace ComicPeeps.UserControls
                 pbPageImage.Image.Dispose();
                 pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
+                if (MainScreen.UserData.Settings.UseAutoRead)
+                {
+                    AutoRead.Stop();
+                    AutoRead.Start();
+                }
             }
         }
 
@@ -92,6 +97,11 @@ namespace ComicPeeps.UserControls
                 pbPageImage.Image.Dispose();
                 pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
+                if (MainScreen.UserData.Settings.UseAutoRead)
+                {
+                    AutoRead.Stop();
+                    AutoRead.Start();
+                }
             }
         }
 
@@ -153,6 +163,17 @@ namespace ComicPeeps.UserControls
             currentPage = comicIssue.CurrentPage - 1;
 
             pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
+
+            if (MainScreen.UserData.Settings.UseAutoRead)
+            {
+                AutoRead.Interval = MainScreen.UserData.Settings.AutoReadSpeed * 1000;
+                AutoRead.Start();
+            }
+        }
+
+        private void AutoRead_Tick(object sender, EventArgs e)
+        {
+            NextPage();
         }
     }
 }
