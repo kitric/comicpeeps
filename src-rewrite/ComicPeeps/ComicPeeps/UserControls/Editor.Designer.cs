@@ -33,9 +33,9 @@ namespace ComicPeeps.UserControls
             this.lblSeries = new System.Windows.Forms.Label();
             this.tbSeries = new System.Windows.Forms.TextBox();
             this.lblNumber = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbNumber = new System.Windows.Forms.TextBox();
             this.lblSummary = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.tbSummary = new System.Windows.Forms.TextBox();
             this.btnSave = new System.Windows.Forms.PictureBox();
             this.btnCancel = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
@@ -89,17 +89,17 @@ namespace ComicPeeps.UserControls
             this.lblNumber.TabIndex = 3;
             this.lblNumber.Text = "number:";
             // 
-            // textBox1
+            // tbNumber
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.BackColor = System.Drawing.Color.Black;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Century Gothic", 14.2F);
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(644, 90);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(71, 24);
-            this.textBox1.TabIndex = 4;
+            this.tbNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbNumber.BackColor = System.Drawing.Color.Black;
+            this.tbNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbNumber.Font = new System.Drawing.Font("Century Gothic", 14.2F);
+            this.tbNumber.ForeColor = System.Drawing.Color.White;
+            this.tbNumber.Location = new System.Drawing.Point(644, 90);
+            this.tbNumber.Name = "tbNumber";
+            this.tbNumber.Size = new System.Drawing.Size(71, 24);
+            this.tbNumber.TabIndex = 4;
             // 
             // lblSummary
             // 
@@ -112,20 +112,20 @@ namespace ComicPeeps.UserControls
             this.lblSummary.TabIndex = 3;
             this.lblSummary.Text = "summary:";
             // 
-            // textBox2
+            // tbSummary
             // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.tbSummary.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.BackColor = System.Drawing.Color.Black;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Century Gothic", 14.2F);
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(139, 141);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(576, 263);
-            this.textBox2.TabIndex = 4;
+            this.tbSummary.BackColor = System.Drawing.Color.Black;
+            this.tbSummary.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbSummary.Font = new System.Drawing.Font("Century Gothic", 14.2F);
+            this.tbSummary.ForeColor = System.Drawing.Color.White;
+            this.tbSummary.Location = new System.Drawing.Point(139, 141);
+            this.tbSummary.Multiline = true;
+            this.tbSummary.Name = "tbSummary";
+            this.tbSummary.Size = new System.Drawing.Size(576, 263);
+            this.tbSummary.TabIndex = 4;
             // 
             // btnSave
             // 
@@ -137,6 +137,7 @@ namespace ComicPeeps.UserControls
             this.btnSave.Size = new System.Drawing.Size(162, 54);
             this.btnSave.TabIndex = 5;
             this.btnSave.TabStop = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -148,6 +149,7 @@ namespace ComicPeeps.UserControls
             this.btnCancel.Size = new System.Drawing.Size(162, 54);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.TabStop = false;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // Editor
             // 
@@ -156,8 +158,8 @@ namespace ComicPeeps.UserControls
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.tbNumber);
+            this.Controls.Add(this.tbSummary);
             this.Controls.Add(this.tbSeries);
             this.Controls.Add(this.lblNumber);
             this.Controls.Add(this.lblSummary);
@@ -165,6 +167,7 @@ namespace ComicPeeps.UserControls
             this.Controls.Add(this.lblTitle);
             this.Name = "Editor";
             this.Size = new System.Drawing.Size(757, 540);
+            this.Load += new System.EventHandler(this.Editor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCancel)).EndInit();
             this.ResumeLayout(false);
@@ -178,9 +181,9 @@ namespace ComicPeeps.UserControls
         private System.Windows.Forms.Label lblSeries;
         private System.Windows.Forms.TextBox tbSeries;
         private System.Windows.Forms.Label lblNumber;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbNumber;
         private System.Windows.Forms.Label lblSummary;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox tbSummary;
         private System.Windows.Forms.PictureBox btnSave;
         private System.Windows.Forms.PictureBox btnCancel;
     }

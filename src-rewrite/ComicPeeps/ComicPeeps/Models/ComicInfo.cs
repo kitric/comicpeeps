@@ -7,6 +7,9 @@ namespace ComicPeeps.Models
 	[XmlRoot(ElementName = "ComicInfo")]
 	public class ComicInfo
 	{
+		[XmlElement(ElementName = "Title")]
+		public string Title { get; set; } = "";
+
 		[XmlElement(ElementName = "Series")]
 		public string Series { get; set; } = "";
 
@@ -40,9 +43,10 @@ namespace ComicPeeps.Models
 		[XmlElement(ElementName = "ScanInformation")]
 		public string ScanInformation { get; set; } = "";
 
-		[XmlAttribute(AttributeName = "xsd", Namespace = "http://www.w3.org/2000/xmlns/")]
-		public string Xsd { get; set; } = "";
-		[XmlAttribute(AttributeName = "xsi", Namespace = "http://www.w3.org/2000/xmlns/")]
-		public string Xsi { get; set; } = "";
+		//[XmlAttribute(AttributeName = "xsd", Namespace = "http://www.w3.org/2000/xmlns/")]
+		//public string Xsd { get; set; } = "";
+		
+		//[XmlAttribute(AttributeName = "xsi", Namespace = "http://www.w3.org/2000/xmlns/")]
+		//public string Xsi { get; set; } = "";
 	}
 }

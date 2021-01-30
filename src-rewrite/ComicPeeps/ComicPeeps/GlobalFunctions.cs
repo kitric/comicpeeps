@@ -167,10 +167,22 @@ namespace ComicPeeps
 			using (Stream S = new FileStream(filePath, FileMode.Open, FileAccess.Read))
 			{
 				XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
-
+				
 				return (ComicInfo)xmlSer.Deserialize(S);
 			}
 		}
+
+		public static string SerializeComicInfo(ComicInfo info, string location)
+        {
+			using (Stream s = new FileStream(location, FileMode.Truncate, FileAccess.Write))
+            {
+				XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
+
+				xmlSer.Serialize(s, info);
+
+				return location;
+			}
+        }
 
 		public static Task<Bitmap> CompressImage(string ImageFilePath, int CompressSize)
 		{
@@ -219,7 +231,7 @@ namespace ComicPeeps
 				using (ZipArchive archive = ZipFile.OpenRead(issue.Location))
                 {
 					archive.ExtractToDirectory(dir);
-
+					
 					var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
 					Array.Sort(result);
 					return Task.FromResult(result);

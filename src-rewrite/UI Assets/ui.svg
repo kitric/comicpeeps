@@ -26,8 +26,8 @@
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
      inkscape:zoom="0.70710678"
-     inkscape:cx="401.70948"
-     inkscape:cy="426.64925"
+     inkscape:cx="553.66187"
+     inkscape:cy="872.30051"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      inkscape:document-rotation="0"
@@ -1526,6 +1526,8 @@
          sodipodi:role="line"
          id="tspan1281">absolute carnage - issue 1 - edit</tspan></text>
     <rect
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        y="90.215332"
        x="106.40442"
        height="37.112999"
@@ -1533,19 +1535,14 @@
        id="rect1285"
        style="fill:#fc8e44;fill-opacity:1;fill-rule:evenodd;stroke-width:3.65109;stroke-linecap:round" />
     <rect
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:3.31354;stroke-linecap:round"
        id="rect1287"
        width="336.58282"
        height="31.112698"
        x="109.40454"
        y="93.215576" />
-    <rect
-       style="opacity:0;fill:#000000;fill-rule:evenodd;stroke-width:0.881236;stroke-linecap:round"
-       id="rect1289"
-       width="18.000011"
-       height="18"
-       x="68.273926"
-       y="99.901611" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.9714px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.197619"
@@ -1558,6 +1555,8 @@
          y="115.75659"
          style="stroke-width:0.197619">series:</tspan></text>
     <rect
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        style="fill:#fc8e44;fill-opacity:1;fill-rule:evenodd;stroke-width:2.20378;stroke-linecap:round"
        id="rect1295"
        width="124.812"
@@ -1565,6 +1564,8 @@
        x="579.61816"
        y="90.215332" />
     <rect
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        y="93.215576"
        x="582.61816"
        height="31.112698"
@@ -1594,6 +1595,8 @@
          id="tspan1304"
          sodipodi:role="line">summary:</tspan></text>
     <rect
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        style="fill:#fc8e44;fill-opacity:1;fill-rule:evenodd;stroke-width:9.47609;stroke-linecap:round"
        id="rect1308"
        width="557.02576"
@@ -1601,6 +1604,8 @@
        x="147.40442"
        y="164.37451" />
     <rect
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        y="167.37476"
        x="150.40454"
        height="243.99977"
@@ -1608,6 +1613,8 @@
        id="rect1310"
        style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:9.27935;stroke-linecap:round" />
     <g
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        id="g1322"
        transform="translate(-1791.9887,-3076)">
       <rect
@@ -1639,6 +1646,8 @@
       </g>
     </g>
     <g
+       inkscape:export-ydpi="96"
+       inkscape:export-xdpi="96"
        id="g1336"
        transform="translate(-1397.4543,-3156.7341)">
       <rect
