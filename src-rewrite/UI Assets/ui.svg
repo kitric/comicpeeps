@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.5"
-     inkscape:cx="1415.7664"
-     inkscape:cy="3349.6161"
+     inkscape:zoom="0.70710678"
+     inkscape:cx="401.70948"
+     inkscape:cy="426.64925"
      inkscape:document-units="px"
      inkscape:current-layer="layer2"
      inkscape:document-rotation="0"
@@ -96,6 +96,13 @@
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Contents">
+    <rect
+       y="0"
+       x="0"
+       height="540"
+       width="757"
+       id="rect1338"
+       style="fill:#020202;fill-opacity:1;fill-rule:evenodd;stroke-width:2.66608;stroke-linecap:round" />
     <rect
        y="580"
        x="1483"
@@ -1439,13 +1446,6 @@
        height="243.99977"
        x="1633.4045"
        y="3067.3748" />
-    <rect
-       y="3517"
-       x="1603"
-       height="45"
-       width="45"
-       id="rect1182"
-       style="fill:#aa0000;fill-opacity:1;fill-rule:evenodd;stroke-width:2.67904;stroke-linecap:round" />
     <g
        transform="translate(-308.98865,-176)"
        id="g1269">
@@ -1512,6 +1512,167 @@
            height="16.579887"
            x="1980.9076"
            y="3623.1465" />
+      </g>
+    </g>
+    <text
+       id="text1283"
+       y="53.387451"
+       x="38.774902"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:27.1116px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.282412"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.282412"
+         y="53.387451"
+         x="38.774902"
+         sodipodi:role="line"
+         id="tspan1281">absolute carnage - issue 1 - edit</tspan></text>
+    <rect
+       y="90.215332"
+       x="106.40442"
+       height="37.112999"
+       width="342.58301"
+       id="rect1285"
+       style="fill:#fc8e44;fill-opacity:1;fill-rule:evenodd;stroke-width:3.65109;stroke-linecap:round" />
+    <rect
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:3.31354;stroke-linecap:round"
+       id="rect1287"
+       width="336.58282"
+       height="31.112698"
+       x="109.40454"
+       y="93.215576" />
+    <rect
+       style="opacity:0;fill:#000000;fill-rule:evenodd;stroke-width:0.881236;stroke-linecap:round"
+       id="rect1289"
+       width="18.000011"
+       height="18"
+       x="68.273926"
+       y="99.901611" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.9714px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.197619"
+       x="39.45813"
+       y="115.75659"
+       id="text1293"><tspan
+         sodipodi:role="line"
+         id="tspan1291"
+         x="39.45813"
+         y="115.75659"
+         style="stroke-width:0.197619">series:</tspan></text>
+    <rect
+       style="fill:#fc8e44;fill-opacity:1;fill-rule:evenodd;stroke-width:2.20378;stroke-linecap:round"
+       id="rect1295"
+       width="124.812"
+       height="37.112999"
+       x="579.61816"
+       y="90.215332" />
+    <rect
+       y="93.215576"
+       x="582.61816"
+       height="31.112698"
+       width="118.81223"
+       id="rect1297"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:1.96869;stroke-linecap:round" />
+    <text
+       id="text1301"
+       y="115.75659"
+       x="494.69763"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.9714px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.197619"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.197619"
+         y="115.75659"
+         x="494.69763"
+         id="tspan1299"
+         sodipodi:role="line">number:</tspan></text>
+    <text
+       id="text1306"
+       y="186.25659"
+       x="39.45813"
+       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.9714px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.197619"
+       xml:space="preserve"><tspan
+         style="stroke-width:0.197619"
+         y="186.25659"
+         x="39.45813"
+         id="tspan1304"
+         sodipodi:role="line">summary:</tspan></text>
+    <rect
+       style="fill:#fc8e44;fill-opacity:1;fill-rule:evenodd;stroke-width:9.47609;stroke-linecap:round"
+       id="rect1308"
+       width="557.02576"
+       height="250"
+       x="147.40442"
+       y="164.37451" />
+    <rect
+       y="167.37476"
+       x="150.40454"
+       height="243.99977"
+       width="551.02588"
+       id="rect1310"
+       style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:9.27935;stroke-linecap:round" />
+    <g
+       id="g1322"
+       transform="translate(-1791.9887,-3076)">
+      <rect
+         y="3524.4805"
+         x="1939.3931"
+         height="53.86396"
+         width="162.49138"
+         id="rect1312"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:4.47142;stroke-linecap:round" />
+      <g
+         transform="translate(7.6820526,0.70989888)"
+         id="g1320">
+        <text
+           id="text1316"
+           y="3557.0166"
+           x="2003.782"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.4747px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.182028"
+           xml:space="preserve"><tspan
+             style="stroke-width:0.182028"
+             y="3557.0166"
+             x="2003.782"
+             id="tspan1314"
+             sodipodi:role="line">save.</tspan></text>
+        <path
+           id="path1318"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:1.14212;stroke-linecap:round"
+           d="m 1997.2421,3542.4126 -10.5508,10.5509 -5.5392,-5.5392 -3.0146,3.0145 8.5538,8.5537 13.5654,-13.5654 z"
+           sodipodi:nodetypes="ccccccc" />
+      </g>
+    </g>
+    <g
+       id="g1336"
+       transform="translate(-1397.4543,-3156.7341)">
+      <rect
+         y="3605.2146"
+         x="1939.3931"
+         height="53.86396"
+         width="162.49138"
+         id="rect1324"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:4.47142;stroke-linecap:round" />
+      <g
+         transform="translate(-3.4981976,0.71007974)"
+         id="g1334">
+        <text
+           id="text1328"
+           y="3637.7507"
+           x="2003.7821"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.4747px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.182028"
+           xml:space="preserve"><tspan
+             style="stroke-width:0.182028"
+             y="3637.7507"
+             x="2003.7821"
+             id="tspan1326"
+             sodipodi:role="line">cancel.</tspan></text>
+        <path
+           id="path1330"
+           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:1.14217;stroke-linecap:round"
+           d="m 1983.9214,3623.1463 -3.0143,3.0143 5.2759,5.2759 -5.2759,5.2759 3.0143,3.0143 5.2759,-5.2759 5.2759,5.2759 3.0143,-3.0143 -5.2759,-5.2759 5.2759,-5.2759 -3.0143,-3.0143 -5.2759,5.2759 z" />
+        <rect
+           y="3623.1465"
+           x="1980.9076"
+           height="16.579887"
+           width="16.579899"
+           id="rect1332"
+           style="opacity:0;fill:#000000;fill-rule:evenodd;stroke-width:0.811711;stroke-linecap:round" />
       </g>
     </g>
   </g>

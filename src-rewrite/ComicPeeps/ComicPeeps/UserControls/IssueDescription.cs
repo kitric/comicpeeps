@@ -27,7 +27,7 @@ namespace ComicPeeps.UserControls
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-
+            GlobalFunctions.SwitchTo<Editor>(MainScreen.Instance.pnlContent, "Editor", new object[] { comicIssue });
         }
 
         private void btnRead_Click(object sender, EventArgs e)
