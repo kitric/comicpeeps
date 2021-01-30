@@ -15,10 +15,13 @@ namespace ComicPeeps.UserControls.Components
     {
         ComicSeries comicSeries;
 
-        public ComicButton(ComicSeries comicSeries)
+        Library library;
+
+        public ComicButton(ComicSeries comicSeries, Library library)
         {
             InitializeComponent();
 
+            this.library = library;
             this.comicSeries = comicSeries;
         }
 
@@ -33,6 +36,17 @@ namespace ComicPeeps.UserControls.Components
             {
                 this.BackgroundImage = await GlobalFunctions.CompressImage(comicSeries.Thumbnail, 15);
             }
+        }
+
+        private void tsmRemove_Click(object sender, EventArgs e)
+        {
+            MainScreen.UserData.ComicSeries.Remove(comicSeries);
+            library.pnlComics.Controls.Remove(this);
+            if (this.BackgroundImage != null)
+            {
+                this.BackgroundImage.Dispose();
+            }
+            this.Dispose();
         }
     }
 }

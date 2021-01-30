@@ -18,11 +18,11 @@ namespace ComicPeeps.UserControls
             InitializeComponent();
         }
 
-        Task<bool> LoadComics()
+        public Task<bool> LoadComics()
         {
             foreach (var comic in MainScreen.UserData.ComicSeries)
             {
-                pnlComics.Controls.Add(new ComicButton(comic));
+                pnlComics.Controls.Add(new ComicButton(comic, this));
             }
 
             pnlComics.Controls.Add(new AddButton());

@@ -72,6 +72,6 @@ namespace ComicPeeps.UserControls
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.FlowLayoutPanel pnlComics;
+        public System.Windows.Forms.FlowLayoutPanel pnlComics;
     }
 }
