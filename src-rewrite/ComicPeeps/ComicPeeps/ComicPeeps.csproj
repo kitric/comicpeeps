@@ -121,12 +121,6 @@
     <Compile Include="UserControls\Components\IssueButton.Designer.cs">
       <DependentUpon>IssueButton.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Editor.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Editor.Designer.cs">
-      <DependentUpon>Editor.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Home.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -175,9 +169,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Components\IssueButton.resx">
       <DependentUpon>IssueButton.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Editor.resx">
-      <DependentUpon>Editor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>

@@ -25,11 +25,6 @@ namespace ComicPeeps.UserControls
             this.comicIssue = comicIssue;
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
-        {
-            GlobalFunctions.SwitchTo<Editor>(MainScreen.Instance.pnlContent, "Editor", new object[] { comicIssue, MainScreen.ComicInfoPath + "\\" + comicIssue.ComicName + "\\" + comicIssue.IssueNumber + "\\ComicInfo.xml", info });
-        }
-
         private void btnRead_Click(object sender, EventArgs e)
         {
             MainScreen.Instance.OpenReader(comicIssue);

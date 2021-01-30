@@ -28,7 +28,7 @@ namespace ComicPeeps
 		{
 			Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicName);
 
-			if (comic.EndsWith(".cbz"))
+			if (comic.ToLower().EndsWith(".cbz"))
 			{
 				// its a cbz file.
 				using (ZipArchive archive = ZipFile.OpenRead(comic))
@@ -67,7 +67,7 @@ namespace ComicPeeps
 					}
 				}
 			}
-			else if (comic.EndsWith(".cbr"))
+			else if (comic.ToLower().EndsWith(".cbr"))
 			{
 				// its a cbr file 
 				using (RarArchive archive = RarArchive.Open(comic))
@@ -115,7 +115,7 @@ namespace ComicPeeps
         {
 			string dir = Directory.CreateDirectory(MainScreen.ComicInfoPath + "\\" + issue.ComicName + "\\" + issue.IssueNumber).FullName;
 
-			if (issue.Location.EndsWith(".cbz"))
+			if (issue.Location.ToLower().EndsWith(".cbz"))
 			{
 				// its a cbz file.
 				using (ZipArchive archive = ZipFile.OpenRead(issue.Location))
@@ -135,7 +135,7 @@ namespace ComicPeeps
 					catch { }
 				}
 			}
-			else if (issue.Location.EndsWith(".cbr"))
+			else if (issue.Location.ToLower().EndsWith(".cbr"))
 			{
 				// its a cbr file 
 				using (RarArchive archive = RarArchive.Open(issue.Location))
@@ -186,15 +186,20 @@ namespace ComicPeeps
 
 		public static Task<Bitmap> CompressImage(string ImageFilePath, int CompressSize)
 		{
-			using (Image img = Image.FromFile(ImageFilePath))
+			if (!string.IsNullOrWhiteSpace(ImageFilePath))
 			{
-				Bitmap bmp = new Bitmap(img.Width / CompressSize, img.Height / CompressSize);
-				using (Graphics g = Graphics.FromImage(bmp))
+				using (Image img = Image.FromFile(ImageFilePath))
 				{
-					g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
+					Bitmap bmp = new Bitmap(img.Width / CompressSize, img.Height / CompressSize);
+					using (Graphics g = Graphics.FromImage(bmp))
+					{
+						g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
+					}
+					return Task.FromResult(bmp);
 				}
-				return Task.FromResult(bmp);
 			}
+
+			return null;
 		}
 
 		/// <summary>
@@ -226,7 +231,7 @@ namespace ComicPeeps
         {
 			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.ComicName).FullName;
 			
-			if (issue.Location.EndsWith(".cbz"))
+			if (issue.Location.ToLower().EndsWith(".cbz"))
             {
 				using (ZipArchive archive = ZipFile.OpenRead(issue.Location))
                 {
@@ -237,7 +242,7 @@ namespace ComicPeeps
 					return Task.FromResult(result);
 				}
             }
-			else if (issue.Location.EndsWith(".cbr"))
+			else if (issue.Location.ToLower().EndsWith(".cbr"))
             {
 				using (RarArchive archive = RarArchive.Open(issue.Location))
                 {

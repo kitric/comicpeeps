@@ -32,10 +32,8 @@ namespace ComicPeeps.UserControls
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.btnRead = new System.Windows.Forms.PictureBox();
-            this.btnEdit = new System.Windows.Forms.PictureBox();
             this.pbThumbnail = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnRead)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbThumbnail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,27 +65,15 @@ namespace ComicPeeps.UserControls
             // 
             // btnRead
             // 
-            this.btnRead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRead.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnRead.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRead.Image = global::ComicPeeps.Properties.Resources.readBtn;
-            this.btnRead.Location = new System.Drawing.Point(558, 423);
+            this.btnRead.Location = new System.Drawing.Point(339, 438);
             this.btnRead.Name = "btnRead";
             this.btnRead.Size = new System.Drawing.Size(162, 54);
             this.btnRead.TabIndex = 6;
             this.btnRead.TabStop = false;
             this.btnRead.Click += new System.EventHandler(this.btnRead_Click);
-            // 
-            // btnEdit
-            // 
-            this.btnEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnEdit.Image = global::ComicPeeps.Properties.Resources.editBtn;
-            this.btnEdit.Location = new System.Drawing.Point(336, 423);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(162, 54);
-            this.btnEdit.TabIndex = 6;
-            this.btnEdit.TabStop = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // pbThumbnail
             // 
@@ -104,7 +90,6 @@ namespace ComicPeeps.UserControls
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.btnRead);
-            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.pbThumbnail);
             this.Controls.Add(this.lblTitle);
@@ -112,7 +97,6 @@ namespace ComicPeeps.UserControls
             this.Size = new System.Drawing.Size(757, 540);
             this.Load += new System.EventHandler(this.IssueDescription_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnRead)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnEdit)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbThumbnail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -124,7 +108,6 @@ namespace ComicPeeps.UserControls
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbThumbnail;
         private System.Windows.Forms.Label lblDescription;
-        private System.Windows.Forms.PictureBox btnEdit;
         private System.Windows.Forms.PictureBox btnRead;
     }
 }
