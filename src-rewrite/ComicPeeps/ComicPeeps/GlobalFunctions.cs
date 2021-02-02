@@ -212,7 +212,7 @@ namespace ComicPeeps
 			Control topControl = Content.Controls[0];
 
 			// If the window on the top is different:
-			if (topControl.GetType().Name != type)
+			if (topControl.GetType().Name.ToLower() != type.ToLower())
 			{
 				//Creates a new UserControl from T. 
 				UserControl control = (UserControl)Activator.CreateInstance(typeof(T), args ?? new object[] { });
