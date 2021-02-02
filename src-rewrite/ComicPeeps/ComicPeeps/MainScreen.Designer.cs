@@ -68,6 +68,7 @@ namespace ComicPeeps
             this.btnSettings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.btnSettings.TabIndex = 3;
             this.btnSettings.TabStop = false;
+            this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
             // 
             // btnLibrary
             // 

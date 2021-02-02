@@ -123,5 +123,10 @@ namespace ComicPeeps
                 }
             }
         }
+
+        private void btnSettings_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.SwitchTo<SettingsPage>(this.pnlContent, "SettingsPage");
+        }
     }
 }

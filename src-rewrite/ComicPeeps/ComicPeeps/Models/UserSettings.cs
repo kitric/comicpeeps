@@ -12,5 +12,9 @@ namespace ComicPeeps.Models
         public bool UseAutoRead { get; set; } = false;
 
         public int AutoReadSpeed { get; set; } = 40;
+
+        public bool SaveLastPage { get; set; } = true;
+
+        public int CompressSize { get; set; } = 2;
     }
 }
