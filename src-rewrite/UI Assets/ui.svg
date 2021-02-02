@@ -35,8 +35,8 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer2"
      inkscape:document-units="px"
-     inkscape:cy="261.71842"
-     inkscape:cx="318.92073"
+     inkscape:cy="328.18646"
+     inkscape:cx="364.17556"
      inkscape:zoom="1.4142136"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0"
@@ -1582,43 +1582,6 @@
          style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:1.14212;stroke-linecap:round"
          d="m 2004.9242,3543.1225 -10.5508,10.5509 -5.5392,-5.5392 -3.0146,3.0145 8.5538,8.5537 13.5654,-13.5654 z"
          sodipodi:nodetypes="ccccccc" />
-    </g>
-    <g
-       transform="translate(-1702.2017,-3156.7341)"
-       id="g1318">
-      <rect
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:4.47142;stroke-linecap:round"
-         id="rect1306"
-         width="162.49138"
-         height="53.86396"
-         x="1939.3931"
-         y="3605.2146" />
-      <g
-         id="g1316"
-         transform="translate(-3.4981976,0.71007974)">
-        <text
-           xml:space="preserve"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.4747px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.182028"
-           x="2003.7821"
-           y="3637.7507"
-           id="text1310"><tspan
-             sodipodi:role="line"
-             id="tspan1308"
-             x="2003.7821"
-             y="3637.7507"
-             style="stroke-width:0.182028">cancel.</tspan></text>
-        <path
-           d="m 1983.9214,3623.1463 -3.0143,3.0143 5.2759,5.2759 -5.2759,5.2759 3.0143,3.0143 5.2759,-5.2759 5.2759,5.2759 3.0143,-3.0143 -5.2759,-5.2759 5.2759,-5.2759 -3.0143,-3.0143 -5.2759,5.2759 z"
-           style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:1.14217;stroke-linecap:round"
-           id="path1312" />
-        <rect
-           style="opacity:0;fill:#000000;fill-rule:evenodd;stroke-width:0.811711;stroke-linecap:round"
-           id="rect1314"
-           width="16.579899"
-           height="16.579887"
-           x="1980.9076"
-           y="3623.1465" />
-      </g>
     </g>
     <text
        id="text1324"
