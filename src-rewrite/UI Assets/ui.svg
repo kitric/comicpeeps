@@ -35,9 +35,9 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer2"
      inkscape:document-units="px"
-     inkscape:cy="2387.7765"
-     inkscape:cx="3413.0343"
-     inkscape:zoom="0.125"
+     inkscape:cy="568.38988"
+     inkscape:cx="658.52699"
+     inkscape:zoom="0.5"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0"
      borderopacity="1.0"
@@ -96,13 +96,6 @@
      inkscape:label="Contents"
      id="layer2"
      inkscape:groupmode="layer">
-    <rect
-       style="fill:#020202;fill-opacity:1;fill-rule:evenodd;stroke-width:2.66608;stroke-linecap:round"
-       id="rect1366"
-       width="757"
-       height="540"
-       x="0"
-       y="0" />
     <rect
        style="fill:#020202;fill-opacity:1;fill-rule:evenodd;stroke-width:2.66608;stroke-linecap:round"
        id="rect1133"
@@ -1503,145 +1496,6 @@
            x="1682.084"
            y="3223.1074"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.9714px;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.197619">2</tspan></text>
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:27.1116px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.282412"
-       x="38.774902"
-       y="53.387451"
-       id="text1294"><tspan
-         id="tspan1292"
-         sodipodi:role="line"
-         x="38.774902"
-         y="53.387451"
-         style="stroke-width:0.282412">settings.</tspan></text>
-    <g
-       id="g1304"
-       transform="translate(-1899.4533,-3076)">
-      <rect
-         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke-width:4.47142;stroke-linecap:round"
-         id="rect1296"
-         width="162.49138"
-         height="53.86396"
-         x="1939.3931"
-         y="3524.4805" />
-      <text
-         id="text1300"
-         y="3557.7266"
-         x="2011.464"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:17.4747px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.182028"
-         xml:space="preserve"><tspan
-           style="stroke-width:0.182028"
-           y="3557.7266"
-           x="2011.464"
-           id="tspan1298"
-           sodipodi:role="line">save.</tspan></text>
-      <path
-         id="path1302"
-         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:1.14212;stroke-linecap:round"
-         d="m 2004.9242,3543.1225 -10.5508,10.5509 -5.5392,-5.5392 -3.0146,3.0145 8.5538,8.5537 13.5654,-13.5654 z"
-         sodipodi:nodetypes="ccccccc" />
-    </g>
-    <text
-       id="text1324"
-       y="115.75649"
-       x="39.45813"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.9714px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.197619"
-       xml:space="preserve"><tspan
-         style="stroke-width:0.197619"
-         y="115.75649"
-         x="39.45813"
-         id="tspan1322"
-         sodipodi:role="line">auto flip pages:</tspan></text>
-    <rect
-       inkscape:export-ydpi="96"
-       inkscape:export-xdpi="96"
-       style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.09021;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
-       id="rect1328"
-       width="16.891417"
-       height="16.891417"
-       x="200.61084"
-       y="100.32632" />
-    <g
-       id="g1342"
-       transform="translate(-1483,-2912.123)">
-      <text
-         id="text1336"
-         y="3084.2566"
-         x="1522.4581"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.9714px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.197619"
-         xml:space="preserve"><tspan
-           style="stroke-width:0.197619"
-           y="3084.2566"
-           x="1522.4581"
-           id="tspan1334"
-           sodipodi:role="line">auto flip speed:</tspan></text>
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.9714px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.197619"
-         x="1682.084"
-         y="3085.9287"
-         id="text1340"><tspan
-           sodipodi:role="line"
-           id="tspan1338"
-           x="1682.084"
-           y="3085.9287"
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.9714px;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.197619">40</tspan></text>
-    </g>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.9714px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.197619"
-       x="39.45813"
-       y="228.52501"
-       id="text1346"><tspan
-         sodipodi:role="line"
-         id="tspan1344"
-         x="39.45813"
-         y="228.52501"
-         style="stroke-width:0.197619">save last page:</tspan></text>
-    <g
-       inkscape:export-ydpi="96"
-       inkscape:export-xdpi="96"
-       id="g1352"
-       transform="translate(-1483,-2785.2586)">
-      <path
-         id="path1348"
-         style="fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke-width:0.682076;stroke-linecap:round"
-         d="m 1696.8611,3003.8213 -6.301,6.301 -3.308,-3.308 -1.8003,1.8002 5.1083,5.1083 8.1013,-8.1013 z"
-         sodipodi:nodetypes="ccccccc" />
-      <rect
-         style="fill:none;fill-rule:evenodd;stroke:#ffffff;stroke-width:2.09021;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none"
-         id="rect1350"
-         width="16.891417"
-         height="16.891417"
-         x="1683.6108"
-         y="3000.3264" />
-    </g>
-    <g
-       id="g1364"
-       transform="translate(-1483,-2936)">
-      <text
-         xml:space="preserve"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:18.9714px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.197619"
-         x="1522.4581"
-         y="3221.4353"
-         id="text1358"><tspan
-           sodipodi:role="line"
-           id="tspan1356"
-           x="1522.4581"
-           y="3221.4353"
-           style="stroke-width:0.197619">compress size:</tspan></text>
-      <text
-         id="text1362"
-         y="3223.1074"
-         x="1682.084"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.9714px;line-height:1.25;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.197619"
-         xml:space="preserve"><tspan
-           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.9714px;font-family:'Century Gothic';-inkscape-font-specification:'Century Gothic, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.197619"
-           y="3223.1074"
-           x="1682.084"
-           id="tspan1360"
-           sodipodi:role="line">2</tspan></text>
     </g>
   </g>
   <inkscape:templateinfo>
