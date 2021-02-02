@@ -36,14 +36,12 @@ namespace ComicPeeps.UserControls
             this.label4 = new System.Windows.Forms.Label();
             this.btnSaveLastPage = new System.Windows.Forms.PictureBox();
             this.btnAutoFlip = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.btnSave = new System.Windows.Forms.PictureBox();
             this.tbAutoFlip = new System.Windows.Forms.TextBox();
             this.tbCompressSize = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveLastPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAutoFlip)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -123,27 +121,17 @@ namespace ComicPeeps.UserControls
             this.btnAutoFlip.TabStop = false;
             this.btnAutoFlip.Click += new System.EventHandler(this.btnAutoFlip_Click);
             // 
-            // pictureBox3
+            // btnSave
             // 
-            this.pictureBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox3.Image = global::ComicPeeps.Properties.Resources.saveButton;
-            this.pictureBox3.Location = new System.Drawing.Point(40, 448);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(162, 54);
-            this.pictureBox3.TabIndex = 5;
-            this.pictureBox3.TabStop = false;
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox4.Image = global::ComicPeeps.Properties.Resources.cancelButton;
-            this.pictureBox4.Location = new System.Drawing.Point(237, 448);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(162, 54);
-            this.pictureBox4.TabIndex = 5;
-            this.pictureBox4.TabStop = false;
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Image = global::ComicPeeps.Properties.Resources.saveButton;
+            this.btnSave.Location = new System.Drawing.Point(40, 448);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(162, 54);
+            this.btnSave.TabIndex = 5;
+            this.btnSave.TabStop = false;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // tbAutoFlip
             // 
@@ -174,8 +162,7 @@ namespace ComicPeeps.UserControls
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.tbCompressSize);
             this.Controls.Add(this.tbAutoFlip);
-            this.Controls.Add(this.pictureBox4);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnSaveLastPage);
             this.Controls.Add(this.btnAutoFlip);
             this.Controls.Add(this.label4);
@@ -187,8 +174,7 @@ namespace ComicPeeps.UserControls
             this.Size = new System.Drawing.Size(757, 540);
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveLastPage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAutoFlip)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnSave)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -203,8 +189,7 @@ namespace ComicPeeps.UserControls
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.PictureBox btnAutoFlip;
         private System.Windows.Forms.PictureBox btnSaveLastPage;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox btnSave;
         private System.Windows.Forms.TextBox tbAutoFlip;
         private System.Windows.Forms.TextBox tbCompressSize;
     }

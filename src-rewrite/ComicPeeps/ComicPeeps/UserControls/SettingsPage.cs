@@ -22,6 +22,11 @@ namespace ComicPeeps.UserControls
         {
             InitializeComponent();
 
+            LoadSettings();
+        }
+
+        private void LoadSettings()
+        {
             autoFlipPages = MainScreen.UserData.Settings.UseAutoRead;
             autoFlipSpeed = MainScreen.UserData.Settings.AutoReadSpeed;
             saveLastPage = MainScreen.UserData.Settings.SaveLastPage;
@@ -67,6 +72,39 @@ namespace ComicPeeps.UserControls
             {
                 btnSaveLastPage.Image = Resources.tickButton;
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            MainScreen.UserData.Settings.UseAutoRead = autoFlipPages;
+            MainScreen.UserData.Settings.SaveLastPage = saveLastPage;
+
+            string errors = "";
+
+            try
+            {
+                MainScreen.UserData.Settings.CompressSize = Convert.ToInt32(tbCompressSize.Text);
+            }
+            catch 
+            {
+                errors += "Compress Size must be a number\n";
+            }
+
+            try
+            {
+                MainScreen.UserData.Settings.AutoReadSpeed = Convert.ToInt32(tbAutoFlip.Text);
+            }
+            catch
+            {
+                errors += "Auto Flip Speed must be a number\n";
+            }
+
+            if (errors != "")
+            {
+                MessageBox.Show($"There was an error:\n{errors}Settings have been reverted");
+            }
+
+            LoadSettings();
         }
     }
 }
