@@ -83,7 +83,16 @@ namespace ComicPeeps.UserControls
 
             try
             {
-                MainScreen.UserData.Settings.CompressSize = Convert.ToInt32(tbCompressSize.Text);
+                int tempSize = Convert.ToInt32(tbCompressSize.Text);
+
+                if (tempSize < 1)
+                {
+                    errors += "Compress Size must be bigger than 1\n";
+                }
+                else
+                {
+                    MainScreen.UserData.Settings.CompressSize = tempSize;
+                }
             }
             catch 
             {
@@ -92,7 +101,16 @@ namespace ComicPeeps.UserControls
 
             try
             {
-                MainScreen.UserData.Settings.AutoReadSpeed = Convert.ToInt32(tbAutoFlip.Text);
+                int tempSpeed = Convert.ToInt32(tbAutoFlip.Text);
+
+                if (tempSpeed < 15)
+                {
+                    errors += "Auto Flip Speed must be greater than 15\n";
+                }
+                else
+                {
+                    MainScreen.UserData.Settings.AutoReadSpeed = tempSpeed;
+                }
             }
             catch
             {
@@ -101,7 +119,11 @@ namespace ComicPeeps.UserControls
 
             if (errors != "")
             {
-                MessageBox.Show($"There was an error:\n{errors}Settings have been reverted");
+                MessageBox.Show($"Settings were saved, but there was an error:\n{errors}\nAffected settings have been reverted", "Saved");
+            }
+            else
+            {
+                MessageBox.Show($"Settings were saved.", "Saved");
             }
 
             LoadSettings();
