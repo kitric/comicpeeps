@@ -159,11 +159,11 @@ namespace ComicPeeps.UserControls
 
             comicIssue.Pages = images.Length;
 
-            lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
-
             pbPageImage.Size = pnlPages.Size;
 
             currentPage = comicIssue.CurrentPage - 1;
+
+            lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
 
             pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
 
