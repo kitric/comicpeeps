@@ -79,7 +79,7 @@ namespace ComicPeeps.UserControls
             {
                 currentPage++;
                 pbPageImage.Image.Dispose();
-                pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
+                pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
                 if (MainScreen.UserData.Settings.UseAutoRead)
                 {
@@ -95,7 +95,7 @@ namespace ComicPeeps.UserControls
             {
                 currentPage--;
                 pbPageImage.Image.Dispose();
-                pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
+                pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
                 if (MainScreen.UserData.Settings.UseAutoRead)
                 {
@@ -108,7 +108,10 @@ namespace ComicPeeps.UserControls
         private void ComicViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
             Directory.Delete(MainScreen.ComicExtractLocation + "\\" + comicIssue.ComicName, true);
-            comicIssue.CurrentPage = currentPage + 1;
+            if (MainScreen.UserData.Settings.SaveLastPage)
+            {
+                comicIssue.CurrentPage = currentPage + 1;
+            }
         }
 
         private void ZoomOut()
@@ -162,7 +165,7 @@ namespace ComicPeeps.UserControls
 
             currentPage = comicIssue.CurrentPage - 1;
 
-            pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], 2);
+            pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
 
             if (MainScreen.UserData.Settings.UseAutoRead)
             {
