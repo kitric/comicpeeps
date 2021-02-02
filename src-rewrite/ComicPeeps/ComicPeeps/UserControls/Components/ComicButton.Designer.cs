@@ -47,8 +47,9 @@ namespace ComicPeeps.UserControls.Components
             // tsmUpdateIssues
             // 
             this.tsmUpdateIssues.Name = "tsmUpdateIssues";
-            this.tsmUpdateIssues.Size = new System.Drawing.Size(146, 22);
+            this.tsmUpdateIssues.Size = new System.Drawing.Size(180, 22);
             this.tsmUpdateIssues.Text = "Update Issues";
+            this.tsmUpdateIssues.Click += new System.EventHandler(this.tsmUpdateIssues_Click);
             // 
             // tsmRemove
             // 

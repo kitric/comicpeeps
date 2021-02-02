@@ -48,5 +48,10 @@ namespace ComicPeeps.UserControls.Components
             }
             this.Dispose();
         }
+
+        private void tsmUpdateIssues_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.AddComicIssues(comicSeries);
+        }
     }
 }

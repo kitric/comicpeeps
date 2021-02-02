@@ -19,7 +19,7 @@ namespace ComicPeeps.UserControls
             InitializeComponent();
         }
 
-        private async void AddComic_DoubleClick(object sender, EventArgs e)
+        private void AddComic_DoubleClick(object sender, EventArgs e)
         {
             using (FolderBrowserDialog fbd = new FolderBrowserDialog())
             {
@@ -32,26 +32,7 @@ namespace ComicPeeps.UserControls
                         Thumbnail = ""
                     };
 
-                    //List<string> cbz = Directory.GetFiles(fbd.SelectedPath, "*.cbz").ToList();
-                    //List<string> issues = Directory.GetFiles(fbd.SelectedPath, "*.cbr").ToList().Concat(cbz).ToList();
-                    //issues.Sort();
-                    //cbz.Clear();
-
-                    var issues = Directory.EnumerateFiles(fbd.SelectedPath, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz")).ToArray();
-                    Array.Sort(issues);
-
-                    for (int i = 0; i < issues.Length; i++)
-                    {
-                        ComicIssue comicIssue = new ComicIssue()
-                        {
-                            ComicName = comicSeries.ComicName,
-                            Location = issues[i],
-                            Thumbnail = await GlobalFunctions.GenerateCover(issues[i], comicSeries.ComicName),
-                            IssueNumber = i + 1
-                        };
-
-                        comicSeries.Issues.Add(comicIssue);
-                    }
+                    GlobalFunctions.AddComicIssues(comicSeries);
 
                     if (comicSeries.Issues.Count != 0)
                     {

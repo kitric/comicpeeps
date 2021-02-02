@@ -256,5 +256,26 @@ namespace ComicPeeps
 
 			return Task.FromResult(new string[0]);
         }
+
+		public static async void AddComicIssues(ComicSeries comicSeries)
+		{
+			comicSeries.Issues.Clear();
+
+			var issues = Directory.EnumerateFiles(comicSeries.FolderPath, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz")).ToArray();
+			Array.Sort(issues);
+
+			for (int i = 0; i < issues.Length; i++)
+			{
+				ComicIssue comicIssue = new ComicIssue()
+				{
+					ComicName = comicSeries.ComicName,
+					Location = issues[i],
+					Thumbnail = await GenerateCover(issues[i], comicSeries.ComicName),
+					IssueNumber = i + 1
+				};
+
+				comicSeries.Issues.Add(comicIssue);
+			}
+		}
 	}
 }
