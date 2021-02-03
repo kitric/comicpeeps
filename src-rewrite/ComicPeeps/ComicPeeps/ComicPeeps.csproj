@@ -81,6 +81,7 @@
     <Compile Include="Models\ComicInfo.cs" />
     <Compile Include="Models\ComicIssue.cs" />
     <Compile Include="Models\ComicSeries.cs" />
+    <Compile Include="Models\Renderers.cs" />
     <Compile Include="Models\UserData.cs" />
     <Compile Include="Models\UserSettings.cs" />
     <Compile Include="Program.cs" />

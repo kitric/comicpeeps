@@ -23,6 +23,16 @@ namespace ComicPeeps.UserControls.Components
 
             this.library = library;
             this.comicSeries = comicSeries;
+
+            cmMain.Renderer = new Renderer();
+            cmMain.ForeColor = Color.White;
+            cmMain.BackColor = Color.FromArgb(5, 5, 5);
+
+            tsmRemove.ForeColor = Color.White;
+            tsmRemove.BackColor = Color.FromArgb(5, 5, 5);
+
+            tsmUpdateIssues.ForeColor = Color.White;
+            tsmUpdateIssues.BackColor = Color.FromArgb(5, 5, 5);
         }
 
         private void ComicButton_Click(object sender, EventArgs e)
