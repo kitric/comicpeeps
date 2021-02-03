@@ -295,7 +295,9 @@ namespace ComicPeeps
                 }
             }
 
-			var newFiles = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz")).Where(s => !existingComics.Contains(s));
+			var newFiles = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories)
+									.Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz"))
+									.Where(s => !existingComics.Contains(s));
 
 			foreach (var newFile in newFiles)
             {
