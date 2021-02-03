@@ -31,18 +31,18 @@ namespace ComicPeeps.UserControls
                         ComicName = Path.GetFileName(fbd.SelectedPath),
                         Thumbnail = ""
                     };
-
+            
                     GlobalFunctions.AddComicIssues(comicSeries);
-
+            
                     if (comicSeries.Issues.Count != 0)
                     {
                         comicSeries.Thumbnail = comicSeries.Issues[0].Thumbnail;
                     }
-
+            
                     MainScreen.UserData.ComicSeries.Add(comicSeries);
-
+            
                     //MainScreen.Instance.ShowNewPage(new Library() { Dock = DockStyle.Fill });
-
+            
                     GlobalFunctions.SwitchTo<Library>(MainScreen.Instance.pnlContent, "Library");
                 }
             }
