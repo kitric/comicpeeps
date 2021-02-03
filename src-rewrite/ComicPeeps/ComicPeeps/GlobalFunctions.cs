@@ -311,6 +311,15 @@ namespace ComicPeeps
             }
 
 			// Write function to update ComicSeries + IssueNumbers
+			UpdateIssues(series);
 		}
+
+		public static void UpdateIssues(ComicSeries series)
+        {
+			for (int i = 0; i < series.Issues.Count; i++)
+            {
+				series.Issues[i].IssueNumber = i + 1;
+            }
+        }
 	}
 }
