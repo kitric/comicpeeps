@@ -277,5 +277,40 @@ namespace ComicPeeps
 				comicSeries.Issues.Add(comicIssue);
 			}
 		}
+
+		public static async void UpdateComic(ComicSeries series)
+        {
+			List<string> existingComics = new List<string>();
+
+			for (int i = 0; i < series.Issues.Count; i++)
+            {
+				if (File.Exists(series.Issues[i].Location))
+                {
+					existingComics.Add(series.Issues[i].Location);
+                }
+                else
+                {
+					// Mark as removed;
+					series.Issues.Remove(series.Issues[i]);
+                }
+            }
+
+			var newFiles = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz")).Where(s => !existingComics.Contains(s));
+
+			foreach (var newFile in newFiles)
+            {
+				ComicIssue issue = new ComicIssue()
+				{
+					Location = newFile,
+					ComicName = series.ComicName,
+					IssueNumber = series.Issues.Count + 1,
+					Thumbnail = await GenerateCover(newFile, series.ComicName)
+				};
+
+				series.Issues.Add(issue);
+            }
+
+			// Write function to update ComicSeries + IssueNumbers
+		}
 	}
 }

@@ -51,7 +51,7 @@ namespace ComicPeeps.UserControls.Components
 
         private void tsmUpdateIssues_Click(object sender, EventArgs e)
         {
-            GlobalFunctions.AddComicIssues(comicSeries);
+            GlobalFunctions.UpdateComic(comicSeries);
         }
     }
 }
