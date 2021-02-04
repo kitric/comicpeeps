@@ -26,6 +26,31 @@ namespace ComicPeeps.UserControls
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
                     AddIndividualComic(fbd.SelectedPath);
+
+                    GlobalFunctions.SwitchTo<Library>(MainScreen.Instance.pnlContent, "Library");
+                }
+            }
+        }
+
+        private void pnlAddComicDirectory_DoubleClick(object sender, EventArgs e)
+        {
+            using (FolderBrowserDialog fbd = new FolderBrowserDialog())
+            {
+                if (fbd.ShowDialog() == DialogResult.OK)
+                {
+                    string[] comics = Directory.EnumerateDirectories(fbd.SelectedPath).ToArray();
+
+                    if (comics.Length != 0)
+                    {
+                        foreach (var comic in comics)
+                        {
+                            AddIndividualComic(comic);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"No Comic Series found in this directory: {fbd.SelectedPath}");
+                    }
                 }
             }
         }
@@ -47,8 +72,6 @@ namespace ComicPeeps.UserControls
             }
 
             MainScreen.UserData.ComicSeries.Add(comicSeries);
-
-            GlobalFunctions.SwitchTo<Library>(MainScreen.Instance.pnlContent, "Library");
         }
     }
 }

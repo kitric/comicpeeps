@@ -69,6 +69,7 @@ namespace ComicPeeps.UserControls
             this.pnlAddComicDirectory.Name = "pnlAddComicDirectory";
             this.pnlAddComicDirectory.Size = new System.Drawing.Size(350, 540);
             this.pnlAddComicDirectory.TabIndex = 5;
+            this.pnlAddComicDirectory.DoubleClick += new System.EventHandler(this.pnlAddComicDirectory_DoubleClick);
             // 
             // label2
             // 
