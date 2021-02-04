@@ -18,15 +18,36 @@ namespace ComicPeeps.UserControls
         public AddComic()
         {
             InitializeComponent();
+
+            ToolTip toolTip = new ToolTip();
+            toolTip.OwnerDraw = true;
+
+            toolTip.Draw += (s, e) =>
+            {
+                e.DrawBackground();
+                e.DrawBorder();
+                e.DrawText();
+            };
+
+            toolTip.BackColor = Color.FromArgb(5, 5, 5);
+            toolTip.ForeColor = Color.White;
+            toolTip.SetToolTip(pnlAddIndividualComic, "Add one comic series to your library.");
+            toolTip.SetToolTip(label1, "Add one comic series to your library.");
+            toolTip.SetToolTip(pnlAddComicDirectory, "Add a whole directory of comics to your library. Will take a while, depending on how many comics you have.");
+            toolTip.SetToolTip(label2, "Add a whole directory of comics to your library. Will take a while, depending on how many comics you have.");
         }
 
-        private void AddComic_DoubleClick(object sender, EventArgs e)
+        private async void AddComic_DoubleClick(object sender, EventArgs e)
         {
             using (FolderBrowserDialog fbd = new FolderBrowserDialog())
             {
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
-                    AddIndividualComic(fbd.SelectedPath);
+                    pnlAddComicDirectory.Visible = false;
+                    pnlAddIndividualComic.Visible = false;
+                    lblAddingComics.Visible = true;
+
+                    await AddIndividualComic(fbd.SelectedPath);
 
                     GlobalFunctions.SwitchTo<Library>(MainScreen.Instance.pnlContent, "Library");
                 }
@@ -43,6 +64,10 @@ namespace ComicPeeps.UserControls
 
                     if (comics.Length != 0)
                     {
+                        pnlAddComicDirectory.Visible = false;
+                        pnlAddIndividualComic.Visible = false;
+                        lblAddingComics.Visible = true;
+
                         if (MessageBox.Show($"{comics.Length} directories found. Are you sure you want to add them all? This may take a while...", $"{comics.Length} comics found", MessageBoxButtons.OKCancel) == DialogResult.OK)
                         {
                             foreach (var comic in comics)
@@ -61,7 +86,7 @@ namespace ComicPeeps.UserControls
             }
         }
 
-        private Task<bool> AddIndividualComic(string selectedPath)
+        private async Task<bool> AddIndividualComic(string selectedPath)
         {
             try
             {
@@ -72,7 +97,7 @@ namespace ComicPeeps.UserControls
                     Thumbnail = ""
                 };
 
-                GlobalFunctions.AddComicIssues(comicSeries);
+                await GlobalFunctions.AddComicIssues(comicSeries);
 
                 if (comicSeries.Issues.Count != 0)
                 {
@@ -81,13 +106,13 @@ namespace ComicPeeps.UserControls
 
                 MainScreen.UserData.ComicSeries.Add(comicSeries);
 
-                return Task.FromResult(true);
+                return await Task.FromResult(true);
             }
             catch (Exception e)
             {
                 Console.WriteLine($"Error: {e.Message}");
 
-                return Task.FromResult(false);
+                return await Task.FromResult(false);
             }
         }
     }

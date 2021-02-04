@@ -33,6 +33,7 @@ namespace ComicPeeps.UserControls
             this.pnlAddIndividualComic = new System.Windows.Forms.Panel();
             this.pnlAddComicDirectory = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.lblAddingComics = new System.Windows.Forms.Label();
             this.pnlAddIndividualComic.SuspendLayout();
             this.pnlAddComicDirectory.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,8 @@ namespace ComicPeeps.UserControls
             // 
             // pnlAddIndividualComic
             // 
+            this.pnlAddIndividualComic.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.pnlAddIndividualComic.Controls.Add(this.label1);
             this.pnlAddIndividualComic.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlAddIndividualComic.Location = new System.Drawing.Point(0, 0);
@@ -63,6 +66,8 @@ namespace ComicPeeps.UserControls
             // 
             // pnlAddComicDirectory
             // 
+            this.pnlAddComicDirectory.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlAddComicDirectory.Controls.Add(this.label2);
             this.pnlAddComicDirectory.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pnlAddComicDirectory.Location = new System.Drawing.Point(407, 0);
@@ -84,11 +89,25 @@ namespace ComicPeeps.UserControls
             this.label2.Text = "double click\r\nadd comic directory";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // lblAddingComics
+            // 
+            this.lblAddingComics.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblAddingComics.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Bold);
+            this.lblAddingComics.ForeColor = System.Drawing.Color.White;
+            this.lblAddingComics.Location = new System.Drawing.Point(204, 95);
+            this.lblAddingComics.Name = "lblAddingComics";
+            this.lblAddingComics.Size = new System.Drawing.Size(350, 350);
+            this.lblAddingComics.TabIndex = 4;
+            this.lblAddingComics.Text = "adding comic(s)";
+            this.lblAddingComics.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAddingComics.Visible = false;
+            // 
             // AddComic
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.lblAddingComics);
             this.Controls.Add(this.pnlAddComicDirectory);
             this.Controls.Add(this.pnlAddIndividualComic);
             this.Name = "AddComic";
@@ -107,5 +126,6 @@ namespace ComicPeeps.UserControls
         private System.Windows.Forms.Panel pnlAddIndividualComic;
         private System.Windows.Forms.Panel pnlAddComicDirectory;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblAddingComics;
     }
 }
