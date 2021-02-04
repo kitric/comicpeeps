@@ -34,7 +34,7 @@ namespace ComicPeeps.UserControls
             toolTip.SetToolTip(pnlAddIndividualComic, "Add one comic series to your library.");
             toolTip.SetToolTip(label1, "Add one comic series to your library.");
             toolTip.SetToolTip(pnlAddComicDirectory, "Add a whole directory of comics to your library. Will take a while, depending on how many comics you have.");
-            toolTip.SetToolTip(label2, "Add a whole directory of comics to your library. Will take a while, depending on how many comics you have.");
+            toolTip.SetToolTip(label2, "Add a whole directory of comics to your library. This will take a while, depending on how many comics you have.");
         }
 
         private async void AddComic_DoubleClick(object sender, EventArgs e)
