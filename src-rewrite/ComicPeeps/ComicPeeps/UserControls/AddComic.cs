@@ -25,27 +25,30 @@ namespace ComicPeeps.UserControls
             {
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
-                    ComicSeries comicSeries = new ComicSeries()
-                    {
-                        FolderPath = fbd.SelectedPath,
-                        ComicName = Path.GetFileName(fbd.SelectedPath),
-                        Thumbnail = ""
-                    };
-            
-                    GlobalFunctions.AddComicIssues(comicSeries);
-            
-                    if (comicSeries.Issues.Count != 0)
-                    {
-                        comicSeries.Thumbnail = comicSeries.Issues[0].Thumbnail;
-                    }
-            
-                    MainScreen.UserData.ComicSeries.Add(comicSeries);
-            
-                    //MainScreen.Instance.ShowNewPage(new Library() { Dock = DockStyle.Fill });
-            
-                    GlobalFunctions.SwitchTo<Library>(MainScreen.Instance.pnlContent, "Library");
+                    AddIndividualComic(fbd.SelectedPath);
                 }
             }
+        }
+
+        private void AddIndividualComic(string selectedPath)
+        {
+            ComicSeries comicSeries = new ComicSeries()
+            {
+                FolderPath = selectedPath,
+                ComicName = Path.GetFileName(selectedPath),
+                Thumbnail = ""
+            };
+
+            GlobalFunctions.AddComicIssues(comicSeries);
+
+            if (comicSeries.Issues.Count != 0)
+            {
+                comicSeries.Thumbnail = comicSeries.Issues[0].Thumbnail;
+            }
+
+            MainScreen.UserData.ComicSeries.Add(comicSeries);
+
+            GlobalFunctions.SwitchTo<Library>(MainScreen.Instance.pnlContent, "Library");
         }
     }
 }
