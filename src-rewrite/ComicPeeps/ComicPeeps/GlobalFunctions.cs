@@ -257,6 +257,10 @@ namespace ComicPeeps
 			return Task.FromResult(new string[0]);
         }
 
+		/// <summary>
+		/// Adds comics to a comic series
+		/// </summary>
+		/// <param name="comicSeries"></param>
 		public static async void AddComicIssues(ComicSeries comicSeries)
 		{
 			comicSeries.Issues.Clear();

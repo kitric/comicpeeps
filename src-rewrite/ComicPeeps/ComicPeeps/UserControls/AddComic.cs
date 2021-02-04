@@ -32,7 +32,7 @@ namespace ComicPeeps.UserControls
             }
         }
 
-        private void pnlAddComicDirectory_DoubleClick(object sender, EventArgs e)
+        private async void pnlAddComicDirectory_DoubleClick(object sender, EventArgs e)
         {
             using (FolderBrowserDialog fbd = new FolderBrowserDialog())
             {
@@ -44,34 +44,47 @@ namespace ComicPeeps.UserControls
                     {
                         foreach (var comic in comics)
                         {
-                            AddIndividualComic(comic);
+                            await AddIndividualComic(comic);
                         }
                     }
                     else
                     {
                         MessageBox.Show($"No Comic Series found in this directory: {fbd.SelectedPath}");
                     }
+
+                    GlobalFunctions.SwitchTo<Library>(MainScreen.Instance.pnlContent, "Library");
                 }
             }
         }
 
-        private void AddIndividualComic(string selectedPath)
+        private Task<bool> AddIndividualComic(string selectedPath)
         {
-            ComicSeries comicSeries = new ComicSeries()
+            try
             {
-                FolderPath = selectedPath,
-                ComicName = Path.GetFileName(selectedPath),
-                Thumbnail = ""
-            };
+                ComicSeries comicSeries = new ComicSeries()
+                {
+                    FolderPath = selectedPath,
+                    ComicName = Path.GetFileName(selectedPath),
+                    Thumbnail = ""
+                };
 
-            GlobalFunctions.AddComicIssues(comicSeries);
+                GlobalFunctions.AddComicIssues(comicSeries);
 
-            if (comicSeries.Issues.Count != 0)
-            {
-                comicSeries.Thumbnail = comicSeries.Issues[0].Thumbnail;
+                if (comicSeries.Issues.Count != 0)
+                {
+                    comicSeries.Thumbnail = comicSeries.Issues[0].Thumbnail;
+                }
+
+                MainScreen.UserData.ComicSeries.Add(comicSeries);
+
+                return Task.FromResult(true);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Error: {e.Message}");
 
-            MainScreen.UserData.ComicSeries.Add(comicSeries);
+                return Task.FromResult(false);
+            }
         }
     }
 }
