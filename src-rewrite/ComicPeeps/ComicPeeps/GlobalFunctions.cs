@@ -261,25 +261,36 @@ namespace ComicPeeps
 		/// Adds comics to a comic series
 		/// </summary>
 		/// <param name="comicSeries"></param>
-		public static async void AddComicIssues(ComicSeries comicSeries)
+		public static async Task<bool> AddComicIssues(ComicSeries comicSeries)
 		{
-			comicSeries.Issues.Clear();
-
-			var issues = Directory.EnumerateFiles(comicSeries.FolderPath, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz")).ToArray();
-			Array.Sort(issues);
-
-			for (int i = 0; i < issues.Length; i++)
+			try
 			{
-				ComicIssue comicIssue = new ComicIssue()
-				{
-					ComicName = comicSeries.ComicName,
-					Location = issues[i],
-					Thumbnail = await GenerateCover(issues[i], comicSeries.ComicName),
-					IssueNumber = i + 1
-				};
+				comicSeries.Issues.Clear();
 
-				comicSeries.Issues.Add(comicIssue);
+				var issues = Directory.EnumerateFiles(comicSeries.FolderPath, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz")).ToArray();
+				Array.Sort(issues);
+
+				for (int i = 0; i < issues.Length; i++)
+				{
+					ComicIssue comicIssue = new ComicIssue()
+					{
+						ComicName = comicSeries.ComicName,
+						Location = issues[i],
+						Thumbnail = await GenerateCover(issues[i], comicSeries.ComicName),
+						IssueNumber = i + 1
+					};
+
+					comicSeries.Issues.Add(comicIssue);
+				}
+
+				return await Task.FromResult(true);
 			}
+			catch (Exception e)
+            {
+				Console.WriteLine($"There was an error: {e.Message}");
+
+				return await Task.FromResult(false);
+            }
 		}
 
 		public static async void UpdateComic(ComicSeries series)

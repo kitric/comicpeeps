@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading;
 
 namespace ComicPeeps.UserControls
 {
@@ -42,16 +43,19 @@ namespace ComicPeeps.UserControls
 
                     if (comics.Length != 0)
                     {
-                        foreach (var comic in comics)
+                        if (MessageBox.Show($"{comics.Length} directories found. Are you sure you want to add them all? This may take a while...", $"{comics.Length} comics found", MessageBoxButtons.OKCancel) == DialogResult.OK)
                         {
-                            await AddIndividualComic(comic);
+                            foreach (var comic in comics)
+                            {
+                                await AddIndividualComic(comic);
+                            }
                         }
                     }
                     else
                     {
                         MessageBox.Show($"No Comic Series found in this directory: {fbd.SelectedPath}");
                     }
-
+                    
                     GlobalFunctions.SwitchTo<Library>(MainScreen.Instance.pnlContent, "Library");
                 }
             }
