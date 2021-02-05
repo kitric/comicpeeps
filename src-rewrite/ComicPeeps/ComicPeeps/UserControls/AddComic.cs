@@ -19,8 +19,10 @@ namespace ComicPeeps.UserControls
         {
             InitializeComponent();
 
-            ToolTip toolTip = new ToolTip();
-            toolTip.OwnerDraw = true;
+            ToolTip toolTip = new ToolTip
+            {
+                OwnerDraw = true
+            };
 
             toolTip.Draw += (s, e) =>
             {

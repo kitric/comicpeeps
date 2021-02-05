@@ -185,25 +185,25 @@ namespace ComicPeeps
 			}
         }
 
-		public static Task<Bitmap> CompressImage(string ImageFilePath, int CompressSize)
+		public static async Task<Bitmap> CompressImage(string ImageFilePath, int CompressSize)
 		{
-			Stopwatch watch = new Stopwatch();
-			watch.Start();
-
 			if (ImageFilePath != "")
 			{
 				using (Image img = Image.FromFile(ImageFilePath))
 				{
 					Bitmap bmp = new Bitmap(img.Width / CompressSize, img.Height / CompressSize);
+					Stopwatch watch = new Stopwatch();
+					watch.Start();
 					using (Graphics g = Graphics.FromImage(bmp))
 					{
+						watch.Stop();
+						Console.WriteLine(watch.ElapsedMilliseconds + "ms: " + ImageFilePath);
+
 						g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
 					}
 
-					watch.Stop();
-					Console.WriteLine(watch.ElapsedMilliseconds + "ms: " + ImageFilePath);
 
-					return Task.FromResult(bmp);
+					return await Task.FromResult(bmp);
 				}
 			}
 
