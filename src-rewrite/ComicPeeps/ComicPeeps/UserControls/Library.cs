@@ -23,19 +23,19 @@ namespace ComicPeeps.UserControls
 
         public Task<bool> LoadComics()
         {
-            //Control[] arrayForComics = new Control[MainScreen.UserData.ComicSeries.Count];
-            //
-            //for (int i = 0; i < arrayForComics.Length; i++)
-            //{
-            //    arrayForComics[i] = new ComicButton(MainScreen.UserData.ComicSeries[i], this);
-            //}
-            //
-            //pnlComics.Controls.AddRange(arrayForComics);
-
-            foreach (var comic in MainScreen.UserData.ComicSeries)
+            Control[] arrayForComics = new Control[MainScreen.UserData.ComicSeries.Count];
+            
+            for (int i = 0; i < arrayForComics.Length; i++)
             {
-                pnlComics.Controls.Add(new ComicButton(comic, this));
+                arrayForComics[i] = new ComicButton(MainScreen.UserData.ComicSeries[i], this);
             }
+            
+            pnlComics.Controls.AddRange(arrayForComics);
+
+            //foreach (var comic in MainScreen.UserData.ComicSeries)
+            //{
+            //    pnlComics.Controls.Add(new ComicButton(comic, this));
+            //}
 
             return Task.FromResult(true);
         }
