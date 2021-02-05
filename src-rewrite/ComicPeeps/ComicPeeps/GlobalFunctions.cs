@@ -3,6 +3,7 @@ using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.IO.Compression;
@@ -186,7 +187,10 @@ namespace ComicPeeps
 
 		public static Task<Bitmap> CompressImage(string ImageFilePath, int CompressSize)
 		{
-			if (!string.IsNullOrWhiteSpace(ImageFilePath))
+			Stopwatch watch = new Stopwatch();
+			watch.Start();
+
+			if (ImageFilePath != "")
 			{
 				using (Image img = Image.FromFile(ImageFilePath))
 				{
@@ -198,6 +202,9 @@ namespace ComicPeeps
 					return Task.FromResult(bmp);
 				}
 			}
+
+			watch.Stop();
+			Console.WriteLine(watch.ElapsedMilliseconds + "ms: " + ImageFilePath);
 
 			return null;
 		}
