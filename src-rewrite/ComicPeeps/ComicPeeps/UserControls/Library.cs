@@ -35,7 +35,6 @@ namespace ComicPeeps.UserControls
             foreach (var comic in MainScreen.UserData.ComicSeries)
             {
                 pnlComics.Controls.Add(new ComicButton(comic, this));
-                Thread.Sleep(3000);
             }
 
             return Task.FromResult(true);
