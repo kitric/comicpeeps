@@ -199,12 +199,13 @@ namespace ComicPeeps
 					{
 						g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
 					}
+
+					watch.Stop();
+					Console.WriteLine(watch.ElapsedMilliseconds + "ms: " + ImageFilePath);
+
 					return Task.FromResult(bmp);
 				}
 			}
-
-			watch.Stop();
-			Console.WriteLine(watch.ElapsedMilliseconds + "ms: " + ImageFilePath);
 
 			return null;
 		}
