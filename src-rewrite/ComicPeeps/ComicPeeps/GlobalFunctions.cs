@@ -347,5 +347,14 @@ namespace ComicPeeps
 				series.Issues[i].IssueNumber = i + 1;
             }
         }
+
+		public static void AddToScreenWithoutSwitch<T>(Panel Content, string type, object[] args = null) where T : UserControl
+		{
+			//Creates a new UserControl from T. 
+			UserControl control = (UserControl)Activator.CreateInstance(typeof(T), args ?? new object[] { });
+			control.Dock = DockStyle.Fill;
+			Content.Controls.Add(control);
+			control.BringToFront();
+		}
 	}
 }

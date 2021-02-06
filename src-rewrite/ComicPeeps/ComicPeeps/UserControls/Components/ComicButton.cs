@@ -39,7 +39,8 @@ namespace ComicPeeps.UserControls.Components
 
         private void ComicButton_Click(object sender, EventArgs e)
         {
-            GlobalFunctions.SwitchTo<ComicLibrary>(MainScreen.Instance.pnlContent, "ComicLibrary", new object[] { comicSeries });
+            //GlobalFunctions.SwitchTo<ComicLibrary>(MainScreen.Instance.pnlContent, "ComicLibrary", new object[] { comicSeries });
+            GlobalFunctions.AddToScreenWithoutSwitch<ComicLibrary>(MainScreen.Instance.pnlContent, "ComicLibrary", new object[] { comicSeries });
         }
 
         private async void ComicButton_Load(object sender, EventArgs e)
