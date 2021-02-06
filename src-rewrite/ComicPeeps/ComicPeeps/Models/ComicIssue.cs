@@ -11,6 +11,8 @@ namespace ComicPeeps.Models
     {
         public string ComicName { get; set; } = "";
 
+        public string SeriesId { get; set; } = "";
+
         public string Location { get; set; } = "";
 
         public string Thumbnail { get; set; } = "";

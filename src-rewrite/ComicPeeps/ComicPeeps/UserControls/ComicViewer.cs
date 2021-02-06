@@ -107,7 +107,7 @@ namespace ComicPeeps.UserControls
 
         private void ComicViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Directory.Delete(MainScreen.ComicExtractLocation + "\\" + comicIssue.ComicName, true);
+            Directory.Delete(MainScreen.ComicExtractLocation + "\\" + comicIssue.SeriesId, true);
             if (MainScreen.UserData.Settings.SaveLastPage)
             {
                 comicIssue.CurrentPage = currentPage + 1;

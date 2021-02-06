@@ -237,7 +237,7 @@ namespace ComicPeeps
 		// Read the ComicIssue and return the images
 		public static Task<string[]> ReadComic(ComicIssue issue)
         {
-			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.ComicName + "\\" + issue.IssueId).FullName;
+			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.SeriesId + "\\" + issue.IssueId).FullName;
 			
 			if (issue.Location.ToLower().EndsWith(".cbz"))
             {
@@ -283,6 +283,7 @@ namespace ComicPeeps
 					ComicIssue comicIssue = new ComicIssue()
 					{
 						ComicName = comicSeries.ComicName,
+						SeriesId = comicSeries.ComicSeriesId,
 						Location = issues[i],
 						Thumbnail = await GenerateCover(issues[i], comicSeries.ComicSeriesId),
 						IssueNumber = i + 1
