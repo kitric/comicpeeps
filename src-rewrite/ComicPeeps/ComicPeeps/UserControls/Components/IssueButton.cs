@@ -19,6 +19,22 @@ namespace ComicPeeps.UserControls.Components
         {
             InitializeComponent();
             this.issue = comicIssue;
+
+            ToolTip toolTip = new ToolTip
+            {
+                OwnerDraw = true
+            };
+
+            toolTip.Draw += (s, e) =>
+            {
+                e.DrawBackground();
+                e.DrawBorder();
+                e.DrawText((TextFormatFlags.NoClipping | TextFormatFlags.VerticalCenter));
+            };
+
+            toolTip.BackColor = Color.FromArgb(5, 5, 5);
+            toolTip.ForeColor = Color.White;
+            toolTip.SetToolTip(this, $"{comicIssue.ComicName}, Issue {comicIssue.IssueNumber}");
         }
 
         private void IssueButton_Click(object sender, EventArgs e)

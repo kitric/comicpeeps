@@ -33,9 +33,7 @@ namespace ComicPeeps.UserControls.Components
             this.cmMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmUpdateIssues = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmRemove = new System.Windows.Forms.ToolStripMenuItem();
-            this.pbImage = new System.Windows.Forms.PictureBox();
             this.cmMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
             // 
             // cmMain
@@ -60,17 +58,6 @@ namespace ComicPeeps.UserControls.Components
             this.tsmRemove.Text = "Remove";
             this.tsmRemove.Click += new System.EventHandler(this.tsmRemove_Click);
             // 
-            // pbImage
-            // 
-            this.pbImage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pbImage.Location = new System.Drawing.Point(0, 0);
-            this.pbImage.Name = "pbImage";
-            this.pbImage.Size = new System.Drawing.Size(83, 127);
-            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pbImage.TabIndex = 1;
-            this.pbImage.TabStop = false;
-            this.pbImage.Click += new System.EventHandler(this.ComicButton_Click);
-            // 
             // ComicButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -78,14 +65,12 @@ namespace ComicPeeps.UserControls.Components
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.ContextMenuStrip = this.cmMain;
-            this.Controls.Add(this.pbImage);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "ComicButton";
             this.Size = new System.Drawing.Size(83, 127);
             this.Load += new System.EventHandler(this.ComicButton_Load);
             this.Click += new System.EventHandler(this.ComicButton_Click);
             this.cmMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -95,6 +80,5 @@ namespace ComicPeeps.UserControls.Components
         private System.Windows.Forms.ContextMenuStrip cmMain;
         private System.Windows.Forms.ToolStripMenuItem tsmUpdateIssues;
         private System.Windows.Forms.ToolStripMenuItem tsmRemove;
-        private System.Windows.Forms.PictureBox pbImage;
     }
 }
