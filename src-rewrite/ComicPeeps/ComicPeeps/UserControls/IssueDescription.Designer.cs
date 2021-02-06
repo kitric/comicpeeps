@@ -33,8 +33,10 @@ namespace ComicPeeps.UserControls
             this.lblDescription = new System.Windows.Forms.Label();
             this.btnRead = new System.Windows.Forms.PictureBox();
             this.pbThumbnail = new System.Windows.Forms.PictureBox();
+            this.btnClose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnRead)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbThumbnail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -84,11 +86,23 @@ namespace ComicPeeps.UserControls
             this.pbThumbnail.TabIndex = 4;
             this.pbThumbnail.TabStop = false;
             // 
+            // btnClose
+            // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Image = global::ComicPeeps.Properties.Resources.close;
+            this.btnClose.Location = new System.Drawing.Point(8, 8);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(17, 17);
+            this.btnClose.TabIndex = 7;
+            this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // IssueDescription
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRead);
             this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.pbThumbnail);
@@ -98,6 +112,7 @@ namespace ComicPeeps.UserControls
             this.Load += new System.EventHandler(this.IssueDescription_Load);
             ((System.ComponentModel.ISupportInitialize)(this.btnRead)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbThumbnail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -109,5 +124,6 @@ namespace ComicPeeps.UserControls
         private System.Windows.Forms.PictureBox pbThumbnail;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.PictureBox btnRead;
+        private System.Windows.Forms.PictureBox btnClose;
     }
 }

@@ -23,9 +23,8 @@ namespace ComicPeeps.UserControls.Components
 
         private void IssueButton_Click(object sender, EventArgs e)
         {
-            //MainScreen.Instance.ShowNewPage(new IssueDescription(issue) { Dock = DockStyle.Fill });
-
-            GlobalFunctions.SwitchTo<IssueDescription>(MainScreen.Instance.pnlContent, "IssueDescription", new object[] { issue });
+            //GlobalFunctions.SwitchTo<IssueDescription>(MainScreen.Instance.pnlContent, "IssueDescription", new object[] { issue });
+            GlobalFunctions.AddToScreenWithoutSwitch<IssueDescription>(MainScreen.Instance.pnlContent, "IssueDescription", new object[] { issue });
         }
 
         private async void IssueButton_Load(object sender, EventArgs e)

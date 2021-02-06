@@ -31,6 +31,8 @@ namespace ComicPeeps.UserControls
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlComics = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnClose = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -54,16 +56,29 @@ namespace ComicPeeps.UserControls
             this.pnlComics.Size = new System.Drawing.Size(730, 445);
             this.pnlComics.TabIndex = 5;
             // 
+            // btnClose
+            // 
+            this.btnClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClose.Image = global::ComicPeeps.Properties.Resources.close;
+            this.btnClose.Location = new System.Drawing.Point(8, 8);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(17, 17);
+            this.btnClose.TabIndex = 6;
+            this.btnClose.TabStop = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // ComicLibrary
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.pnlComics);
             this.Controls.Add(this.lblTitle);
             this.Name = "ComicLibrary";
             this.Size = new System.Drawing.Size(757, 540);
             this.Load += new System.EventHandler(this.ComicLibrary_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.btnClose)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,5 +88,6 @@ namespace ComicPeeps.UserControls
 
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.FlowLayoutPanel pnlComics;
+        private System.Windows.Forms.PictureBox btnClose;
     }
 }

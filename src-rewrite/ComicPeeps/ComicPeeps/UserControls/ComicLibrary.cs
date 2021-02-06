@@ -41,5 +41,10 @@ namespace ComicPeeps.UserControls
 
             GlobalFunctions.HideScrollBars(pnlComics);
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }
