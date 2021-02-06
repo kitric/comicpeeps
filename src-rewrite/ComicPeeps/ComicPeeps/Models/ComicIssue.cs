@@ -20,5 +20,14 @@ namespace ComicPeeps.Models
         public int Pages { get; set; } = 0;
 
         public int IssueNumber { get; set; } = 0;
+
+        public bool Completed { get; set; } = false;
+
+        public string IssueId { get; set; } = "";
+
+        public ComicIssue()
+        {
+            IssueId = $"issue{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Hour}{DateTime.Now.Millisecond}";
+        }
     }
 }

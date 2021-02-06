@@ -16,5 +16,12 @@ namespace ComicPeeps.Models
         public string Thumbnail { get; set; } = "";
 
         public string ComicName { get; set; } = "";
+
+        public string ComicSeriesId { get; set; } = "";
+
+        public ComicSeries()
+        {
+            ComicSeriesId = $"comic{DateTime.Now.Year}{DateTime.Now.Month}{DateTime.Now.Day}{DateTime.Now.Hour}{DateTime.Now.Millisecond}";
+        }
     }
 }

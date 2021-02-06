@@ -25,9 +25,9 @@ namespace ComicPeeps
 			panel.AutoScroll = true;
 		}
 
-		public static Task<string> GenerateCover(string comic, string comicName)
+		public static Task<string> GenerateCover(string comic, string comicSeriesId)
 		{
-			Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicName);
+			Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicSeriesId);
 
 			if (comic.ToLower().EndsWith(".cbz"))
 			{
@@ -50,8 +50,8 @@ namespace ComicPeeps
 								fileName = fileName.Split('/').Last();
 							}
 
-							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, true);
-							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName);
+							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
+							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
 						}
 						else if (entry.FullName.EndsWith(".png"))
 						{
@@ -62,8 +62,8 @@ namespace ComicPeeps
 								fileName = entry.FullName.Split('\\').Last();
 							}
 
-							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, true);
-							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName);
+							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
+							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
 						}
 					}
 				}
@@ -85,8 +85,8 @@ namespace ComicPeeps
 								fileName = entry.Key.Split('\\').Last();
                             }
 
-							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
-							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName);
+							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
+							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
 						}
 						else if (entry.Key.EndsWith(".png"))
 						{
@@ -97,8 +97,8 @@ namespace ComicPeeps
 								fileName = entry.Key.Split('\\').Last();
 							}
 
-							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
-							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicName + "\\" + fileName);
+							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
+							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
 						}
 					}
 				}
@@ -124,7 +124,7 @@ namespace ComicPeeps
                     try
                     {
 						ZipArchiveEntry entry = archive.Entries.Where(e => e.FullName == "ComicInfo.xml").First();
-						entry.ExtractToFile(dir + "\\" + issue.IssueNumber + "\\ComicInfo.xml");
+						entry.ExtractToFile(dir + "\\ComicInfo.xml");
 
 						using (Stream S = new FileStream(dir + "\\ComicInfo.xml", FileMode.Open, FileAccess.Read))
 						{
@@ -237,7 +237,7 @@ namespace ComicPeeps
 		// Read the ComicIssue and return the images
 		public static Task<string[]> ReadComic(ComicIssue issue)
         {
-			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.ComicName).FullName;
+			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.ComicName + "\\" + issue.IssueId).FullName;
 			
 			if (issue.Location.ToLower().EndsWith(".cbz"))
             {
@@ -284,7 +284,7 @@ namespace ComicPeeps
 					{
 						ComicName = comicSeries.ComicName,
 						Location = issues[i],
-						Thumbnail = await GenerateCover(issues[i], comicSeries.ComicName),
+						Thumbnail = await GenerateCover(issues[i], comicSeries.ComicSeriesId),
 						IssueNumber = i + 1
 					};
 
@@ -329,7 +329,7 @@ namespace ComicPeeps
 					Location = newFile,
 					ComicName = series.ComicName,
 					IssueNumber = series.Issues.Count + 1,
-					Thumbnail = await GenerateCover(newFile, series.ComicName)
+					Thumbnail = await GenerateCover(newFile, series.ComicSeriesId)
 				};
 
 				series.Issues.Add(issue);

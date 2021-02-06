@@ -29,8 +29,9 @@ namespace ComicPeeps.UserControls
             {
                 arrayForComics[i] = new ComicButton(MainScreen.UserData.ComicSeries[i], this);
             }
-            
+
             pnlComics.Controls.AddRange(arrayForComics);
+            pnlComics.Controls.Add(new AddButton());
 
             //foreach (var comic in MainScreen.UserData.ComicSeries)
             //{
