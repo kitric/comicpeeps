@@ -22,6 +22,13 @@ namespace ComicPeeps.UserControls.Components
 
             issue.OnCompleted += OnIssueCompleted;
 
+            cmsMain.Renderer = new Renderer();
+            cmsMain.ForeColor = Color.White;
+            cmsMain.BackColor = Color.FromArgb(5, 5, 5);
+
+            tsmMarkAsRead.ForeColor = Color.White;
+            tsmMarkAsRead.BackColor = Color.FromArgb(5, 5, 5);
+
             ToolTip toolTip = new ToolTip
             {
                 OwnerDraw = true
@@ -55,12 +62,34 @@ namespace ComicPeeps.UserControls.Components
             if (issue.Completed == true)
             {
                 this.pbCompleted.Visible = true;
+                tsmMarkAsRead.Text = "Mark as unread";
             }
         }
 
         private void OnIssueCompleted(object sender, EventArgs e)
         {
-            this.pbCompleted.Visible = true;
+            if (issue.Completed == true)
+            {
+                this.pbCompleted.Visible = true;
+            }
+            else
+            {
+                this.pbCompleted.Visible = false;
+            }
+        }
+
+        private void tsmMarkAsRead_Click(object sender, EventArgs e)
+        {
+            if (!issue.Completed)
+            {
+                issue.Completed = true;
+                tsmMarkAsRead.Text = "Mark as unread";
+            }
+            else
+            {
+                issue.Completed = false;
+                tsmMarkAsRead.Text = "Mark as read";
+            }
         }
     }
 }

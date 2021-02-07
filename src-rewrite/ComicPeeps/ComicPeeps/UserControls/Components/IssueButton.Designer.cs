@@ -29,8 +29,12 @@ namespace ComicPeeps.UserControls.Components
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.pbCompleted = new System.Windows.Forms.PictureBox();
+            this.cmsMain = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tsmMarkAsRead = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbCompleted)).BeginInit();
+            this.cmsMain.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbCompleted
@@ -44,12 +48,27 @@ namespace ComicPeeps.UserControls.Components
             this.pbCompleted.TabStop = false;
             this.pbCompleted.Visible = false;
             // 
+            // cmsMain
+            // 
+            this.cmsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmMarkAsRead});
+            this.cmsMain.Name = "cmsMain";
+            this.cmsMain.Size = new System.Drawing.Size(142, 26);
+            // 
+            // tsmMarkAsRead
+            // 
+            this.tsmMarkAsRead.Name = "tsmMarkAsRead";
+            this.tsmMarkAsRead.Size = new System.Drawing.Size(180, 22);
+            this.tsmMarkAsRead.Text = "Mark as read";
+            this.tsmMarkAsRead.Click += new System.EventHandler(this.tsmMarkAsRead_Click);
+            // 
             // IssueButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.ContextMenuStrip = this.cmsMain;
             this.Controls.Add(this.pbCompleted);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "IssueButton";
@@ -57,6 +76,7 @@ namespace ComicPeeps.UserControls.Components
             this.Load += new System.EventHandler(this.IssueButton_Load);
             this.Click += new System.EventHandler(this.IssueButton_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pbCompleted)).EndInit();
+            this.cmsMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -64,5 +84,7 @@ namespace ComicPeeps.UserControls.Components
         #endregion
 
         private System.Windows.Forms.PictureBox pbCompleted;
+        private System.Windows.Forms.ContextMenuStrip cmsMain;
+        private System.Windows.Forms.ToolStripMenuItem tsmMarkAsRead;
     }
 }

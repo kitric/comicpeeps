@@ -130,33 +130,5 @@ namespace ComicPeeps
         {
             GlobalFunctions.SwitchTo<SettingsPage>(this.pnlContent, "SettingsPage");
         }
-
-        //private static void LoadFileWatchers()
-        //{
-        //    foreach (var series in UserData.ComicSeries)
-        //    {
-        //        FileSystemWatcher fsw = new FileSystemWatcher()
-        //        {
-        //            Path = series.FolderPath,
-        //            Filter = "*.cbr"
-        //        };
-        //
-        //        fsw.Created += async (o, e) =>
-        //        {
-        //            // Create a new ComicIssue
-        //            ComicIssue issue = new ComicIssue()
-        //            {
-        //                ComicName = series.ComicName,
-        //                IssueNumber = series.Issues.Count + 1,
-        //                Location = e.FullPath,
-        //                Thumbnail = await GlobalFunctions.GenerateCover(e.FullPath, series.ComicName)
-        //            };
-        //
-        //            series.Issues.Add(issue);
-        //        };
-        //
-        //        fsw.EnableRaisingEvents = true;
-        //    }
-        //}
     }
 }
