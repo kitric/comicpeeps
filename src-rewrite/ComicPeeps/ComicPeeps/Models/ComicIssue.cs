@@ -9,6 +9,9 @@ namespace ComicPeeps.Models
     [Serializable]
     public class ComicIssue
     {
+        [NonSerialized]
+        public EventHandler OnCompleted;
+
         public string ComicName { get; set; } = "";
 
         public string SeriesId { get; set; } = "";
@@ -23,7 +26,21 @@ namespace ComicPeeps.Models
 
         public int IssueNumber { get; set; } = 0;
 
-        public bool Completed { get; set; } = false;
+        private bool completed { get; set; } = false;
+
+        public bool Completed
+        {
+            get
+            {
+                return completed;
+            }
+            set
+            {
+                // Invoke event handler
+                completed = value;
+                OnCompleted.Invoke(this, EventArgs.Empty);
+            }
+        }
 
         public string IssueId { get; set; } = "";
 

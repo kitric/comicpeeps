@@ -20,6 +20,8 @@ namespace ComicPeeps.UserControls.Components
             InitializeComponent();
             this.issue = comicIssue;
 
+            issue.OnCompleted += OnIssueCompleted;
+
             ToolTip toolTip = new ToolTip
             {
                 OwnerDraw = true
@@ -49,6 +51,16 @@ namespace ComicPeeps.UserControls.Components
             {
                 this.BackgroundImage = await GlobalFunctions.CompressImage(issue.Thumbnail, 15);
             }
+
+            if (issue.Completed == true)
+            {
+                this.pbCompleted.Visible = true;
+            }
+        }
+
+        private void OnIssueCompleted(object sender, EventArgs e)
+        {
+            this.pbCompleted.Visible = true;
         }
     }
 }
