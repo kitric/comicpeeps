@@ -31,14 +31,16 @@ namespace ComicPeeps
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.pnlSideBar = new System.Windows.Forms.Panel();
+            this.pnlSeparator = new System.Windows.Forms.Panel();
+            this.pnlContent = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.PictureBox();
+            this.btnAbout = new System.Windows.Forms.PictureBox();
             this.btnLibrary = new System.Windows.Forms.PictureBox();
             this.btnHome = new System.Windows.Forms.PictureBox();
             this.pbIcon = new System.Windows.Forms.PictureBox();
-            this.pnlSeparator = new System.Windows.Forms.Panel();
-            this.pnlContent = new System.Windows.Forms.Panel();
             this.pnlSideBar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAbout)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLibrary)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
@@ -48,6 +50,7 @@ namespace ComicPeeps
             // 
             this.pnlSideBar.BackColor = System.Drawing.Color.Black;
             this.pnlSideBar.Controls.Add(this.btnSettings);
+            this.pnlSideBar.Controls.Add(this.btnAbout);
             this.pnlSideBar.Controls.Add(this.btnLibrary);
             this.pnlSideBar.Controls.Add(this.btnHome);
             this.pnlSideBar.Controls.Add(this.pbIcon);
@@ -56,6 +59,23 @@ namespace ComicPeeps
             this.pnlSideBar.Name = "pnlSideBar";
             this.pnlSideBar.Size = new System.Drawing.Size(200, 540);
             this.pnlSideBar.TabIndex = 0;
+            // 
+            // pnlSeparator
+            // 
+            this.pnlSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(142)))), ((int)(((byte)(68)))));
+            this.pnlSeparator.Dock = System.Windows.Forms.DockStyle.Left;
+            this.pnlSeparator.Location = new System.Drawing.Point(200, 0);
+            this.pnlSeparator.Name = "pnlSeparator";
+            this.pnlSeparator.Size = new System.Drawing.Size(3, 540);
+            this.pnlSeparator.TabIndex = 1;
+            // 
+            // pnlContent
+            // 
+            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlContent.Location = new System.Drawing.Point(203, 0);
+            this.pnlContent.Name = "pnlContent";
+            this.pnlContent.Size = new System.Drawing.Size(757, 540);
+            this.pnlContent.TabIndex = 2;
             // 
             // btnSettings
             // 
@@ -69,6 +89,17 @@ namespace ComicPeeps
             this.btnSettings.TabIndex = 3;
             this.btnSettings.TabStop = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
+            // 
+            // btnAbout
+            // 
+            this.btnAbout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAbout.Image = global::ComicPeeps.Properties.Resources.aboutButton;
+            this.btnAbout.Location = new System.Drawing.Point(19, 245);
+            this.btnAbout.Name = "btnAbout";
+            this.btnAbout.Size = new System.Drawing.Size(162, 54);
+            this.btnAbout.TabIndex = 2;
+            this.btnAbout.TabStop = false;
+            this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
             // 
             // btnLibrary
             // 
@@ -101,23 +132,6 @@ namespace ComicPeeps
             this.pbIcon.TabIndex = 0;
             this.pbIcon.TabStop = false;
             // 
-            // pnlSeparator
-            // 
-            this.pnlSeparator.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(142)))), ((int)(((byte)(68)))));
-            this.pnlSeparator.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlSeparator.Location = new System.Drawing.Point(200, 0);
-            this.pnlSeparator.Name = "pnlSeparator";
-            this.pnlSeparator.Size = new System.Drawing.Size(3, 540);
-            this.pnlSeparator.TabIndex = 1;
-            // 
-            // pnlContent
-            // 
-            this.pnlContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlContent.Location = new System.Drawing.Point(203, 0);
-            this.pnlContent.Name = "pnlContent";
-            this.pnlContent.Size = new System.Drawing.Size(757, 540);
-            this.pnlContent.TabIndex = 2;
-            // 
             // MainScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -135,6 +149,7 @@ namespace ComicPeeps
             this.Shown += new System.EventHandler(this.MainScreen_Shown);
             this.pnlSideBar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnSettings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAbout)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnLibrary)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnHome)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
@@ -151,6 +166,7 @@ namespace ComicPeeps
         private System.Windows.Forms.PictureBox btnLibrary;
         private System.Windows.Forms.PictureBox btnSettings;
         public System.Windows.Forms.Panel pnlContent;
+        private System.Windows.Forms.PictureBox btnAbout;
     }
 }
 

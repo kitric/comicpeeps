@@ -77,6 +77,11 @@ namespace ComicPeeps
             GlobalFunctions.SwitchTo<Library>(this.pnlContent, "Library");
         }
 
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.SwitchTo<About>(this.pnlContent, "About");
+        }
+
         public static void Serialize()
         {
             IFormatter f = new BinaryFormatter();
