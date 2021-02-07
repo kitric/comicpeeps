@@ -81,6 +81,12 @@ namespace ComicPeeps.UserControls
                 pbPageImage.Image.Dispose();
                 pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
                 lblPageCount.Text = $"{currentPage + 1} / {comicIssue.Pages}";
+
+                if (currentPage + 1 > comicIssue.Pages - 2)
+                {
+                    comicIssue.Completed = true;
+                }
+
                 if (MainScreen.UserData.Settings.UseAutoRead)
                 {
                     AutoRead.Stop();
