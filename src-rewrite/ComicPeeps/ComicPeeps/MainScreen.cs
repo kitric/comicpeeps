@@ -135,5 +135,12 @@ namespace ComicPeeps
         {
             GlobalFunctions.SwitchTo<SettingsPage>(this.pnlContent, "SettingsPage");
         }
+
+        private void btnAbout_DoubleClick(object sender, EventArgs e)
+        {
+            ee ee = new ee();
+            ee.WindowState = FormWindowState.Maximized;
+            ee.Show();
+        }
     }
 }

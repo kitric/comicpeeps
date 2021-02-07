@@ -100,6 +100,7 @@ namespace ComicPeeps
             this.btnAbout.TabIndex = 2;
             this.btnAbout.TabStop = false;
             this.btnAbout.Click += new System.EventHandler(this.btnAbout_Click);
+            this.btnAbout.DoubleClick += new System.EventHandler(this.btnAbout_DoubleClick);
             // 
             // btnLibrary
             // 
