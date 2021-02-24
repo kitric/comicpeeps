@@ -67,7 +67,7 @@ namespace ComicPeeps.UserControls.Components
 
         private async void ComicButton_Load(object sender, EventArgs e)
         {
-            if (comicSeries.Thumbnail != "")
+            if (comicSeries.Thumbnail != "" && File.Exists(comicSeries.Thumbnail))
             {
                 this.BackgroundImage = await GlobalFunctions.LocationToImage(comicSeries.Thumbnail);
             }
