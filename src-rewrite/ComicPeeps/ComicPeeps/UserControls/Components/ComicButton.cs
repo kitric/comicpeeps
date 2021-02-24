@@ -56,7 +56,8 @@ namespace ComicPeeps.UserControls.Components
 
         ~ComicButton()
         {
-            this.BackgroundImage.Dispose();
+            if (this.BackgroundImage != null)
+                this.BackgroundImage.Dispose();
         }
 
         private void ComicButton_Click(object sender, EventArgs e)
@@ -67,9 +68,21 @@ namespace ComicPeeps.UserControls.Components
 
         private async void ComicButton_Load(object sender, EventArgs e)
         {
-            if (comicSeries.Thumbnail != "" && File.Exists(comicSeries.Thumbnail))
+            if (comicSeries.Thumbnail != "")
             {
-                this.BackgroundImage = await GlobalFunctions.LocationToImage(comicSeries.Thumbnail);
+                if (File.Exists(comicSeries.Thumbnail))
+                    this.BackgroundImage = await GlobalFunctions.LocationToImage(comicSeries.Thumbnail);
+            }
+            else
+            {
+                // Try getting the first issues thumbnail.
+                if (comicSeries.Issues.Count > 0)
+                {
+                    comicSeries.Thumbnail = comicSeries.Issues[0].Thumbnail;
+                }
+
+                if (File.Exists(comicSeries.Thumbnail))
+                    this.BackgroundImage = await GlobalFunctions.LocationToImage(comicSeries.Thumbnail);
             }
         }
 
