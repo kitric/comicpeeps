@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -69,6 +70,8 @@ namespace ComicPeeps.UserControls.Components
 
         private void tsmRemove_Click(object sender, EventArgs e)
         {
+            // Delete the thumbnails
+            Directory.Delete(MainScreen.ThumbnailPath + "\\" + comicSeries.ComicSeriesId, true);
             MainScreen.UserData.ComicSeries.Remove(comicSeries);
             library.pnlComics.Controls.Remove(this);
             if (this.BackgroundImage != null)
