@@ -1,5 +1,6 @@
 ﻿using ComicPeeps.Models;
 using ComicPeeps.UserControls;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -84,23 +85,42 @@ namespace ComicPeeps
 
         public static void Serialize()
         {
-            IFormatter f = new BinaryFormatter();
+            //IFormatter f = new BinaryFormatter();
+            //
+            //using (Stream stream = new FileStream(AppData + "\\comic.peeps", FileMode.Create, FileAccess.Write))
+            //{
+            //    f.Serialize(stream, UserData);
+            //}
 
-            using (Stream stream = new FileStream(AppData + "\\comic.peeps", FileMode.Create, FileAccess.Write))
+            using (StreamWriter writer = new StreamWriter(AppData + "\\comic.peeps"))
             {
-                f.Serialize(stream, UserData);
+                using (JsonWriter jwriter = new JsonTextWriter(writer))
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(jwriter, UserData);
+                }
             }
         }
 
         public static void Deserialize()
         {
+            //if (File.Exists(AppData + "\\comic.peeps"))
+            //{
+            //    IFormatter f = new BinaryFormatter();
+            //
+            //    using (Stream stream = new FileStream(AppData + "\\comic.peeps", FileMode.Open, FileAccess.Read))
+            //    {
+            //        UserData = (UserData)f.Deserialize(stream);
+            //    }
+            //}
+
             if (File.Exists(AppData + "\\comic.peeps"))
             {
-                IFormatter f = new BinaryFormatter();
-
-                using (Stream stream = new FileStream(AppData + "\\comic.peeps", FileMode.Open, FileAccess.Read))
+                using (StreamReader reader = new StreamReader(AppData + "\\comic.peeps"))
                 {
-                    UserData = (UserData)f.Deserialize(stream);
+                    string json = reader.ReadToEnd();
+
+                    UserData = JsonConvert.DeserializeObject<UserData>(json);
                 }
             }
         }

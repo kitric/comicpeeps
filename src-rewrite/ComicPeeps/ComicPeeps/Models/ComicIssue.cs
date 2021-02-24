@@ -38,7 +38,10 @@ namespace ComicPeeps.Models
             {
                 // Invoke event handler
                 completed = value;
-                OnCompleted.Invoke(this, EventArgs.Empty);
+                if (OnCompleted != null)
+                {
+                    OnCompleted.Invoke(this, EventArgs.Empty);
+                }
             }
         }
 
