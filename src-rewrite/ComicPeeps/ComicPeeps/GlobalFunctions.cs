@@ -219,45 +219,59 @@ namespace ComicPeeps
 
 		public static async Task<Bitmap> CompressImage(string ImageFilePath, int CompressSize)
 		{
-			if (ImageFilePath != "")
+			try
 			{
-				using (Image img = Image.FromFile(ImageFilePath))
+				if (ImageFilePath != "")
 				{
-					Bitmap bmp = new Bitmap(img.Width / CompressSize, img.Height / CompressSize);
-					Stopwatch watch = new Stopwatch();
-					watch.Start();
-					using (Graphics g = Graphics.FromImage(bmp))
+					using (Image img = Image.FromFile(ImageFilePath))
 					{
-						watch.Stop();
-						Console.WriteLine(watch.ElapsedMilliseconds + "ms: " + ImageFilePath);
+						Bitmap bmp = new Bitmap(img.Width / CompressSize, img.Height / CompressSize);
+						Stopwatch watch = new Stopwatch();
+						watch.Start();
+						using (Graphics g = Graphics.FromImage(bmp))
+						{
+							watch.Stop();
+							Console.WriteLine(watch.ElapsedMilliseconds + "ms: " + ImageFilePath);
 
-						g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
+							g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
+						}
+
+						return await Task.FromResult(bmp);
 					}
-
-					return await Task.FromResult(bmp);
 				}
-			}
 
-			return null;
+				return null;
+			}
+            catch
+            {
+				throw new Exception("File missing: " + ImageFilePath);
+			}
 		}
 
 		public static async Task<Bitmap> LocationToImage(string ImageFilePath)
         {
-			if (ImageFilePath != "")
+			try
+			{
+				if (ImageFilePath != "")
+				{
+					using (Image img = Image.FromFile(ImageFilePath))
+					{
+						Bitmap bmp = new Bitmap(img.Width, img.Height);
+						using (Graphics g = Graphics.FromImage(bmp))
+						{
+							g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
+						}
+
+						return await Task.FromResult(bmp);
+					}
+				}
+
+				return null;
+			}
+			catch
             {
-				using (Image img = Image.FromFile(ImageFilePath))
-                {
-					Bitmap bmp = new Bitmap(img.Width, img.Height);
-					using (Graphics g = Graphics.FromImage(bmp))
-                    {
-						g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
-                    }
-
-					return await Task.FromResult(bmp);
-                }
+				throw new Exception("File missing: " + ImageFilePath);
             }
-
-			return null;
         }
 
 		/// <summary>
