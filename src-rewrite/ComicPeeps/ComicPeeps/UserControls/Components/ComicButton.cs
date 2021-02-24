@@ -54,6 +54,11 @@ namespace ComicPeeps.UserControls.Components
             toolTip.SetToolTip(this, $"{comicSeries.ComicName}{Environment.NewLine}Issue Count: {comicSeries.Issues.Count}");
         }
 
+        ~ComicButton()
+        {
+            this.BackgroundImage.Dispose();
+        }
+
         private void ComicButton_Click(object sender, EventArgs e)
         {
             //GlobalFunctions.SwitchTo<ComicLibrary>(MainScreen.Instance.pnlContent, "ComicLibrary", new object[] { comicSeries });
