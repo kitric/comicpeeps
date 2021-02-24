@@ -21,7 +21,7 @@ namespace ComicPeeps.UserControls
 
         private void crxssed_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/crxssed7");
+            System.Diagnostics.Process.Start("https://crxssed7.github.io");
         }
 
         private void nordic_Click(object sender, EventArgs e)
