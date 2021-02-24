@@ -56,7 +56,7 @@ namespace ComicPeeps.UserControls.Components
         {
             if (issue.Thumbnail != "")
             {
-                this.BackgroundImage = await GlobalFunctions.CompressImage(issue.Thumbnail, 15);
+                this.BackgroundImage = await GlobalFunctions.LocationToImage(issue.Thumbnail);
             }
 
             if (issue.Completed == true)

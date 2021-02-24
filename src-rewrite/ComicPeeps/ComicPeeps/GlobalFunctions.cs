@@ -25,7 +25,7 @@ namespace ComicPeeps
 			panel.AutoScroll = true;
 		}
 
-		public static Task<string> GenerateCover(string comic, string comicSeriesId)
+		public static async Task<string> GenerateCover(string comic, string comicSeriesId, int comicNumber)
 		{
 			Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicSeriesId);
 
@@ -51,7 +51,15 @@ namespace ComicPeeps
 							}
 
 							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
-							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+							using (var image = await CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+                            {
+								image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+                            }
+
+							File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+							return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 						}
 						else if (entry.FullName.EndsWith(".png"))
 						{
@@ -63,7 +71,15 @@ namespace ComicPeeps
 							}
 
 							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
-							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+							using (var image = await CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+							{
+								image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+							}
+
+							File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+							return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 						}
 					}
 				}
@@ -86,7 +102,15 @@ namespace ComicPeeps
                             }
 
 							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
-							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+							using (var image = await CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+							{
+								image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+							}
+
+							File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+							return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 						}
 						else if (entry.Key.EndsWith(".png"))
 						{
@@ -98,13 +122,21 @@ namespace ComicPeeps
 							}
 
 							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
-							return Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+							using (var image = await CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+							{
+								image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+							}
+
+							File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+							return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 						}
 					}
 				}
 			}
 
-			return Task.FromResult("");
+			return await Task.FromResult("");
 		}
 
 		/// <summary>
@@ -202,13 +234,31 @@ namespace ComicPeeps
 						g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
 					}
 
-
 					return await Task.FromResult(bmp);
 				}
 			}
 
 			return null;
 		}
+
+		public static async Task<Bitmap> LocationToImage(string ImageFilePath)
+        {
+			if (ImageFilePath != "")
+            {
+				using (Image img = Image.FromFile(ImageFilePath))
+                {
+					Bitmap bmp = new Bitmap(img.Width, img.Height);
+					using (Graphics g = Graphics.FromImage(bmp))
+                    {
+						g.DrawImage(img, new Rectangle(0, 0, bmp.Width, bmp.Height));
+                    }
+
+					return await Task.FromResult(bmp);
+                }
+            }
+
+			return null;
+        }
 
 		/// <summary>
 		/// Now, you only need one function for switching windows.
@@ -285,7 +335,7 @@ namespace ComicPeeps
 						ComicName = comicSeries.ComicName,
 						SeriesId = comicSeries.ComicSeriesId,
 						Location = issues[i],
-						Thumbnail = await GenerateCover(issues[i], comicSeries.ComicSeriesId),
+						Thumbnail = await GenerateCover(issues[i], comicSeries.ComicSeriesId, i + 1),
 						IssueNumber = i + 1
 					};
 
@@ -330,7 +380,7 @@ namespace ComicPeeps
 					Location = newFile,
 					ComicName = series.ComicName,
 					IssueNumber = series.Issues.Count + 1,
-					Thumbnail = await GenerateCover(newFile, series.ComicSeriesId)
+					Thumbnail = await GenerateCover(newFile, series.ComicSeriesId, series.Issues.Count + 1)
 				};
 
 				series.Issues.Add(issue);

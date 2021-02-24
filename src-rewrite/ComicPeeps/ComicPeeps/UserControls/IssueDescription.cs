@@ -43,11 +43,12 @@ namespace ComicPeeps.UserControls
 
             lblTitle.Text = comicIssue.ComicName.ToLower() + " - issue " + comicIssue.IssueNumber;
             lblDescription.Text = info.Summary;
-            pbThumbnail.Image = await GlobalFunctions.CompressImage(comicIssue.Thumbnail, 15);
+            pbThumbnail.Image = await GlobalFunctions.LocationToImage(comicIssue.Thumbnail);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            pbThumbnail.Image.Dispose();
             this.Dispose();
         }
     }

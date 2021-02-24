@@ -92,23 +92,33 @@ namespace ComicPeeps.UserControls
         {
             try
             {
-                ComicSeries comicSeries = new ComicSeries()
-                {
-                    FolderPath = selectedPath,
-                    ComicName = Path.GetFileName(selectedPath),
-                    Thumbnail = ""
-                };
+                var existingComics = MainScreen.UserData.ComicSeries.Where(serie => serie.FolderPath == selectedPath).ToList();
 
-                await GlobalFunctions.AddComicIssues(comicSeries);
-
-                if (comicSeries.Issues.Count != 0)
+                if (existingComics.Count == 0)
                 {
-                    comicSeries.Thumbnail = comicSeries.Issues[0].Thumbnail;
+                    ComicSeries comicSeries = new ComicSeries()
+                    {
+                        FolderPath = selectedPath,
+                        ComicName = Path.GetFileName(selectedPath),
+                        Thumbnail = ""
+                    };
+
+                    await GlobalFunctions.AddComicIssues(comicSeries);
+
+                    if (comicSeries.Issues.Count != 0)
+                    {
+                        comicSeries.Thumbnail = comicSeries.Issues[0].Thumbnail;
+                    }
+
+                    MainScreen.UserData.ComicSeries.Add(comicSeries);
+
+                    return await Task.FromResult(true);
                 }
-
-                MainScreen.UserData.ComicSeries.Add(comicSeries);
-
-                return await Task.FromResult(true);
+                else
+                {
+                    MessageBox.Show("That comic already exists in your library.");
+                    return await Task.FromResult(false);
+                }
             }
             catch (Exception e)
             {
