@@ -77,6 +77,7 @@ namespace ComicPeeps.UserControls
         {
             if (currentPage < comicIssue.Pages - 1)
             {
+                pnlPages.VerticalScroll.Value = 0;
                 currentPage++;
                 pbPageImage.Image.Dispose();
                 pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
@@ -99,6 +100,7 @@ namespace ComicPeeps.UserControls
         {
             if (currentPage > 0)
             {
+                pnlPages.VerticalScroll.Value = 0;
                 currentPage--;
                 pbPageImage.Image.Dispose();
                 pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
