@@ -136,7 +136,7 @@ namespace ComicPeeps
 
             if (args.Length > 1)
             {
-                if (args[1].ToLower().EndsWith(".cbr") || args[1].ToLower().EndsWith(".cbr"))
+                if (args[1].ToLower().EndsWith(".cbr") || args[1].ToLower().EndsWith(".cbz"))
                 {
                     ComicIssue issue = new ComicIssue()
                     {
