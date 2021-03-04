@@ -113,17 +113,17 @@
     <Compile Include="UserControls\ComicViewer.Designer.cs">
       <DependentUpon>ComicViewer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\Components\AddButton.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Components\AddButton.Designer.cs">
-      <DependentUpon>AddButton.cs</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Components\ComicButton.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\Components\ComicButton.Designer.cs">
       <DependentUpon>ComicButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Components\CustomButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Components\CustomButton.Designer.cs">
+      <DependentUpon>CustomButton.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Components\IssueButton.cs">
       <SubType>UserControl</SubType>
@@ -186,11 +186,11 @@
     <EmbeddedResource Include="UserControls\ComicViewer.resx">
       <DependentUpon>ComicViewer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Components\AddButton.resx">
-      <DependentUpon>AddButton.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Components\ComicButton.resx">
       <DependentUpon>ComicButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Components\CustomButton.resx">
+      <DependentUpon>CustomButton.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Components\IssueButton.resx">
       <DependentUpon>IssueButton.cs</DependentUpon>
@@ -292,6 +292,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\crx-logo-big.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\add.png" />
+    <None Include="Resources\prev.png" />
+    <None Include="Resources\next.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

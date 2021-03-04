@@ -16,5 +16,7 @@ namespace ComicPeeps.Models
         public bool SaveLastPage { get; set; } = true;
 
         public int CompressSize { get; set; } = 2;
+
+        public int PageSize { get; set; } = 10;
     }
 }

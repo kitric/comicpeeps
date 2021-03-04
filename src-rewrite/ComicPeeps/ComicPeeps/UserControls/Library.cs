@@ -16,28 +16,55 @@ namespace ComicPeeps.UserControls
 {
     public partial class Library : UserControl
     {
+        int page = 0;
+        int maximumPages = 0;
+
+        List<ComicButton> currentResults = new List<ComicButton>();
+
         public Library()
         {
             InitializeComponent();
+            maximumPages = Convert.ToInt32(Math.Ceiling((double)MainScreen.UserData.ComicSeries.Count / (double)MainScreen.UserData.Settings.PageSize));
         }
 
         public Task<bool> LoadComics()
         {
-            //Control[] arrayForComics = new Control[MainScreen.UserData.ComicSeries.Count];
-            //
-            //for (int i = 0; i < arrayForComics.Length; i++)
-            //{
-            //    arrayForComics[i] = new ComicButton(MainScreen.UserData.ComicSeries[i], this);
-            //}
-            //
-            //pnlComics.Controls.AddRange(arrayForComics);
-
-            foreach (var comic in MainScreen.UserData.ComicSeries)
+            // Dispose of all current results
+            for (int i = 0; i < currentResults.Count; i++)
             {
-                pnlComics.Controls.Add(new ComicButton(comic, this));
+                if (currentResults[i].BackgroundImage != null)
+                    currentResults[i].BackgroundImage.Dispose();
+                currentResults[i].Dispose();
+            }
+            currentResults.Clear();
+            pnlComics.Controls.Clear();
+
+            var comics = GlobalFunctions.GetPage(MainScreen.UserData.ComicSeries, page, MainScreen.UserData.Settings.PageSize);
+
+            // Add a previous button if the number pf pages is greater than 0
+            if (page > 0)
+            {
+                CustomButton loadLess = new CustomButton(Properties.Resources.prev);
+                loadLess.Click += Previous;
+                pnlComics.Controls.Add(loadLess);
             }
 
-            pnlComics.Controls.Add(new AddButton());
+            foreach (var comic in comics)
+            {
+                ComicButton comicButton = new ComicButton(comic, this);
+                pnlComics.Controls.Add(comicButton);
+                currentResults.Add(comicButton);
+            }
+
+            if (page + 1 < maximumPages)
+            {
+                // Load more 
+                CustomButton loadMore = new CustomButton(Properties.Resources.next);
+                loadMore.Click += Next;
+                pnlComics.Controls.Add(loadMore);
+            }
+
+            //pnlComics.Controls.Add(new AddButton());
 
             return Task.FromResult(true);
         }
@@ -53,6 +80,23 @@ namespace ComicPeeps.UserControls
             Console.WriteLine(watch.ElapsedMilliseconds + "ms");
 
             GlobalFunctions.HideScrollBars(pnlComics);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            GlobalFunctions.SwitchTo<AddComic>(MainScreen.Instance.pnlContent, "AddComic");
+        }
+
+        private void Previous(object sender, EventArgs e)
+        {
+            page--;
+            LoadComics();
+        }
+
+        private void Next(object sender, EventArgs e)
+        {
+            page++;
+            LoadComics();
         }
     }
 }

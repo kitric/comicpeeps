@@ -133,6 +133,9 @@
   <data name="addBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\addBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cancelButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cancelButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="readBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\readBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -150,6 +153,9 @@
   </data>
   <data name="aboutButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\aboutButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tickButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tickButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -181,10 +187,13 @@
   <data name="libraryBtn" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\libraryBtn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="cancelButton" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cancelButton.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="crx-logo-big" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\crx-logo-big.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="next" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\next.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="prev" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\prev.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -17,6 +17,7 @@ namespace ComicPeeps.UserControls
         private int autoFlipSpeed = 40;
         private bool saveLastPage = true;
         private int compressSize = 2;
+        private int pageSize = 10;
 
         public SettingsPage()
         {
@@ -31,6 +32,7 @@ namespace ComicPeeps.UserControls
             autoFlipSpeed = MainScreen.UserData.Settings.AutoReadSpeed;
             saveLastPage = MainScreen.UserData.Settings.SaveLastPage;
             compressSize = MainScreen.UserData.Settings.CompressSize;
+            pageSize = MainScreen.UserData.Settings.PageSize;
 
             if (autoFlipPages)
             {
@@ -44,6 +46,7 @@ namespace ComicPeeps.UserControls
 
             tbAutoFlip.Text = autoFlipSpeed.ToString();
             tbCompressSize.Text = compressSize.ToString();
+            tbPageSize.Text = pageSize.ToString();
         }
 
         private void btnAutoFlip_Click(object sender, EventArgs e)
@@ -110,6 +113,24 @@ namespace ComicPeeps.UserControls
                 else
                 {
                     MainScreen.UserData.Settings.AutoReadSpeed = tempSpeed;
+                }
+            }
+            catch
+            {
+                errors += "Auto Flip Speed must be a number\n";
+            }
+
+            try
+            {
+                int tempPageSize = Convert.ToInt32(tbPageSize.Text);
+
+                if (tempPageSize < 1)
+                {
+                    errors += "Page Size must be greater than 0\n";
+                }
+                else
+                {
+                    MainScreen.UserData.Settings.PageSize = tempPageSize;
                 }
             }
             catch

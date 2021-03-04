@@ -1,7 +1,7 @@
 ﻿
 namespace ComicPeeps.UserControls.Components
 {
-    partial class AddButton
+    partial class CustomButton
     {
         /// <summary> 
         /// Required designer variable.
@@ -31,15 +31,16 @@ namespace ComicPeeps.UserControls.Components
         {
             this.SuspendLayout();
             // 
-            // AddButton
+            // CustomButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::ComicPeeps.Properties.Resources.addBtn;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Name = "AddButton";
-            this.Size = new System.Drawing.Size(83, 127);
-            this.Click += new System.EventHandler(this.AddButton_Click);
+            this.DoubleBuffered = true;
+            this.Name = "CustomButton";
+            this.Size = new System.Drawing.Size(125, 191);
             this.ResumeLayout(false);
 
         }

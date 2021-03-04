@@ -67,7 +67,7 @@ namespace ComicPeeps.UserControls.Components
             this.ContextMenuStrip = this.cmMain;
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "ComicButton";
-            this.Size = new System.Drawing.Size(83, 127);
+            this.Size = new System.Drawing.Size(125, 191);
             this.Load += new System.EventHandler(this.ComicButton_Load);
             this.Click += new System.EventHandler(this.ComicButton_Click);
             this.cmMain.ResumeLayout(false);

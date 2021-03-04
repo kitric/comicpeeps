@@ -31,6 +31,8 @@ namespace ComicPeeps.UserControls
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.pnlComics = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnAdd = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.btnAdd)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -54,16 +56,30 @@ namespace ComicPeeps.UserControls
             this.pnlComics.Size = new System.Drawing.Size(730, 445);
             this.pnlComics.TabIndex = 4;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.Image = global::ComicPeeps.Properties.Resources.add;
+            this.btnAdd.Location = new System.Drawing.Point(718, 32);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(21, 21);
+            this.btnAdd.TabIndex = 5;
+            this.btnAdd.TabStop = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.pnlComics);
             this.Controls.Add(this.lblTitle);
             this.Name = "Library";
             this.Size = new System.Drawing.Size(757, 540);
             this.Load += new System.EventHandler(this.Library_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.btnAdd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -73,5 +89,6 @@ namespace ComicPeeps.UserControls
 
         private System.Windows.Forms.Label lblTitle;
         public System.Windows.Forms.FlowLayoutPanel pnlComics;
+        private System.Windows.Forms.PictureBox btnAdd;
     }
 }

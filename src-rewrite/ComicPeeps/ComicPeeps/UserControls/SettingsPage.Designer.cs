@@ -39,6 +39,8 @@ namespace ComicPeeps.UserControls
             this.btnSave = new System.Windows.Forms.PictureBox();
             this.tbAutoFlip = new System.Windows.Forms.TextBox();
             this.tbCompressSize = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbPageSize = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveLastPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAutoFlip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
@@ -103,7 +105,7 @@ namespace ComicPeeps.UserControls
             // 
             this.btnSaveLastPage.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSaveLastPage.Image = global::ComicPeeps.Properties.Resources.tickButton;
-            this.btnSaveLastPage.Location = new System.Drawing.Point(200, 208);
+            this.btnSaveLastPage.Location = new System.Drawing.Point(222, 208);
             this.btnSaveLastPage.Name = "btnSaveLastPage";
             this.btnSaveLastPage.Size = new System.Drawing.Size(19, 19);
             this.btnSaveLastPage.TabIndex = 4;
@@ -114,7 +116,7 @@ namespace ComicPeeps.UserControls
             // 
             this.btnAutoFlip.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAutoFlip.Image = global::ComicPeeps.Properties.Resources.tickButton;
-            this.btnAutoFlip.Location = new System.Drawing.Point(200, 102);
+            this.btnAutoFlip.Location = new System.Drawing.Point(222, 102);
             this.btnAutoFlip.Name = "btnAutoFlip";
             this.btnAutoFlip.Size = new System.Drawing.Size(19, 19);
             this.btnAutoFlip.TabIndex = 4;
@@ -139,7 +141,7 @@ namespace ComicPeeps.UserControls
             this.tbAutoFlip.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbAutoFlip.Font = new System.Drawing.Font("Century Gothic", 14.2F);
             this.tbAutoFlip.ForeColor = System.Drawing.Color.White;
-            this.tbAutoFlip.Location = new System.Drawing.Point(200, 154);
+            this.tbAutoFlip.Location = new System.Drawing.Point(222, 154);
             this.tbAutoFlip.Name = "tbAutoFlip";
             this.tbAutoFlip.Size = new System.Drawing.Size(100, 24);
             this.tbAutoFlip.TabIndex = 6;
@@ -150,21 +152,45 @@ namespace ComicPeeps.UserControls
             this.tbCompressSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbCompressSize.Font = new System.Drawing.Font("Century Gothic", 14.2F);
             this.tbCompressSize.ForeColor = System.Drawing.Color.White;
-            this.tbCompressSize.Location = new System.Drawing.Point(200, 260);
+            this.tbCompressSize.Location = new System.Drawing.Point(222, 260);
             this.tbCompressSize.Name = "tbCompressSize";
             this.tbCompressSize.Size = new System.Drawing.Size(100, 24);
             this.tbCompressSize.TabIndex = 6;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 14.2F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(31, 314);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(166, 23);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "page results size:";
+            // 
+            // tbPageSize
+            // 
+            this.tbPageSize.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
+            this.tbPageSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPageSize.Font = new System.Drawing.Font("Century Gothic", 14.2F);
+            this.tbPageSize.ForeColor = System.Drawing.Color.White;
+            this.tbPageSize.Location = new System.Drawing.Point(222, 315);
+            this.tbPageSize.Name = "tbPageSize";
+            this.tbPageSize.Size = new System.Drawing.Size(100, 24);
+            this.tbPageSize.TabIndex = 6;
             // 
             // SettingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.tbPageSize);
             this.Controls.Add(this.tbCompressSize);
             this.Controls.Add(this.tbAutoFlip);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnSaveLastPage);
             this.Controls.Add(this.btnAutoFlip);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -192,5 +218,7 @@ namespace ComicPeeps.UserControls
         private System.Windows.Forms.PictureBox btnSave;
         private System.Windows.Forms.TextBox tbAutoFlip;
         private System.Windows.Forms.TextBox tbCompressSize;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbPageSize;
     }
 }
