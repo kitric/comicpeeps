@@ -420,5 +420,10 @@ namespace ComicPeeps
 			Content.Controls.Add(control);
 			control.BringToFront();
 		}
+
+		private static IList<T> GetPage<T>(IList<T> list, int page, int pageSize)
+		{
+			return list.Skip(page * pageSize).Take(pageSize).ToList();
+		}
 	}
 }
