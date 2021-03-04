@@ -41,7 +41,7 @@ namespace ComicPeeps.UserControls.Components
             // 
             this.pbCompleted.BackColor = System.Drawing.Color.Transparent;
             this.pbCompleted.Image = global::ComicPeeps.Properties.Resources.completed;
-            this.pbCompleted.Location = new System.Drawing.Point(57, 107);
+            this.pbCompleted.Location = new System.Drawing.Point(100, 171);
             this.pbCompleted.Name = "pbCompleted";
             this.pbCompleted.Size = new System.Drawing.Size(22, 17);
             this.pbCompleted.TabIndex = 0;
@@ -58,7 +58,7 @@ namespace ComicPeeps.UserControls.Components
             // tsmMarkAsRead
             // 
             this.tsmMarkAsRead.Name = "tsmMarkAsRead";
-            this.tsmMarkAsRead.Size = new System.Drawing.Size(180, 22);
+            this.tsmMarkAsRead.Size = new System.Drawing.Size(141, 22);
             this.tsmMarkAsRead.Text = "Mark as read";
             this.tsmMarkAsRead.Click += new System.EventHandler(this.tsmMarkAsRead_Click);
             // 
@@ -72,7 +72,7 @@ namespace ComicPeeps.UserControls.Components
             this.Controls.Add(this.pbCompleted);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Name = "IssueButton";
-            this.Size = new System.Drawing.Size(83, 127);
+            this.Size = new System.Drawing.Size(125, 191);
             this.Load += new System.EventHandler(this.IssueButton_Load);
             this.Click += new System.EventHandler(this.IssueButton_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pbCompleted)).EndInit();

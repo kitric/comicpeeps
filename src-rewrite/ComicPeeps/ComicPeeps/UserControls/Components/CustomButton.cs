@@ -17,5 +17,10 @@ namespace ComicPeeps.UserControls.Components
             InitializeComponent();
             this.BackgroundImage = backgroundImage;
         }
+
+        ~CustomButton()
+        {
+            this.BackgroundImage.Dispose();
+        }
     }
 }
