@@ -149,5 +149,44 @@ namespace ComicPeeps.UserControls
 
             LoadSettings();
         }
+
+        private void btnCsvExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "CSV File (*.csv)|*.csv";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportManager.ExportCsv(sfd.FileName);
+                }
+            }
+        }
+
+        private void btnJsonExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "JSON File (*.json)|*.json";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportManager.ExportJson(sfd.FileName);
+                }
+            }
+        }
+
+        private void btnXmlExport_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog sfd = new SaveFileDialog())
+            {
+                sfd.Filter = "XML File (*.xml)|*.xml";
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    ExportManager.ExportXml(sfd.FileName);
+                }
+            }
+        }
     }
 }

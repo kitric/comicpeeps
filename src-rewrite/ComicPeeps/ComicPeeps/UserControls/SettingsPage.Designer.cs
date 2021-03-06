@@ -41,6 +41,10 @@ namespace ComicPeeps.UserControls
             this.tbCompressSize = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.tbPageSize = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnCsvExport = new System.Windows.Forms.Label();
+            this.btnJsonExport = new System.Windows.Forms.Label();
+            this.btnXmlExport = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.btnSaveLastPage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAutoFlip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnSave)).BeginInit();
@@ -179,6 +183,56 @@ namespace ComicPeeps.UserControls
             this.tbPageSize.Size = new System.Drawing.Size(100, 24);
             this.tbPageSize.TabIndex = 6;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 14.2F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(31, 372);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(125, 23);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "export data:";
+            // 
+            // btnCsvExport
+            // 
+            this.btnCsvExport.AutoSize = true;
+            this.btnCsvExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCsvExport.Font = new System.Drawing.Font("Century Gothic", 14.2F, System.Drawing.FontStyle.Bold);
+            this.btnCsvExport.ForeColor = System.Drawing.Color.White;
+            this.btnCsvExport.Location = new System.Drawing.Point(218, 372);
+            this.btnCsvExport.Name = "btnCsvExport";
+            this.btnCsvExport.Size = new System.Drawing.Size(48, 23);
+            this.btnCsvExport.TabIndex = 3;
+            this.btnCsvExport.Text = "CSV";
+            this.btnCsvExport.Click += new System.EventHandler(this.btnCsvExport_Click);
+            // 
+            // btnJsonExport
+            // 
+            this.btnJsonExport.AutoSize = true;
+            this.btnJsonExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnJsonExport.Font = new System.Drawing.Font("Century Gothic", 14.2F, System.Drawing.FontStyle.Bold);
+            this.btnJsonExport.ForeColor = System.Drawing.Color.White;
+            this.btnJsonExport.Location = new System.Drawing.Point(308, 372);
+            this.btnJsonExport.Name = "btnJsonExport";
+            this.btnJsonExport.Size = new System.Drawing.Size(59, 23);
+            this.btnJsonExport.TabIndex = 3;
+            this.btnJsonExport.Text = "JSON";
+            this.btnJsonExport.Click += new System.EventHandler(this.btnJsonExport_Click);
+            // 
+            // btnXmlExport
+            // 
+            this.btnXmlExport.AutoSize = true;
+            this.btnXmlExport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnXmlExport.Font = new System.Drawing.Font("Century Gothic", 14.2F, System.Drawing.FontStyle.Bold);
+            this.btnXmlExport.ForeColor = System.Drawing.Color.White;
+            this.btnXmlExport.Location = new System.Drawing.Point(409, 372);
+            this.btnXmlExport.Name = "btnXmlExport";
+            this.btnXmlExport.Size = new System.Drawing.Size(48, 23);
+            this.btnXmlExport.TabIndex = 3;
+            this.btnXmlExport.Text = "XML";
+            this.btnXmlExport.Click += new System.EventHandler(this.btnXmlExport_Click);
+            // 
             // SettingsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,6 +244,10 @@ namespace ComicPeeps.UserControls
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnSaveLastPage);
             this.Controls.Add(this.btnAutoFlip);
+            this.Controls.Add(this.btnXmlExport);
+            this.Controls.Add(this.btnJsonExport);
+            this.Controls.Add(this.btnCsvExport);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -220,5 +278,9 @@ namespace ComicPeeps.UserControls
         private System.Windows.Forms.TextBox tbCompressSize;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox tbPageSize;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label btnCsvExport;
+        private System.Windows.Forms.Label btnJsonExport;
+        private System.Windows.Forms.Label btnXmlExport;
     }
 }
