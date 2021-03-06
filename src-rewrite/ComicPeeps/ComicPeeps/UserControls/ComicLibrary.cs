@@ -53,7 +53,9 @@ namespace ComicPeeps.UserControls
 
             foreach (var issue in issues)
             {
-                pnlComics.Controls.Add(new IssueButton(issue));
+                IssueButton issueButton = new IssueButton(issue);
+                issueButton.Disposed += btnClose_Click;
+                pnlComics.Controls.Add(issueButton);
             }
 
             if (page + 1 < maximumPages)

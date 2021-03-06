@@ -16,6 +16,8 @@ namespace ComicPeeps.UserControls.Components
     {
         ComicIssue issue;
 
+        public EventHandler Disposed;
+
         public IssueButton(ComicIssue comicIssue)
         {
             InitializeComponent();
@@ -63,6 +65,12 @@ namespace ComicPeeps.UserControls.Components
                     if (comic != null)
                     {
                         await GlobalFunctions.UpdateComic(comic);
+                        
+                        if (Disposed != null)
+                        {
+                            Disposed.Invoke(sender, e);
+                        }
+
                         this.Dispose();
                     }
                 }
