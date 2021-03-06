@@ -54,7 +54,7 @@ namespace ComicPeeps.UserControls
             foreach (var issue in issues)
             {
                 IssueButton issueButton = new IssueButton(issue);
-                issueButton.Disposed += btnClose_Click;
+                issueButton.DisposeObject += btnClose_Click;
                 pnlComics.Controls.Add(issueButton);
             }
 
