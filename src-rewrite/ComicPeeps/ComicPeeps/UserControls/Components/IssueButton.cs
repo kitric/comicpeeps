@@ -92,6 +92,12 @@ namespace ComicPeeps.UserControls.Components
                     this.BackgroundImage = await GlobalFunctions.LocationToImage(issue.Thumbnail);
                 }
             }
+            else
+            {
+                // Regenerate the cover again.
+                issue.Thumbnail = await GlobalFunctions.GenerateCover(issue.Location, issue.SeriesId, issue.IssueNumber);
+                this.BackgroundImage = await GlobalFunctions.LocationToImage(issue.Thumbnail);
+            }
 
             if (issue.Completed == true)
             {

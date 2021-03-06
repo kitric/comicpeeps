@@ -48,7 +48,8 @@ namespace ComicPeeps.UserControls
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            pbThumbnail.Image.Dispose();
+            if (pbThumbnail.Image != null)
+                pbThumbnail.Image.Dispose();
             this.Dispose();
         }
     }
