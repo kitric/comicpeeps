@@ -63,7 +63,22 @@ namespace ComicPeeps.UserControls.Components
         private void ComicButton_Click(object sender, EventArgs e)
         {
             //GlobalFunctions.SwitchTo<ComicLibrary>(MainScreen.Instance.pnlContent, "ComicLibrary", new object[] { comicSeries });
-            GlobalFunctions.AddToScreenWithoutSwitch<ComicLibrary>(MainScreen.Instance.pnlContent, "ComicLibrary", new object[] { comicSeries });
+            if (Directory.Exists(comicSeries.FolderPath))
+            {
+                GlobalFunctions.AddToScreenWithoutSwitch<ComicLibrary>(MainScreen.Instance.pnlContent, "ComicLibrary", new object[] { comicSeries });
+            }
+            else
+            {
+                if (MessageBox.Show("This directory no longer exists. Do you want to remove the comic from your directory?", "Directory not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                {
+                    // Delete the comic 
+                    MainScreen.UserData.ComicSeries.Remove(comicSeries);
+                    // Delete from the form
+                    if (this.BackgroundImage != null)
+                        this.BackgroundImage.Dispose();
+                    this.Dispose();
+                }
+            }
         }
 
         private async void ComicButton_Load(object sender, EventArgs e)
@@ -99,9 +114,15 @@ namespace ComicPeeps.UserControls.Components
             this.Dispose();
         }
 
-        private void tsmUpdateIssues_Click(object sender, EventArgs e)
+        private async void tsmUpdateIssues_Click(object sender, EventArgs e)
         {
-            GlobalFunctions.UpdateComic(comicSeries);
+            if (await GlobalFunctions.UpdateComic(comicSeries) == false)
+            {
+                // Delete from the form
+                if (this.BackgroundImage != null)
+                    this.BackgroundImage.Dispose();
+                this.Dispose();
+            }
         }
     }
 }

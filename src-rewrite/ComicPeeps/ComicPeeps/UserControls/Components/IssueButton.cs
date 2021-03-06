@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,10 +47,26 @@ namespace ComicPeeps.UserControls.Components
             toolTip.SetToolTip(this, $"{comicIssue.ComicName}, Issue {comicIssue.IssueNumber}");
         }
 
-        private void IssueButton_Click(object sender, EventArgs e)
+        private async void IssueButton_Click(object sender, EventArgs e)
         {
             //GlobalFunctions.SwitchTo<IssueDescription>(MainScreen.Instance.pnlContent, "IssueDescription", new object[] { issue });
-            GlobalFunctions.AddToScreenWithoutSwitch<IssueDescription>(MainScreen.Instance.pnlContent, "IssueDescription", new object[] { issue });
+            if (File.Exists(issue.Location))
+            {
+                GlobalFunctions.AddToScreenWithoutSwitch<IssueDescription>(MainScreen.Instance.pnlContent, "IssueDescription", new object[] { issue });
+            }
+            else
+            {
+                if (MessageBox.Show("This file no longer exists. Do you want to update this comic?", "File not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+                {
+                    // Update the comic
+                    var comic = GlobalFunctions.GetComicFromId(issue.SeriesId);
+                    if (comic != null)
+                    {
+                        await GlobalFunctions.UpdateComic(comic);
+                        this.Dispose();
+                    }
+                }
+            }
         }
 
         private async void IssueButton_Load(object sender, EventArgs e)
