@@ -116,7 +116,7 @@ namespace ComicPeeps.UserControls.Components
 
         private async void tsmUpdateIssues_Click(object sender, EventArgs e)
         {
-            if (await GlobalFunctions.UpdateComic(comicSeries) == false)
+            if (await ComicFunctions.UpdateComic(comicSeries) == false)
             {
                 // Delete from the form
                 if (this.BackgroundImage != null)

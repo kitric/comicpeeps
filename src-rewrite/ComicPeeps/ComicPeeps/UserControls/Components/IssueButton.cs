@@ -64,7 +64,7 @@ namespace ComicPeeps.UserControls.Components
                     var comic = GlobalFunctions.GetComicFromId(issue.SeriesId);
                     if (comic != null)
                     {
-                        await GlobalFunctions.UpdateComic(comic);
+                        await ComicFunctions.UpdateComic(comic);
                         
                         if (DisposeObject != null)
                         {
