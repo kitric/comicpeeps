@@ -184,5 +184,26 @@ namespace ComicPeeps
 			};
 		}
 
+		public static ComicInfo DesrializeComicInfo(string filePath)
+		{
+			using (Stream S = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+			{
+				XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
+
+				return (ComicInfo)xmlSer.Deserialize(S);
+			}
+		}
+
+		public static string SerializeComicInfo(ComicInfo info, string location)
+		{
+			using (Stream s = new FileStream(location, FileMode.Truncate, FileAccess.Write))
+			{
+				XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
+
+				xmlSer.Serialize(s, info);
+
+				return location;
+			}
+		}
 	}
 }

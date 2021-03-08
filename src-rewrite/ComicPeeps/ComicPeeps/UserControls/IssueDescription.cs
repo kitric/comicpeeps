@@ -38,7 +38,7 @@ namespace ComicPeeps.UserControls
             }
             else
             {
-                info = GlobalFunctions.DesrializeComicInfo(MainScreen.ComicInfoPath + "\\" + comicIssue.ComicName + "\\" + comicIssue.IssueNumber + "\\ComicInfo.xml");
+                info = ComicFunctions.DesrializeComicInfo(MainScreen.ComicInfoPath + "\\" + comicIssue.ComicName + "\\" + comicIssue.IssueNumber + "\\ComicInfo.xml");
             }
 
             lblTitle.Text = comicIssue.ComicName.ToLower() + " - issue " + comicIssue.IssueNumber;
