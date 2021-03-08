@@ -103,7 +103,7 @@ namespace ComicPeeps.UserControls
                         Thumbnail = ""
                     };
 
-                    await GlobalFunctions.AddComicIssues(comicSeries);
+                    await ComicFunctions.AddComicIssues(comicSeries);
 
                     if (comicSeries.Issues.Count != 0)
                     {
