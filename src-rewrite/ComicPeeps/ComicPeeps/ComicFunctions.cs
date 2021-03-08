@@ -1,4 +1,5 @@
-﻿using SharpCompress.Archives;
+﻿using ComicPeeps.Models;
+using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ComicPeeps
 {
@@ -125,5 +127,62 @@ namespace ComicPeeps
 
 			return await Task.FromResult("");
 		}
+
+		/// <summary>
+		/// Must call `Directory.Delete(MainScreen.ComicInfoPath + "\\" + issue.ComicName);` after this
+		/// </summary>
+		/// <param name="issue"></param>
+		/// <returns></returns>
+		public static ComicInfo GetComicInfo(ComicIssue issue)
+		{
+			string dir = Directory.CreateDirectory(MainScreen.ComicInfoPath + "\\" + issue.ComicName + "\\" + issue.IssueNumber).FullName;
+
+			if (issue.Location.ToLower().EndsWith(".cbz"))
+			{
+				// its a cbz file.
+				using (ZipArchive archive = ZipFile.OpenRead(issue.Location))
+				{
+					try
+					{
+						ZipArchiveEntry entry = archive.Entries.Where(e => e.FullName == "ComicInfo.xml").First();
+						entry.ExtractToFile(dir + "\\ComicInfo.xml");
+
+						using (Stream S = new FileStream(dir + "\\ComicInfo.xml", FileMode.Open, FileAccess.Read))
+						{
+							XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
+
+							return (ComicInfo)xmlSer.Deserialize(S);
+						}
+					}
+					catch { }
+				}
+			}
+			else if (issue.Location.ToLower().EndsWith(".cbr"))
+			{
+				// its a cbr file 
+				using (RarArchive archive = RarArchive.Open(issue.Location))
+				{
+					try
+					{
+						RarArchiveEntry entry = archive.Entries.Where(e => e.Key == "ComicInfo.xml").First();
+						entry.WriteToFile(dir + "\\ComicInfo.xml");
+
+						using (Stream S = new FileStream(dir + "\\ComicInfo.xml", FileMode.Open, FileAccess.Read))
+						{
+							XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
+
+							return (ComicInfo)xmlSer.Deserialize(S);
+						}
+					}
+					catch { }
+				}
+			}
+
+			return new ComicInfo()
+			{
+				Summary = "This comic does not have a summary"
+			};
+		}
+
 	}
 }

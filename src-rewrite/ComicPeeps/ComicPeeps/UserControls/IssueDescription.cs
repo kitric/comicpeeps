@@ -34,7 +34,7 @@ namespace ComicPeeps.UserControls
         {
             if (!File.Exists(MainScreen.ComicInfoPath + "\\" + comicIssue.ComicName + "\\" + comicIssue.IssueNumber + "\\ComicInfo.xml"))
             {
-                info = GlobalFunctions.GetComicInfo(comicIssue);
+                info = ComicFunctions.GetComicInfo(comicIssue);
             }
             else
             {
