@@ -119,17 +119,5 @@ namespace ComicPeeps
 		{
 			return list.Skip(page * pageSize).Take(pageSize).ToList();
 		}
-
-		public static ComicSeries GetComicFromId(string id)
-        {
-			try
-			{
-				return MainScreen.UserData.ComicSeries.Where(comic => comic.ComicSeriesId == id).First();
-			}
-            catch
-            {
-				return null;
-            }
-        }
 	}
 }

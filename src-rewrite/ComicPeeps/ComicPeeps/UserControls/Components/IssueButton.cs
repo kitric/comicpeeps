@@ -61,7 +61,7 @@ namespace ComicPeeps.UserControls.Components
                 if (MessageBox.Show("This file no longer exists. Do you want to update this comic?", "File not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
                 {
                     // Update the comic
-                    var comic = GlobalFunctions.GetComicFromId(issue.SeriesId);
+                    var comic = ComicFunctions.GetComicFromId(issue.SeriesId);
                     if (comic != null)
                     {
                         await ComicFunctions.UpdateComic(comic);

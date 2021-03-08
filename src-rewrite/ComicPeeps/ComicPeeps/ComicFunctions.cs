@@ -344,5 +344,17 @@ namespace ComicPeeps
 				series.Issues[i].IssueNumber = i + 1;
 			}
 		}
+
+		public static ComicSeries GetComicFromId(string id)
+		{
+			try
+			{
+				return MainScreen.UserData.ComicSeries.Where(comic => comic.ComicSeriesId == id).First();
+			}
+			catch
+			{
+				return null;
+			}
+		}
 	}
 }
