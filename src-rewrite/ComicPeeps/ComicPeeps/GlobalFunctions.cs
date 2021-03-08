@@ -106,37 +106,6 @@ namespace ComicPeeps
 			}
 		}
 
-		// Read the ComicIssue and return the images
-		public static Task<string[]> ReadComic(ComicIssue issue)
-        {
-			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.SeriesId + "\\" + issue.IssueId).FullName;
-			
-			if (issue.Location.ToLower().EndsWith(".cbz"))
-            {
-				using (ZipArchive archive = ZipFile.OpenRead(issue.Location))
-                {
-					archive.ExtractToDirectory(dir);
-					
-					var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
-					Array.Sort(result);
-					return Task.FromResult(result);
-				}
-            }
-			else if (issue.Location.ToLower().EndsWith(".cbr"))
-            {
-				using (RarArchive archive = RarArchive.Open(issue.Location))
-                {
-					archive.WriteToDirectory(dir);
-
-					var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
-					Array.Sort(result);
-					return Task.FromResult(result);
-				}
-            }
-
-			return Task.FromResult(new string[0]);
-        }
-
 		/// <summary>
 		/// Adds comics to a comic series
 		/// </summary>

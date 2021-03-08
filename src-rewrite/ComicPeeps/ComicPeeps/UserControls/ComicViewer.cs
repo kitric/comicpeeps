@@ -163,7 +163,7 @@ namespace ComicPeeps.UserControls
 
         private async void ComicViewer_Load(object sender, EventArgs e)
         {
-            images = await GlobalFunctions.ReadComic(comicIssue);
+            images = await ComicFunctions.ReadComic(comicIssue);
 
             comicIssue.Pages = images.Length;
 
