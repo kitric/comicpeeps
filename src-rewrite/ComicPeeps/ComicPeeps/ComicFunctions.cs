@@ -13,7 +13,7 @@ using System.Xml.Serialization;
 
 namespace ComicPeeps
 {
-    public class ComicFunctions
+    public static class ComicFunctions
     {
 		public static async Task<string> GenerateCover(string comic, string comicSeriesId, int comicNumber)
 		{
