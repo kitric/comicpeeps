@@ -74,6 +74,7 @@ namespace ComicPeeps.UserControls.Components
             this.pbCover.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbCover.TabIndex = 1;
             this.pbCover.TabStop = false;
+            this.pbCover.Click += new System.EventHandler(this.ComicButton_Click);
             // 
             // lblComicName
             // 
@@ -85,6 +86,7 @@ namespace ComicPeeps.UserControls.Components
             this.lblComicName.Size = new System.Drawing.Size(374, 23);
             this.lblComicName.TabIndex = 2;
             this.lblComicName.Text = "comic name";
+            this.lblComicName.Click += new System.EventHandler(this.ComicButton_Click);
             // 
             // btnDelete
             // 
@@ -120,6 +122,7 @@ namespace ComicPeeps.UserControls.Components
             this.lblIssueCount.TabIndex = 2;
             this.lblIssueCount.Text = "issues";
             this.lblIssueCount.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.lblIssueCount.Click += new System.EventHandler(this.ComicButton_Click);
             // 
             // ComicButton
             // 

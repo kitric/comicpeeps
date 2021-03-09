@@ -32,21 +32,21 @@ namespace ComicPeeps.UserControls.Components
             tsmMarkAsRead.ForeColor = Color.White;
             tsmMarkAsRead.BackColor = Color.FromArgb(5, 5, 5);
 
-            ToolTip toolTip = new ToolTip
-            {
-                OwnerDraw = true
-            };
-
-            toolTip.Draw += (s, e) =>
-            {
-                e.DrawBackground();
-                e.DrawBorder();
-                e.DrawText((TextFormatFlags.NoClipping | TextFormatFlags.VerticalCenter));
-            };
-
-            toolTip.BackColor = Color.FromArgb(5, 5, 5);
-            toolTip.ForeColor = Color.White;
-            toolTip.SetToolTip(this, $"{comicIssue.ComicName}, Issue {comicIssue.IssueNumber}");
+            //ToolTip toolTip = new ToolTip
+            //{
+            //    OwnerDraw = true
+            //};
+            //
+            //toolTip.Draw += (s, e) =>
+            //{
+            //    e.DrawBackground();
+            //    e.DrawBorder();
+            //    e.DrawText((TextFormatFlags.NoClipping | TextFormatFlags.VerticalCenter));
+            //};
+            //
+            //toolTip.BackColor = Color.FromArgb(5, 5, 5);
+            //toolTip.ForeColor = Color.White;
+            //toolTip.SetToolTip(this, $"{comicIssue.ComicName}, Issue {comicIssue.IssueNumber}");
         }
 
         private async void IssueButton_Click(object sender, EventArgs e)
@@ -79,24 +79,26 @@ namespace ComicPeeps.UserControls.Components
 
         private async void IssueButton_Load(object sender, EventArgs e)
         {
+            this.lblIssueName.Text = issue.ComicName.ToLower() + " - issue" + issue.IssueNumber;
+
             if (issue.Thumbnail != "")
             {
                 try
                 {
-                    this.BackgroundImage = await GlobalFunctions.LocationToImage(issue.Thumbnail);
+                    this.pbCover.Image = await GlobalFunctions.CompressImage(issue.Thumbnail, 5);
                 }
                 catch
                 {
                     // Regenerate the cover again.
                     issue.Thumbnail = await ComicFunctions.GenerateCover(issue.Location, issue.SeriesId, issue.IssueNumber);
-                    this.BackgroundImage = await GlobalFunctions.LocationToImage(issue.Thumbnail);
+                    this.pbCover.Image = await GlobalFunctions.CompressImage(issue.Thumbnail, 5);
                 }
             }
             else
             {
                 // Regenerate the cover again.
                 issue.Thumbnail = await ComicFunctions.GenerateCover(issue.Location, issue.SeriesId, issue.IssueNumber);
-                this.BackgroundImage = await GlobalFunctions.LocationToImage(issue.Thumbnail);
+                this.pbCover.Image = await GlobalFunctions.CompressImage(issue.Thumbnail, 5);
             }
 
             if (issue.Completed == true)

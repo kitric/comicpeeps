@@ -22,6 +22,9 @@ namespace ComicPeeps.UserControls
 
         List<IssueButton> currentResults = new List<IssueButton>();
 
+        int y = 0;
+        const int buffer = 45;
+
         public ComicLibrary(ComicSeries comicSeries)
         {
             InitializeComponent();
@@ -31,6 +34,8 @@ namespace ComicPeeps.UserControls
 
         Task<bool> LoadComics()
         {
+            y = 0;
+
             // Dispose of all current results
             for (int i = 0; i < currentResults.Count; i++)
             {
@@ -47,23 +52,32 @@ namespace ComicPeeps.UserControls
             if (page > 0)
             {
                 CustomButton loadLess = new CustomButton(Properties.Resources.prev);
+                loadLess.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+                loadLess.Location = new Point(0, y);
                 loadLess.Click += Previous;
                 pnlComics.Controls.Add(loadLess);
+                y += buffer;
             }
 
             foreach (var issue in issues)
             {
                 IssueButton issueButton = new IssueButton(issue);
+                issueButton.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+                issueButton.Location = new Point(0, y);
                 issueButton.DisposeObject += btnClose_Click;
                 pnlComics.Controls.Add(issueButton);
+                y += buffer;
             }
 
             if (page + 1 < maximumPages)
             {
                 // Load more 
                 CustomButton loadMore = new CustomButton(Properties.Resources.next);
+                loadMore.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+                loadMore.Location = new Point(0, y);
                 loadMore.Click += Next;
                 pnlComics.Controls.Add(loadMore);
+                y += buffer;
             }
 
             return Task.FromResult(true);
