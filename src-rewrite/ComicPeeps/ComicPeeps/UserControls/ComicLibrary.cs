@@ -51,7 +51,7 @@ namespace ComicPeeps.UserControls
             // Add a previous button if the number pf pages is greater than 0
             if (page > 0)
             {
-                CustomButton loadLess = new CustomButton(Properties.Resources.prev);
+                CustomButton loadLess = new CustomButton(Properties.Resources.up);
                 loadLess.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
                 loadLess.Location = new Point(0, y);
                 loadLess.Click += Previous;
@@ -72,7 +72,7 @@ namespace ComicPeeps.UserControls
             if (page + 1 < maximumPages)
             {
                 // Load more 
-                CustomButton loadMore = new CustomButton(Properties.Resources.next);
+                CustomButton loadMore = new CustomButton(Properties.Resources.down);
                 loadMore.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
                 loadMore.Location = new Point(0, y);
                 loadMore.Click += Next;

@@ -29,22 +29,38 @@ namespace ComicPeeps.UserControls.Components
         /// </summary>
         private void InitializeComponent()
         {
+            this.pbImage = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             this.SuspendLayout();
+            // 
+            // pbImage
+            // 
+            this.pbImage.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.pbImage.Location = new System.Drawing.Point(312, 16);
+            this.pbImage.Name = "pbImage";
+            this.pbImage.Size = new System.Drawing.Size(16, 9);
+            this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbImage.TabIndex = 0;
+            this.pbImage.TabStop = false;
             // 
             // CustomButton
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(10)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Controls.Add(this.pbImage);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
             this.Name = "CustomButton";
-            this.Size = new System.Drawing.Size(125, 191);
+            this.Size = new System.Drawing.Size(641, 40);
+            ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.PictureBox pbImage;
     }
 }

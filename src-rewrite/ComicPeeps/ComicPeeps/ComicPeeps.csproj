@@ -301,6 +301,8 @@
   <ItemGroup>
     <Content Include="logo.ico" />
     <Content Include="Resources\add.png" />
+    <None Include="Resources\up.png" />
+    <None Include="Resources\down.png" />
     <None Include="Resources\update.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\prev.png" />

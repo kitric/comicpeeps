@@ -12,15 +12,16 @@ namespace ComicPeeps.UserControls.Components
 {
     public partial class CustomButton : UserControl
     {
-        public CustomButton(Image backgroundImage)
+        public CustomButton(Image image)
         {
             InitializeComponent();
-            this.BackgroundImage = backgroundImage;
+            this.pbImage.Image = image;
         }
 
         ~CustomButton()
         {
-            this.BackgroundImage.Dispose();
+            if (this.pbImage.Image != null)
+                this.pbImage.Image.Dispose();
         }
     }
 }

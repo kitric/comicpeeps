@@ -20,6 +20,8 @@ namespace ComicPeeps.UserControls.Components
 
         Library library;
 
+        public EventHandler OnRemove;
+
         public ComicButton(ComicSeries comicSeries, Library library)
         {
             InitializeComponent();
@@ -129,6 +131,8 @@ namespace ComicPeeps.UserControls.Components
             {
                 this.BackgroundImage.Dispose();
             }
+            if (OnRemove != null)
+                OnRemove.Invoke(this, EventArgs.Empty);
             this.Dispose();
         }
 
