@@ -53,6 +53,7 @@ namespace ComicPeeps.UserControls
             {
                 CustomButton loadLess = new CustomButton(Properties.Resources.up);
                 loadLess.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+                loadLess.Width = pnlComics.Width - 19;
                 loadLess.Location = new Point(0, y);
                 loadLess.Click += Previous;
                 pnlComics.Controls.Add(loadLess);
@@ -63,6 +64,7 @@ namespace ComicPeeps.UserControls
             {
                 IssueButton issueButton = new IssueButton(issue);
                 issueButton.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+                issueButton.Width = pnlComics.Width - 19;
                 issueButton.Location = new Point(0, y);
                 issueButton.DisposeObject += btnClose_Click;
                 pnlComics.Controls.Add(issueButton);
@@ -74,6 +76,7 @@ namespace ComicPeeps.UserControls
                 // Load more 
                 CustomButton loadMore = new CustomButton(Properties.Resources.down);
                 loadMore.Anchor = (AnchorStyles.Left | AnchorStyles.Top | AnchorStyles.Right);
+                loadMore.Width = pnlComics.Width - 19;
                 loadMore.Location = new Point(0, y);
                 loadMore.Click += Next;
                 pnlComics.Controls.Add(loadMore);
