@@ -30,8 +30,8 @@ namespace ComicPeeps.UserControls
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.pnlComics = new System.Windows.Forms.FlowLayoutPanel();
             this.btnAdd = new System.Windows.Forms.PictureBox();
+            this.pnlComics = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.btnAdd)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,16 +46,6 @@ namespace ComicPeeps.UserControls
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "your comics.";
             // 
-            // pnlComics
-            // 
-            this.pnlComics.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlComics.Location = new System.Drawing.Point(36, 95);
-            this.pnlComics.Name = "pnlComics";
-            this.pnlComics.Size = new System.Drawing.Size(730, 445);
-            this.pnlComics.TabIndex = 4;
-            // 
             // btnAdd
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -68,13 +58,23 @@ namespace ComicPeeps.UserControls
             this.btnAdd.TabStop = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
+            // pnlComics
+            // 
+            this.pnlComics.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlComics.Location = new System.Drawing.Point(48, 95);
+            this.pnlComics.Name = "pnlComics";
+            this.pnlComics.Size = new System.Drawing.Size(660, 445);
+            this.pnlComics.TabIndex = 6;
+            // 
             // Library
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Transparent;
-            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.pnlComics);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lblTitle);
             this.Name = "Library";
             this.Size = new System.Drawing.Size(757, 540);
@@ -88,7 +88,7 @@ namespace ComicPeeps.UserControls
         #endregion
 
         private System.Windows.Forms.Label lblTitle;
-        public System.Windows.Forms.FlowLayoutPanel pnlComics;
         private System.Windows.Forms.PictureBox btnAdd;
+        public System.Windows.Forms.Panel pnlComics;
     }
 }

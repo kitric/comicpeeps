@@ -37,27 +37,27 @@ namespace ComicPeeps.UserControls.Components
             tsmUpdateIssues.ForeColor = Color.White;
             tsmUpdateIssues.BackColor = Color.FromArgb(5, 5, 5);
 
-            ToolTip toolTip = new ToolTip
-            {
-                OwnerDraw = true
-            };
-
-            toolTip.Draw += (s, e) =>
-            {
-                e.DrawBackground();
-                e.DrawBorder();
-                e.DrawText((TextFormatFlags.NoClipping | TextFormatFlags.VerticalCenter));
-            };
-
-            toolTip.BackColor = Color.FromArgb(5, 5, 5);
-            toolTip.ForeColor = Color.White;
-            toolTip.SetToolTip(this, $"{comicSeries.ComicName}{Environment.NewLine}Issue Count: {comicSeries.Issues.Count}");
+            //ToolTip toolTip = new ToolTip
+            //{
+            //    OwnerDraw = true
+            //};
+            //
+            //toolTip.Draw += (s, e) =>
+            //{
+            //    e.DrawBackground();
+            //    e.DrawBorder();
+            //    e.DrawText((TextFormatFlags.NoClipping | TextFormatFlags.VerticalCenter));
+            //};
+            //
+            //toolTip.BackColor = Color.FromArgb(5, 5, 5);
+            //toolTip.ForeColor = Color.White;
+            //toolTip.SetToolTip(this, $"{comicSeries.ComicName}{Environment.NewLine}Issue Count: {comicSeries.Issues.Count}");
         }
 
         ~ComicButton()
         {
-            if (this.BackgroundImage != null)
-                this.BackgroundImage.Dispose();
+            if (this.pbCover.Image != null)
+                this.pbCover.Image.Dispose();
         }
 
         private void ComicButton_Click(object sender, EventArgs e)
@@ -83,10 +83,13 @@ namespace ComicPeeps.UserControls.Components
 
         private async void ComicButton_Load(object sender, EventArgs e)
         {
+            lblComicName.Text = comicSeries.ComicName.ToLower() + ".";
+            lblIssueCount.Text = comicSeries.Issues.Count + " issues.";
+
             if (comicSeries.Thumbnail != "")
             {
                 if (File.Exists(comicSeries.Thumbnail))
-                    this.BackgroundImage = await GlobalFunctions.LocationToImage(comicSeries.Thumbnail);
+                    this.pbCover.Image = await GlobalFunctions.CompressImage(comicSeries.Thumbnail, 5);
             }
             else
             {
@@ -97,11 +100,26 @@ namespace ComicPeeps.UserControls.Components
                 }
 
                 if (File.Exists(comicSeries.Thumbnail))
-                    this.BackgroundImage = await GlobalFunctions.LocationToImage(comicSeries.Thumbnail);
+                    this.pbCover.Image = await GlobalFunctions.CompressImage(comicSeries.Thumbnail, 5);
             }
         }
 
         private void tsmRemove_Click(object sender, EventArgs e)
+        {
+            RemoveComic();
+        }
+
+        private void tsmUpdateIssues_Click(object sender, EventArgs e)
+        {
+            UpdateComic();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            RemoveComic();
+        }
+
+        private void RemoveComic()
         {
             // Delete the thumbnails
             Directory.Delete(MainScreen.ThumbnailPath + "\\" + comicSeries.ComicSeriesId, true);
@@ -114,7 +132,12 @@ namespace ComicPeeps.UserControls.Components
             this.Dispose();
         }
 
-        private async void tsmUpdateIssues_Click(object sender, EventArgs e)
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            UpdateComic();
+        }
+
+        private async void UpdateComic()
         {
             if (await ComicFunctions.UpdateComic(comicSeries) == false)
             {
