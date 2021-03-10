@@ -31,22 +31,6 @@ namespace ComicPeeps.UserControls.Components
 
             tsmMarkAsRead.ForeColor = Color.White;
             tsmMarkAsRead.BackColor = Color.FromArgb(5, 5, 5);
-
-            //ToolTip toolTip = new ToolTip
-            //{
-            //    OwnerDraw = true
-            //};
-            //
-            //toolTip.Draw += (s, e) =>
-            //{
-            //    e.DrawBackground();
-            //    e.DrawBorder();
-            //    e.DrawText((TextFormatFlags.NoClipping | TextFormatFlags.VerticalCenter));
-            //};
-            //
-            //toolTip.BackColor = Color.FromArgb(5, 5, 5);
-            //toolTip.ForeColor = Color.White;
-            //toolTip.SetToolTip(this, $"{comicIssue.ComicName}, Issue {comicIssue.IssueNumber}");
         }
 
         private async void IssueButton_Click(object sender, EventArgs e)
