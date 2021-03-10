@@ -63,7 +63,8 @@ namespace ComicPeeps.UserControls.Components
 
         private async void IssueButton_Load(object sender, EventArgs e)
         {
-            this.lblIssueName.Text = issue.ComicName.ToLower() + " - issue " + issue.IssueNumber;
+            //this.lblIssueName.Text = issue.ComicName.ToLower() + " - issue " + issue.IssueNumber;
+            this.lblIssueName.Text = issue.Location;
 
             if (issue.Thumbnail != "")
             {

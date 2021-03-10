@@ -278,70 +278,157 @@ namespace ComicPeeps
 			}
 		}
 
-		public static async Task<bool> UpdateComic(ComicSeries series)
-		{
-			if (Directory.Exists(series.FolderPath))
-			{
-				// Getting new files
-				List<string> existingComics = new List<string>();
-
-				for (int i = 0; i < series.Issues.Count; i++)
-				{
-					if (File.Exists(series.Issues[i].Location))
-					{
-						existingComics.Add(series.Issues[i].Location);
-					}
-					else
-					{
-						// Mark as removed;
-						series.Issues.Remove(series.Issues[i]);
-					}
-				}
-
-				var newFiles = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories)
-										.Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz"))
-										.Where(s => !existingComics.Contains(s));
-
-				foreach (var newFile in newFiles)
-				{
-					ComicIssue issue = new ComicIssue()
-					{
-						Location = newFile,
-						ComicName = series.ComicName,
-						IssueNumber = series.Issues.Count + 1,
-						Thumbnail = await ComicFunctions.GenerateCover(newFile, series.ComicSeriesId, series.Issues.Count + 1)
-					};
-
-					series.Issues.Add(issue);
-				}
-
-				// Get new details
-				series.ComicName = Path.GetFileName(series.FolderPath);
-
-				// Write function to update ComicSeries + IssueNumbers
-				UpdateIssues(series);
-
-				return true;
-			}
-			else
-			{
-				if (MessageBox.Show("This directory no longer exists. Do you want to remove the comic from your directory?", "Directory not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-				{
-					// Delete the comic
-					MainScreen.UserData.ComicSeries.Remove(series);
-
-					return false;
-				}
-
-				return true;
-			}
-		}
+		//public static async Task<bool> UpdateComic(ComicSeries series)
+		//{
+		//	if (Directory.Exists(series.FolderPath))
+		//	{
+		//		// Getting new files
+		//		List<string> existingComics = new List<string>();
+		//
+		//		for (int i = 0; i < series.Issues.Count; i++)
+		//		{
+		//			if (File.Exists(series.Issues[i].Location))
+		//			{
+		//				existingComics.Add(series.Issues[i].Location);
+		//			}
+		//			else
+		//			{
+		//				// Mark as removed;
+		//				series.Issues.Remove(series.Issues[i]);
+		//			}
+		//		}
+		//
+		//		var newFiles = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories)
+		//								.Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz"))
+		//								.Where(s => !existingComics.Contains(s));
+		//
+		//		foreach (var newFile in newFiles)
+		//		{
+		//			ComicIssue issue = new ComicIssue()
+		//			{
+		//				Location = newFile,
+		//				ComicName = series.ComicName,
+		//				IssueNumber = series.Issues.Count + 1,
+		//				//Thumbnail = await ComicFunctions.GenerateCover(newFile, series.ComicSeriesId, series.Issues.Count + 1)
+		//			};
+		//
+		//			series.Issues.Add(issue);
+		//		}
+		//
+		//		// Get new details
+		//		series.ComicName = Path.GetFileName(series.FolderPath);
+		//
+		//		// Write function to update ComicSeries + IssueNumbers
+		//		UpdateIssues(series);
+		//
+		//		return true;
+		//	}
+		//	else
+		//	{
+		//		if (MessageBox.Show("This directory no longer exists. Do you want to remove the comic from your directory?", "Directory not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+		//		{
+		//			// Delete the comic
+		//			MainScreen.UserData.ComicSeries.Remove(series);
+		//
+		//			return false;
+		//		}
+		//
+		//		return true;
+		//	}
+		//}
 
 		public static void UpdateIssues(ComicSeries series)
 		{
 			for (int i = 0; i < series.Issues.Count; i++)
 			{
 				series.Issues[i].IssueNumber = i + 1;
+			}
+		}
+
+		public static async Task<bool> UpdateComic(ComicSeries series)
+		{
+			if (Directory.Exists(series.FolderPath))
+			{
+				var files = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories)
+							.Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz"))
+							.ToArray();
+
+				Array.Sort(files);
+
+				// There a new comics
+				if (files.Length > series.Issues.Count)
+				{
+					// Update the existing comics.
+					for (int i = 0; i < series.Issues.Count; i++)
+					{
+						series.Issues[i].Location = files[i];
+						series.Issues[i].Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1);
+					}
+
+					// Add any new comics
+					for (int i = series.Issues.Count; i < files.Length; i++)
+					{
+						ComicIssue issue = new ComicIssue()
+						{
+							Location = files[i],
+							ComicName = series.ComicName,
+							IssueNumber = series.Issues.Count + 1,
+							Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1)
+						};
+
+						series.Issues.Add(issue);
+					}
+
+					UpdateIssues(series);
+
+					return true;
+				}
+				else if (files.Length < series.Issues.Count)
+				{
+					// There are less comics
+
+					// Update the existing comics
+					for (int i = 0; i < files.Length; i++)
+					{
+						series.Issues[i].Location = files[i];
+						series.Issues[i].Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1);
+					}
+
+					// Remove the rest of the issues
+					for (int i = files.Length; i < series.Issues.Count; i++)
+					{
+						series.Issues.Remove(series.Issues[i]);
+					}
+
+					UpdateIssues(series);
+
+					return true;
+				}
+				else
+				{
+					// Equal amount. Just update them
+					for (int i = 0; i < series.Issues.Count; i++)
+					{
+						series.Issues[i].Location = files[i];
+						series.Issues[i].Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1);
+					}
+
+					UpdateIssues(series);
+
+					return true;
+				}
+			}
+            else
+            {
+				if (MessageBox.Show("This directory no longer exists. Do you want to remove the comic from your directory?", "Directory not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
+				{
+					// Delete the comic
+					MainScreen.UserData.ComicSeries.Remove(series);
+				
+					return false;
+				}
+				
+				return true;
 			}
 		}
 
