@@ -245,12 +245,6 @@
     <None Include="Resources\appIconBig.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\addBtn.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\editBtn.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\readBtn.png" />
   </ItemGroup>
   <ItemGroup>
@@ -305,8 +299,6 @@
     <None Include="Resources\down.png" />
     <None Include="Resources\update.png" />
     <None Include="Resources\delete.png" />
-    <None Include="Resources\prev.png" />
-    <None Include="Resources\next.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
