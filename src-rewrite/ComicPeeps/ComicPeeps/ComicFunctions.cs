@@ -278,6 +278,10 @@ namespace ComicPeeps
 			}
 		}
 
+		/// <summary>
+		/// Updates the issue numbering
+		/// </summary>
+		/// <param name="series"></param>
 		public static void UpdateIssues(ComicSeries series)
 		{
 			for (int i = 0; i < series.Issues.Count; i++)
@@ -286,6 +290,11 @@ namespace ComicPeeps
 			}
 		}
 
+		/// <summary>
+		/// Updates a comic, especially its issues
+		/// </summary>
+		/// <param name="series"></param>
+		/// <returns></returns>
 		public static async Task<bool> UpdateComic(ComicSeries series)
 		{
 			if (Directory.Exists(series.FolderPath))
