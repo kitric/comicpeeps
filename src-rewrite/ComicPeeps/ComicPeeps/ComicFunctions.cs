@@ -278,65 +278,6 @@ namespace ComicPeeps
 			}
 		}
 
-		//public static async Task<bool> UpdateComic(ComicSeries series)
-		//{
-		//	if (Directory.Exists(series.FolderPath))
-		//	{
-		//		// Getting new files
-		//		List<string> existingComics = new List<string>();
-		//
-		//		for (int i = 0; i < series.Issues.Count; i++)
-		//		{
-		//			if (File.Exists(series.Issues[i].Location))
-		//			{
-		//				existingComics.Add(series.Issues[i].Location);
-		//			}
-		//			else
-		//			{
-		//				// Mark as removed;
-		//				series.Issues.Remove(series.Issues[i]);
-		//			}
-		//		}
-		//
-		//		var newFiles = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories)
-		//								.Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz"))
-		//								.Where(s => !existingComics.Contains(s));
-		//
-		//		foreach (var newFile in newFiles)
-		//		{
-		//			ComicIssue issue = new ComicIssue()
-		//			{
-		//				Location = newFile,
-		//				ComicName = series.ComicName,
-		//				IssueNumber = series.Issues.Count + 1,
-		//				//Thumbnail = await ComicFunctions.GenerateCover(newFile, series.ComicSeriesId, series.Issues.Count + 1)
-		//			};
-		//
-		//			series.Issues.Add(issue);
-		//		}
-		//
-		//		// Get new details
-		//		series.ComicName = Path.GetFileName(series.FolderPath);
-		//
-		//		// Write function to update ComicSeries + IssueNumbers
-		//		UpdateIssues(series);
-		//
-		//		return true;
-		//	}
-		//	else
-		//	{
-		//		if (MessageBox.Show("This directory no longer exists. Do you want to remove the comic from your directory?", "Directory not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-		//		{
-		//			// Delete the comic
-		//			MainScreen.UserData.ComicSeries.Remove(series);
-		//
-		//			return false;
-		//		}
-		//
-		//		return true;
-		//	}
-		//}
-
 		public static void UpdateIssues(ComicSeries series)
 		{
 			for (int i = 0; i < series.Issues.Count; i++)
