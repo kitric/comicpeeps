@@ -39,6 +39,7 @@ namespace ComicPeeps.UserControls
             this.pbLeft = new System.Windows.Forms.PictureBox();
             this.lblPageCount = new System.Windows.Forms.Label();
             this.AutoRead = new System.Windows.Forms.Timer(this.components);
+            this.tbPageInput = new System.Windows.Forms.TextBox();
             this.pnlRight.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbRight)).BeginInit();
             this.pnlPages.SuspendLayout();
@@ -97,6 +98,7 @@ namespace ComicPeeps.UserControls
             // 
             this.pnlLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnlLeft.Controls.Add(this.tbPageInput);
             this.pnlLeft.Controls.Add(this.pbLeft);
             this.pnlLeft.Controls.Add(this.lblPageCount);
             this.pnlLeft.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -122,7 +124,7 @@ namespace ComicPeeps.UserControls
             this.lblPageCount.AutoSize = true;
             this.lblPageCount.Font = new System.Drawing.Font("Century Gothic", 8.5F, System.Drawing.FontStyle.Bold);
             this.lblPageCount.ForeColor = System.Drawing.Color.White;
-            this.lblPageCount.Location = new System.Drawing.Point(10, 10);
+            this.lblPageCount.Location = new System.Drawing.Point(9, 41);
             this.lblPageCount.Name = "lblPageCount";
             this.lblPageCount.Size = new System.Drawing.Size(34, 16);
             this.lblPageCount.TabIndex = 1;
@@ -131,6 +133,17 @@ namespace ComicPeeps.UserControls
             // AutoRead
             // 
             this.AutoRead.Tick += new System.EventHandler(this.AutoRead_Tick);
+            // 
+            // tbPageInput
+            // 
+            this.tbPageInput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(2)))), ((int)(((byte)(2)))));
+            this.tbPageInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbPageInput.Font = new System.Drawing.Font("Century Gothic", 12F);
+            this.tbPageInput.ForeColor = System.Drawing.Color.White;
+            this.tbPageInput.Location = new System.Drawing.Point(12, 12);
+            this.tbPageInput.Name = "tbPageInput";
+            this.tbPageInput.Size = new System.Drawing.Size(119, 20);
+            this.tbPageInput.TabIndex = 3;
             // 
             // ComicViewer
             // 
@@ -170,5 +183,6 @@ namespace ComicPeeps.UserControls
         private System.Windows.Forms.Label lblPageCount;
         private System.Windows.Forms.PictureBox pbPageImage;
         private System.Windows.Forms.Timer AutoRead;
+        private System.Windows.Forms.TextBox tbPageInput;
     }
 }
