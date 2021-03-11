@@ -144,6 +144,7 @@ namespace ComicPeeps.UserControls
             this.tbPageInput.Name = "tbPageInput";
             this.tbPageInput.Size = new System.Drawing.Size(119, 20);
             this.tbPageInput.TabIndex = 3;
+            this.tbPageInput.KeyDown += new System.Windows.Forms.KeyEventHandler(this.tbPageInput_KeyDown);
             // 
             // ComicViewer
             // 

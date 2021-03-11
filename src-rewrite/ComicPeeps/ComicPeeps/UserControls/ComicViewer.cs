@@ -34,30 +34,35 @@ namespace ComicPeeps.UserControls
 
         private void ComicViewer_KeyDown(object sender, KeyEventArgs e)
         {
-            e.SuppressKeyPress = true;
-
             switch (e.KeyCode)
             {
                 case Keys.Escape:
+                    e.SuppressKeyPress = true;
                     this.pbPageImage.Image.Dispose();
                     this.Close();
                     break;
                 case Keys.Right:
+                    e.SuppressKeyPress = true;
                     NextPage();
                     break;
                 case Keys.Left:
+                    e.SuppressKeyPress = true;
                     PreviousPage();
                     break;
                 case Keys.Up:
+                    e.SuppressKeyPress = true;
                     NextPage();
                     break;
                 case Keys.Down:
+                    e.SuppressKeyPress = true;
                     PreviousPage();
                     break;
                 case Keys.Oemplus:
+                    e.SuppressKeyPress = true;
                     ZoomIn();
                     break;
                 case Keys.OemMinus:
+                    e.SuppressKeyPress = true;
                     ZoomOut();
                     break;
             }
@@ -188,6 +193,43 @@ namespace ComicPeeps.UserControls
         private void AutoRead_Tick(object sender, EventArgs e)
         {
             NextPage();
+        }
+
+        private async void FlipToPage(int page)
+        {
+            if (page > 0 && page < comicIssue.Pages + 1)
+            {
+                pnlPages.VerticalScroll.Value = 0;
+                currentPage = page - 1;
+                pbPageImage.Image.Dispose();
+                pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
+                tbPageInput.Text = $"{currentPage + 1}";
+
+                if (currentPage + 1 > comicIssue.Pages - 2)
+                {
+                    comicIssue.Completed = true;
+                }
+
+                if (MainScreen.UserData.Settings.UseAutoRead)
+                {
+                    AutoRead.Stop();
+                    AutoRead.Start();
+                }
+            }
+        }
+
+        private void tbPageInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (tbPageInput.Text != "")
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.Handled = true;
+                    e.SuppressKeyPress = true;
+
+                    FlipToPage(Convert.ToInt32(tbPageInput.Text));
+                }
+            }
         }
     }
 }
