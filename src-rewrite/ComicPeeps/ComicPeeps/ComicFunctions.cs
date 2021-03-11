@@ -15,114 +15,214 @@ namespace ComicPeeps
 {
     public static class ComicFunctions
     {
+		//public static async Task<string> GenerateCover(string comic, string comicSeriesId, int comicNumber)
+		//{
+		//	Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicSeriesId);
+		//
+		//	if (comic.ToLower().EndsWith(".cbz"))
+		//	{
+		//		// its a cbz file.
+		//		using (ZipArchive archive = ZipFile.OpenRead(comic))
+		//		{
+		//			List<ZipArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.FullName).ToList();
+		//			foreach (var entry in entries)
+		//			{
+		//				if (entry.FullName.EndsWith(".jpg"))
+		//				{
+		//					string fileName = entry.FullName;
+		//
+		//					if (fileName.Contains("\\"))
+		//					{
+		//						fileName = entry.FullName.Split('\\').Last();
+		//					}
+		//					if (fileName.Contains("/"))
+		//					{
+		//						fileName = fileName.Split('/').Last();
+		//					}
+		//
+		//					entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
+		//
+		//					using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+		//					{
+		//						image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+		//					}
+		//
+		//					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+		//
+		//					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+		//				}
+		//				else if (entry.FullName.EndsWith(".png"))
+		//				{
+		//					string fileName = entry.FullName.Replace('/', '\\');
+		//
+		//					if (fileName.Contains("\\"))
+		//					{
+		//						fileName = entry.FullName.Split('\\').Last();
+		//					}
+		//
+		//					entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
+		//
+		//					using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+		//					{
+		//						image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+		//					}
+		//
+		//					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+		//
+		//					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+		//				}
+		//			}
+		//		}
+		//	}
+		//	else if (comic.ToLower().EndsWith(".cbr"))
+		//	{
+		//		// its a cbr file 
+		//		using (RarArchive archive = RarArchive.Open(comic))
+		//		{
+		//			List<RarArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.Key).Where(entry => !entry.IsDirectory).ToList();
+		//			foreach (var entry in entries)
+		//			{
+		//				if (entry.Key.EndsWith(".jpg"))
+		//				{
+		//					string fileName = entry.Key;
+		//
+		//					if (entry.Key.Contains("\\"))
+		//					{
+		//						fileName = entry.Key.Split('\\').Last();
+		//					}
+		//
+		//					entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
+		//
+		//					using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+		//					{
+		//						image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+		//					}
+		//
+		//					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+		//
+		//					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+		//				}
+		//				else if (entry.Key.EndsWith(".png"))
+		//				{
+		//					string fileName = entry.Key;
+		//
+		//					if (entry.Key.Contains("\\"))
+		//					{
+		//						fileName = entry.Key.Split('\\').Last();
+		//					}
+		//
+		//					entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
+		//
+		//					using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+		//					{
+		//						image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+		//					}
+		//
+		//					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+		//
+		//					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+		//				}
+		//			}
+		//		}
+		//	}
+		//
+		//	return await Task.FromResult("");
+		//}
+
 		public static async Task<string> GenerateCover(string comic, string comicSeriesId, int comicNumber)
-		{
+        {
 			Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicSeriesId);
 
 			if (comic.ToLower().EndsWith(".cbz"))
-			{
-				// its a cbz file.
+            {
 				using (ZipArchive archive = ZipFile.OpenRead(comic))
-				{
-					List<ZipArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.FullName).ToList();
-					foreach (var entry in entries)
+                {
+					int index = 0;
+
+					bool thumbnailFound = false;
+
+					var entry = archive.Entries[index];
+
+					do
 					{
-						if (entry.FullName.EndsWith(".jpg"))
+						if (entry.FullName.EndsWith("jpg") || entry.FullName.EndsWith(".png"))
 						{
-							string fileName = entry.FullName;
-
-							if (fileName.Contains("\\"))
-							{
-								fileName = entry.FullName.Split('\\').Last();
-							}
-							if (fileName.Contains("/"))
-							{
-								fileName = fileName.Split('/').Last();
-							}
-
-							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
-
-							using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
-							{
-								image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
-							}
-
-							File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
-
-							return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+							thumbnailFound = true;
 						}
-						else if (entry.FullName.EndsWith(".png"))
+						else
 						{
-							string fileName = entry.FullName.Replace('/', '\\');
-
-							if (fileName.Contains("\\"))
-							{
-								fileName = entry.FullName.Split('\\').Last();
-							}
-
-							entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
-
-							using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
-							{
-								image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
-							}
-
-							File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
-
-							return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+							index++;
+							entry = archive.Entries[index];
 						}
 					}
+					while (!thumbnailFound);
+
+					string fileName = entry.FullName;
+
+					if (fileName.Contains("\\"))
+					{
+						fileName = entry.FullName.Split('\\').Last();
+					}
+					if (fileName.Contains("/"))
+					{
+						fileName = fileName.Split('/').Last();
+					}
+
+					entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
+
+					using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+					{
+						image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+					}
+
+					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 				}
 			}
 			else if (comic.ToLower().EndsWith(".cbr"))
-			{
-				// its a cbr file 
+            {
 				using (RarArchive archive = RarArchive.Open(comic))
-				{
-					List<RarArchiveEntry> entries = archive.Entries.OrderBy(entry => entry.Key).Where(entry => !entry.IsDirectory).ToList();
-					foreach (var entry in entries)
+                {
+					List<RarArchiveEntry> entries = archive.Entries.OrderBy(e => e.Key).Where(e => !e.IsDirectory).ToList();
+
+					int index = 0;
+
+					bool thumbnailFound = false;
+
+					var entry = entries[index];
+
+					do
 					{
-						if (entry.Key.EndsWith(".jpg"))
+						if (entry.Key.EndsWith("jpg") || entry.Key.EndsWith(".png"))
 						{
-							string fileName = entry.Key;
-
-							if (entry.Key.Contains("\\"))
-							{
-								fileName = entry.Key.Split('\\').Last();
-							}
-
-							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
-
-							using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
-							{
-								image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
-							}
-
-							File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
-
-							return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+							thumbnailFound = true;
 						}
-						else if (entry.Key.EndsWith(".png"))
+						else
 						{
-							string fileName = entry.Key;
-
-							if (entry.Key.Contains("\\"))
-							{
-								fileName = entry.Key.Split('\\').Last();
-							}
-
-							entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
-
-							using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
-							{
-								image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
-							}
-
-							File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
-
-							return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+							index++;
+							entry = entries[index];
 						}
 					}
+					while (!thumbnailFound);
+
+					string fileName = entry.Key;
+
+					if (entry.Key.Contains("\\"))
+					{
+						fileName = entry.Key.Split('\\').Last();
+					}
+
+					entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
+
+					using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+					{
+						image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+					}
+
+					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 				}
 			}
 
