@@ -274,9 +274,9 @@ namespace ComicPeeps
 						ComicName = comicSeries.ComicName,
 						SeriesId = comicSeries.ComicSeriesId,
 						Location = issues[i],
-						//Thumbnail = await GenerateCover(issues[i], comicSeries.ComicSeriesId, i + 1),
-						IssueNumber = i + 1
+						IssueNumber = i + 1,
 					};
+					comicIssue.IssueId += $"-{comicIssue.IssueNumber}";
 
 					if (i == 0)
 						comicIssue.Thumbnail = await ComicFunctions.GenerateCover(issues[i], comicSeries.ComicSeriesId, i + 1);
