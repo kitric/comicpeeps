@@ -69,7 +69,8 @@ namespace ComicPeeps
 
 					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
 
-					GlobalFunctions.SaveLogsAndClear($"Generating cover for {comic}");
+					MainScreen.Logger.Log($"Generating cover for {comic} - Complete");
+					GlobalFunctions.SaveLogsAndClear();
 
 					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 				}
@@ -120,13 +121,15 @@ namespace ComicPeeps
 
 					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
 
-					GlobalFunctions.SaveLogsAndClear($"Generating cover for {comic}");
+					MainScreen.Logger.Log($"Generating cover for {comic} - Complete");
+					GlobalFunctions.SaveLogsAndClear();
 
 					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 				}
 			}
 
-			GlobalFunctions.SaveLogsAndClear($"Generating cover for {comic} [NO COVER FOUND]");
+			MainScreen.Logger.Log($"Generating cover for {comic} [NO COVER FOUND]");
+			GlobalFunctions.SaveLogsAndClear();
 
 			return await Task.FromResult("");
 		}

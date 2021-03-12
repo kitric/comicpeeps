@@ -120,9 +120,8 @@ namespace ComicPeeps
 			return list.Skip(page * pageSize).Take(pageSize).ToList();
 		}
 
-		public static void SaveLogsAndClear(string message)
+		public static void SaveLogsAndClear()
         {
-			MainScreen.Logger.Log($"{message} - Complete");
 			MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
 			MainScreen.Logger.ClearLogs();
 		}

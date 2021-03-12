@@ -93,32 +93,61 @@ namespace ComicPeeps
 
         public static void Serialize()
         {
-            using (StreamWriter writer = new StreamWriter(AppData + "\\comic.peeps"))
+            Logger.Log("Saving data...");
+
+            try
             {
-                using (JsonWriter jwriter = new JsonTextWriter(writer))
+                using (StreamWriter writer = new StreamWriter(AppData + "\\comic.peeps"))
                 {
-                    JsonSerializer serializer = new JsonSerializer();
-                    serializer.Serialize(jwriter, UserData);
+                    using (JsonWriter jwriter = new JsonTextWriter(writer))
+                    {
+                        JsonSerializer serializer = new JsonSerializer();
+                        serializer.Serialize(jwriter, UserData);
+                    }
                 }
+
+                Logger.Log("Data saved");
+                GlobalFunctions.SaveLogsAndClear();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"There was an error saving data, check the logs ({LogFile}) for more info", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.Log(e.Message);
+                GlobalFunctions.SaveLogsAndClear();
             }
         }
 
         public static void Deserialize()
         {
-            if (File.Exists(AppData + "\\comic.peeps"))
-            {
-                using (StreamReader reader = new StreamReader(AppData + "\\comic.peeps"))
-                {
-                    string json = reader.ReadToEnd();
+            Logger.Log("---------------------- HELLO ( ﾟ▽ﾟ)/ ----------------------");
+            Logger.Log("Loading data...");
 
-                    UserData = JsonConvert.DeserializeObject<UserData>(json);
+            try
+            {
+                if (File.Exists(AppData + "\\comic.peeps"))
+                {
+                    using (StreamReader reader = new StreamReader(AppData + "\\comic.peeps"))
+                    {
+                        string json = reader.ReadToEnd();
+
+                        UserData = JsonConvert.DeserializeObject<UserData>(json);
+                    }
                 }
+
+                Logger.Log("Data loaded");
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show($"There was an error loading data, check the logs ({LogFile}) for more info", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Logger.Log(e.Message);
             }
         }
 
         private void MainScreen_FormClosing(object sender, FormClosingEventArgs e)
         {
             Serialize();
+            Logger.Log("----------------------  BYE ( ﾟ▽ﾟ)/  ----------------------");
+            GlobalFunctions.SaveLogsAndClear();
         }
 
         private void MainScreen_Shown(object sender, EventArgs e)
@@ -152,6 +181,11 @@ namespace ComicPeeps
             ee ee = new ee();
             ee.WindowState = FormWindowState.Maximized;
             ee.Show();
+        }
+
+        private void MainScreen_Load(object sender, EventArgs e)
+        {
+            GlobalFunctions.SaveLogsAndClear();
         }
     }
 }
