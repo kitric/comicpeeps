@@ -19,6 +19,8 @@ namespace ComicPeeps
         {
 			Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicSeriesId);
 
+			MainScreen.Logger.Log($"Generating cover for {comic}");
+
 			if (comic.ToLower().EndsWith(".cbz"))
             {
 				using (ZipArchive archive = ZipFile.OpenRead(comic))
@@ -34,9 +36,11 @@ namespace ComicPeeps
 						if (entry.FullName.EndsWith("jpg") || entry.FullName.EndsWith(".png"))
 						{
 							thumbnailFound = true;
+							MainScreen.Logger.Log($"Generating cover for {comic} - Cover found. (File name: {entry.FullName})");
 						}
 						else
 						{
+							MainScreen.Logger.Log($"Generating cover for {comic} - Cover not found. Retrying... (File name: {entry.FullName})");
 							index++;
 							entry = archive.Entries[index];
 						}
@@ -55,13 +59,17 @@ namespace ComicPeeps
 					}
 
 					entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
+					MainScreen.Logger.Log($"Generating cover for {comic} - Cover extracted");
 
 					using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
 					{
 						image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+						MainScreen.Logger.Log($"Generating cover for {comic} - Thumnail generated from cover");
 					}
 
 					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+					GlobalFunctions.SaveLogsAndClear($"Generating cover for {comic}");
 
 					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 				}
@@ -83,9 +91,11 @@ namespace ComicPeeps
 						if (entry.Key.EndsWith("jpg") || entry.Key.EndsWith(".png"))
 						{
 							thumbnailFound = true;
+							MainScreen.Logger.Log($"Generating cover for {comic} - Cover found. (File name: {entry.Key})");
 						}
 						else
 						{
+							MainScreen.Logger.Log($"Generating cover for {comic} - Cover not found. Retrying... (File name: {entry.Key})");
 							index++;
 							entry = entries[index];
 						}
@@ -100,17 +110,23 @@ namespace ComicPeeps
 					}
 
 					entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
+					MainScreen.Logger.Log($"Generating cover for {comic} - Cover extracted");
 
 					using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
 					{
 						image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+						MainScreen.Logger.Log($"Generating cover for {comic} - Thumnail generated from cover");
 					}
 
 					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
 
+					GlobalFunctions.SaveLogsAndClear($"Generating cover for {comic}");
+
 					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 				}
 			}
+
+			GlobalFunctions.SaveLogsAndClear($"Generating cover for {comic} [NO COVER FOUND]");
 
 			return await Task.FromResult("");
 		}
