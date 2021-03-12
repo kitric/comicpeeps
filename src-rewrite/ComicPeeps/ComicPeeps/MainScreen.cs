@@ -13,6 +13,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using dotnetlogger;
 
 namespace ComicPeeps
 {
@@ -36,6 +37,8 @@ namespace ComicPeeps
         public static UserData UserData = new UserData();
 
         public static MainScreen Instance;
+
+        public static DotNetLogger Logger = new DotNetLogger();
 
         UserControl CurrentScreen = new UserControl();
 
