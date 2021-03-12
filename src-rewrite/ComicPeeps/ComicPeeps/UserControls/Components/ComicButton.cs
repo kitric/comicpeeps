@@ -109,7 +109,10 @@ namespace ComicPeeps.UserControls.Components
         {
             // Delete the thumbnails
             Directory.Delete(MainScreen.ThumbnailPath + "\\" + comicSeries.ComicSeriesId, true);
+            MainScreen.Logger.Log($"Removing comic {comicSeries.ComicName}: Deleted thumbnails");
             MainScreen.UserData.ComicSeries.Remove(comicSeries);
+            MainScreen.Logger.Log($"Removing comic {comicSeries.ComicName}: Comic deleted from library");
+            MainScreen.Logger.SaveLogs(MainScreen.LogFile, false);
             library.pnlComics.Controls.Remove(this);
             if (this.BackgroundImage != null)
             {
