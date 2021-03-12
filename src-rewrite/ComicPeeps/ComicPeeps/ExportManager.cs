@@ -27,6 +27,9 @@ namespace ComicPeeps
                 }
             }
 
+            MainScreen.Logger.Log($"Data exported as CSV: {exportLocation}");
+            GlobalFunctions.SaveLogsAndClear();
+
             MessageBox.Show($"CSV exported to: {exportLocation}");
         }
 
@@ -41,6 +44,9 @@ namespace ComicPeeps
                 }
             }
 
+            MainScreen.Logger.Log($"Data exported as CSV: {exportLocation}");
+            GlobalFunctions.SaveLogsAndClear();
+
             MessageBox.Show($"JSON exported to: {exportLocation}");
         }
 
@@ -51,6 +57,9 @@ namespace ComicPeeps
                 XmlSerializer xml = new XmlSerializer(typeof(List<ComicSeries>));
                 xml.Serialize(stream, MainScreen.UserData.ComicSeries);
             }
+
+            MainScreen.Logger.Log($"Data exported as CSV: {exportLocation}");
+            GlobalFunctions.SaveLogsAndClear();
 
             MessageBox.Show($"XML exported to: {exportLocation}");
         }

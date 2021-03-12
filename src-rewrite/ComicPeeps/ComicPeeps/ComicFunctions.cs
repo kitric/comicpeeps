@@ -424,7 +424,6 @@ namespace ComicPeeps
             {
 				MainScreen.Logger.Log($"Updating comic {series.ComicName} - Comic no longer exists.");
 				
-
 				if (MessageBox.Show("This directory no longer exists. Do you want to remove the comic from your directory?", "Directory not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
 				{
 					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Removing comic");
