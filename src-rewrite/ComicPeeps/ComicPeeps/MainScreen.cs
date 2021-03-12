@@ -88,13 +88,6 @@ namespace ComicPeeps
 
         public static void Serialize()
         {
-            //IFormatter f = new BinaryFormatter();
-            //
-            //using (Stream stream = new FileStream(AppData + "\\comic.peeps", FileMode.Create, FileAccess.Write))
-            //{
-            //    f.Serialize(stream, UserData);
-            //}
-
             using (StreamWriter writer = new StreamWriter(AppData + "\\comic.peeps"))
             {
                 using (JsonWriter jwriter = new JsonTextWriter(writer))
@@ -107,16 +100,6 @@ namespace ComicPeeps
 
         public static void Deserialize()
         {
-            //if (File.Exists(AppData + "\\comic.peeps"))
-            //{
-            //    IFormatter f = new BinaryFormatter();
-            //
-            //    using (Stream stream = new FileStream(AppData + "\\comic.peeps", FileMode.Open, FileAccess.Read))
-            //    {
-            //        UserData = (UserData)f.Deserialize(stream);
-            //    }
-            //}
-
             if (File.Exists(AppData + "\\comic.peeps"))
             {
                 using (StreamReader reader = new StreamReader(AppData + "\\comic.peeps"))
