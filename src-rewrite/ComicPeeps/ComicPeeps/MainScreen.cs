@@ -34,6 +34,8 @@ namespace ComicPeeps
         public static string ComicInfoPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\comicinfo";
         public static string ComicExtractLocation = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\comics";
 
+        public static string LogFile = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ComicPeeps\logs";
+
         public static UserData UserData = new UserData();
 
         public static MainScreen Instance;
@@ -45,6 +47,9 @@ namespace ComicPeeps
         public MainScreen()
         {
             InitializeComponent();
+
+            Directory.CreateDirectory(LogFile);
+            LogFile += "\\" + Logger.GenerateLogFileName("ComicPeeps");
 
             Directory.CreateDirectory(AppData);
             Directory.CreateDirectory(ThumbnailPath);

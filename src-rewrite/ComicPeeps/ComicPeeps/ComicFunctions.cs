@@ -235,6 +235,8 @@ namespace ComicPeeps
 				comicSeries.Issues.Clear();
 
 				var issues = Directory.EnumerateFiles(comicSeries.FolderPath, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz")).ToArray();
+				MainScreen.Logger.Log($"Adding comic issues: Found {issues.Length} issues");
+
 				Array.Sort(issues);
 
 				for (int i = 0; i < issues.Length; i++)
@@ -252,6 +254,8 @@ namespace ComicPeeps
 						comicIssue.Thumbnail = await ComicFunctions.GenerateCover(issues[i], comicSeries.ComicSeriesId, i + 1);
 
 					comicSeries.Issues.Add(comicIssue);
+
+					MainScreen.Logger.Log($"Adding comic, issue added: IssueNumber = {comicIssue.IssueNumber}, Id = {comicIssue.IssueId}, Location = {comicIssue.Location}");
 				}
 
 				return await Task.FromResult(true);

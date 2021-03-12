@@ -92,6 +92,8 @@ namespace ComicPeeps.UserControls
         {
             try
             {
+                MainScreen.Logger.Log($"Adding comic from path: {selectedPath}");
+
                 var existingComics = MainScreen.UserData.ComicSeries.Where(serie => serie.FolderPath == selectedPath).ToList();
 
                 if (existingComics.Count == 0)
@@ -103,6 +105,8 @@ namespace ComicPeeps.UserControls
                         Thumbnail = ""
                     };
 
+                    MainScreen.Logger.Log($"Comic tagged: Folder Location = {selectedPath}, ComicName = {comicSeries.ComicName}, Id = {comicSeries.ComicSeriesId}");
+
                     await ComicFunctions.AddComicIssues(comicSeries);
 
                     if (comicSeries.Issues.Count != 0)
@@ -112,11 +116,17 @@ namespace ComicPeeps.UserControls
 
                     MainScreen.UserData.ComicSeries.Add(comicSeries);
 
+                    MainScreen.Logger.Log($"Adding comic: Finish");
+
+                    MainScreen.Logger.SaveLogs(MainScreen.LogFile, false);
+
                     return await Task.FromResult(true);
                 }
                 else
                 {
                     MessageBox.Show("That comic already exists in your library.");
+                    MainScreen.Logger.Log($"Comic already in library: {selectedPath}");
+                    MainScreen.Logger.SaveLogs(MainScreen.LogFile, false);
                     return await Task.FromResult(false);
                 }
             }
