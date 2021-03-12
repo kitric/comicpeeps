@@ -409,6 +409,10 @@ namespace ComicPeeps
 				{
 					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Removing comic");
 
+					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Complete");
+					MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
+					MainScreen.Logger.ClearLogs();
+
 					// Delete the comic
 					MainScreen.UserData.ComicSeries.Remove(series);
 				
