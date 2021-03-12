@@ -351,6 +351,7 @@ namespace ComicPeeps
 							IssueNumber = series.Issues.Count + 1,
 							Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1)
 						};
+						issue.IssueId += $"-{issue.IssueNumber}";
 
 						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Location = {files[i]}, Issue = {issue.IssueNumber}, Id = {issue.IssueId}");
 
