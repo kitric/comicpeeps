@@ -118,7 +118,8 @@ namespace ComicPeeps.UserControls
 
                     MainScreen.Logger.Log($"Adding comic: Finish");
 
-                    MainScreen.Logger.SaveLogs(MainScreen.LogFile, false);
+                    MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
+                    MainScreen.Logger.ClearLogs();
 
                     return await Task.FromResult(true);
                 }

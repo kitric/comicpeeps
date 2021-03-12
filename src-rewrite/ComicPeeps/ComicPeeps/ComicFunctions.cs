@@ -198,14 +198,23 @@ namespace ComicPeeps
 		{
 			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.SeriesId + "\\" + issue.IssueId).FullName;
 
+			MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber}");
+
 			if (issue.Location.ToLower().EndsWith(".cbz"))
 			{
 				using (ZipArchive archive = ZipFile.OpenRead(issue.Location))
 				{
 					archive.ExtractToDirectory(dir);
 
+					MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber} - Comic extracted");
+
 					var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
 					Array.Sort(result);
+
+					MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber} - Complete");
+					MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
+					MainScreen.Logger.ClearLogs();
+
 					return Task.FromResult(result);
 				}
 			}
