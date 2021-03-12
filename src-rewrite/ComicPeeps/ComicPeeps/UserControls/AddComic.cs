@@ -126,7 +126,8 @@ namespace ComicPeeps.UserControls
                 {
                     MessageBox.Show("That comic already exists in your library.");
                     MainScreen.Logger.Log($"Comic already in library: {selectedPath}");
-                    MainScreen.Logger.SaveLogs(MainScreen.LogFile, false);
+                    MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
+                    MainScreen.Logger.ClearLogs();
                     return await Task.FromResult(false);
                 }
             }
