@@ -169,7 +169,11 @@ namespace ComicPeeps
 							return (ComicInfo)xmlSer.Deserialize(S);
 						}
 					}
-					catch { }
+					catch (Exception e)
+					{
+						MainScreen.Logger.Log("Error getting comic info, ComicInfo.xml probably does not exist. Message: " + e.Message);
+						GlobalFunctions.SaveLogsAndClear();
+					}
 				}
 			}
 			else if (issue.Location.ToLower().EndsWith(".cbr"))
@@ -189,7 +193,11 @@ namespace ComicPeeps
 							return (ComicInfo)xmlSer.Deserialize(S);
 						}
 					}
-					catch { }
+					catch (Exception e)
+					{
+						MainScreen.Logger.Log("Error getting comic info, ComicInfo.xml probably does not exist. Message: " + e.Message);
+						GlobalFunctions.SaveLogsAndClear();
+					}
 				}
 			}
 
