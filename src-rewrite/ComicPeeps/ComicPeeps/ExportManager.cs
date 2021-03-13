@@ -15,53 +15,80 @@ namespace ComicPeeps
     {
         public static void ExportCsv(string exportLocation)
         {
-            using (StreamWriter writer = new StreamWriter(exportLocation))
+            try
             {
-                writer.WriteLine("Comic Name, Comic Id, Issue Id, Issue Number, Current Page, Pages, Read");
-                for (int i = 0; i < MainScreen.UserData.ComicSeries.Count; i++)
+                using (StreamWriter writer = new StreamWriter(exportLocation))
                 {
-                    for (int j = 0; j < MainScreen.UserData.ComicSeries[i].Issues.Count; j++)
+                    writer.WriteLine("Comic Name, Comic Id, Issue Id, Issue Number, Current Page, Pages, Read");
+                    for (int i = 0; i < MainScreen.UserData.ComicSeries.Count; i++)
                     {
-                        writer.WriteLine($"{MainScreen.UserData.ComicSeries[i].Issues[j].ComicName}, {MainScreen.UserData.ComicSeries[i].Issues[j].SeriesId}, {MainScreen.UserData.ComicSeries[i].Issues[j].IssueId}, {MainScreen.UserData.ComicSeries[i].Issues[j].IssueNumber}, {MainScreen.UserData.ComicSeries[i].Issues[j].CurrentPage}, {MainScreen.UserData.ComicSeries[i].Issues[j].Pages}, {MainScreen.UserData.ComicSeries[i].Issues[j].Completed.ToString()}");
+                        for (int j = 0; j < MainScreen.UserData.ComicSeries[i].Issues.Count; j++)
+                        {
+                            writer.WriteLine($"{MainScreen.UserData.ComicSeries[i].Issues[j].ComicName}, {MainScreen.UserData.ComicSeries[i].Issues[j].SeriesId}, {MainScreen.UserData.ComicSeries[i].Issues[j].IssueId}, {MainScreen.UserData.ComicSeries[i].Issues[j].IssueNumber}, {MainScreen.UserData.ComicSeries[i].Issues[j].CurrentPage}, {MainScreen.UserData.ComicSeries[i].Issues[j].Pages}, {MainScreen.UserData.ComicSeries[i].Issues[j].Completed.ToString()}");
+                        }
                     }
                 }
+
+                MainScreen.Logger.Log($"Data exported as CSV: {exportLocation}");
+                GlobalFunctions.SaveLogsAndClear();
+
+                MessageBox.Show($"CSV exported to: {exportLocation}");
             }
-
-            MainScreen.Logger.Log($"Data exported as CSV: {exportLocation}");
-            GlobalFunctions.SaveLogsAndClear();
-
-            MessageBox.Show($"CSV exported to: {exportLocation}");
+            catch (Exception e)
+            {
+                MessageBox.Show($"There was an error exporting... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MainScreen.Logger.Log(e.Message);
+                GlobalFunctions.SaveLogsAndClear();
+            }
         }
 
         public static void ExportJson(string exportLocation)
         {
-            using (StreamWriter writer = new StreamWriter(exportLocation))
+            try
             {
-                using (JsonWriter jwriter = new JsonTextWriter(writer))
+                using (StreamWriter writer = new StreamWriter(exportLocation))
                 {
-                    JsonSerializer serializer = new JsonSerializer();
-                    serializer.Serialize(jwriter, MainScreen.UserData.ComicSeries);
+                    using (JsonWriter jwriter = new JsonTextWriter(writer))
+                    {
+                        JsonSerializer serializer = new JsonSerializer();
+                        serializer.Serialize(jwriter, MainScreen.UserData.ComicSeries);
+                    }
                 }
+
+                MainScreen.Logger.Log($"Data exported as CSV: {exportLocation}");
+                GlobalFunctions.SaveLogsAndClear();
+
+                MessageBox.Show($"JSON exported to: {exportLocation}");
             }
-
-            MainScreen.Logger.Log($"Data exported as CSV: {exportLocation}");
-            GlobalFunctions.SaveLogsAndClear();
-
-            MessageBox.Show($"JSON exported to: {exportLocation}");
+            catch (Exception e)
+            {
+                MessageBox.Show($"There was an error exporting... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MainScreen.Logger.Log(e.Message);
+                GlobalFunctions.SaveLogsAndClear();
+            }
         }
 
         public static void ExportXml(string exportLocation)
         {
-            using (Stream stream = new FileStream(exportLocation, FileMode.OpenOrCreate)) 
+            try
             {
-                XmlSerializer xml = new XmlSerializer(typeof(List<ComicSeries>));
-                xml.Serialize(stream, MainScreen.UserData.ComicSeries);
+                using (Stream stream = new FileStream(exportLocation, FileMode.OpenOrCreate))
+                {
+                    XmlSerializer xml = new XmlSerializer(typeof(List<ComicSeries>));
+                    xml.Serialize(stream, MainScreen.UserData.ComicSeries);
+                }
+
+                MainScreen.Logger.Log($"Data exported as CSV: {exportLocation}");
+                GlobalFunctions.SaveLogsAndClear();
+
+                MessageBox.Show($"XML exported to: {exportLocation}");
             }
-
-            MainScreen.Logger.Log($"Data exported as CSV: {exportLocation}");
-            GlobalFunctions.SaveLogsAndClear();
-
-            MessageBox.Show($"XML exported to: {exportLocation}");
+            catch (Exception e)
+            {
+                MessageBox.Show($"There was an error exporting... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MainScreen.Logger.Log(e.Message);
+                GlobalFunctions.SaveLogsAndClear();
+            }
         }
     }
 }
