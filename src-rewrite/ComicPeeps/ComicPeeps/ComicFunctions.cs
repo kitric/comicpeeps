@@ -217,18 +217,6 @@ namespace ComicPeeps
 			}
 		}
 
-		public static string SerializeComicInfo(ComicInfo info, string location)
-		{
-			using (Stream s = new FileStream(location, FileMode.Truncate, FileAccess.Write))
-			{
-				XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
-
-				xmlSer.Serialize(s, info);
-
-				return location;
-			}
-		}
-
 		// Read the ComicIssue and return the images
 		public static Task<string[]> ReadComic(ComicIssue issue)
 		{
