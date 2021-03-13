@@ -140,6 +140,8 @@ namespace ComicPeeps
 				MessageBox.Show($"There was an error generating comic cover... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				MainScreen.Logger.Log(e.Message);
 				GlobalFunctions.SaveLogsAndClear();
+
+				return await Task.FromResult("");
 			}
 		}
 
