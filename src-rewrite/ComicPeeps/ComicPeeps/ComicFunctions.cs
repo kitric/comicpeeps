@@ -17,121 +17,130 @@ namespace ComicPeeps
     {
 		public static async Task<string> GenerateCover(string comic, string comicSeriesId, int comicNumber)
         {
-			Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicSeriesId);
+			try
+			{
+				Directory.CreateDirectory(MainScreen.ThumbnailPath + "\\" + comicSeriesId);
 
-			MainScreen.Logger.Log($"Generating cover for {comic}");
+				MainScreen.Logger.Log($"Generating cover for {comic}");
 
-			if (comic.ToLower().EndsWith(".cbz"))
-            {
-				using (ZipArchive archive = ZipFile.OpenRead(comic))
-                {
-					int index = 0;
-
-					bool thumbnailFound = false;
-
-					var entry = archive.Entries[index];
-
-					do
+				if (comic.ToLower().EndsWith(".cbz"))
+				{
+					using (ZipArchive archive = ZipFile.OpenRead(comic))
 					{
-						if (entry.FullName.EndsWith("jpg") || entry.FullName.EndsWith(".png"))
+						int index = 0;
+
+						bool thumbnailFound = false;
+
+						var entry = archive.Entries[index];
+
+						do
 						{
-							thumbnailFound = true;
-							MainScreen.Logger.Log($"Generating cover for {comic} - Cover found. (File name: {entry.FullName})");
+							if (entry.FullName.EndsWith("jpg") || entry.FullName.EndsWith(".png"))
+							{
+								thumbnailFound = true;
+								MainScreen.Logger.Log($"Generating cover for {comic} - Cover found. (File name: {entry.FullName})");
+							}
+							else
+							{
+								MainScreen.Logger.Log($"Generating cover for {comic} - Cover not found. Retrying... (File name: {entry.FullName})");
+								index++;
+								entry = archive.Entries[index];
+							}
 						}
-						else
+						while (!thumbnailFound);
+
+						string fileName = entry.FullName;
+
+						if (fileName.Contains("\\"))
 						{
-							MainScreen.Logger.Log($"Generating cover for {comic} - Cover not found. Retrying... (File name: {entry.FullName})");
-							index++;
-							entry = archive.Entries[index];
+							fileName = entry.FullName.Split('\\').Last();
 						}
+						if (fileName.Contains("/"))
+						{
+							fileName = fileName.Split('/').Last();
+						}
+
+						entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
+						MainScreen.Logger.Log($"Generating cover for {comic} - Cover extracted");
+
+						using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+						{
+							image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+							MainScreen.Logger.Log($"Generating cover for {comic} - Thumnail generated from cover");
+						}
+
+						File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+						MainScreen.Logger.Log($"Generating cover for {comic} - Complete");
+						GlobalFunctions.SaveLogsAndClear();
+
+						return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 					}
-					while (!thumbnailFound);
-
-					string fileName = entry.FullName;
-
-					if (fileName.Contains("\\"))
-					{
-						fileName = entry.FullName.Split('\\').Last();
-					}
-					if (fileName.Contains("/"))
-					{
-						fileName = fileName.Split('/').Last();
-					}
-
-					entry.ExtractToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, true);
-					MainScreen.Logger.Log($"Generating cover for {comic} - Cover extracted");
-
-					using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
-					{
-						image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
-						MainScreen.Logger.Log($"Generating cover for {comic} - Thumnail generated from cover");
-					}
-
-					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
-
-					MainScreen.Logger.Log($"Generating cover for {comic} - Complete");
-					GlobalFunctions.SaveLogsAndClear();
-
-					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 				}
-			}
-			else if (comic.ToLower().EndsWith(".cbr"))
-            {
-				using (RarArchive archive = RarArchive.Open(comic))
-                {
-					List<RarArchiveEntry> entries = archive.Entries.OrderBy(e => e.Key).Where(e => !e.IsDirectory).ToList();
-
-					int index = 0;
-
-					bool thumbnailFound = false;
-
-					var entry = entries[index];
-
-					do
+				else if (comic.ToLower().EndsWith(".cbr"))
+				{
+					using (RarArchive archive = RarArchive.Open(comic))
 					{
-						if (entry.Key.EndsWith("jpg") || entry.Key.EndsWith(".png"))
+						List<RarArchiveEntry> entries = archive.Entries.OrderBy(e => e.Key).Where(e => !e.IsDirectory).ToList();
+
+						int index = 0;
+
+						bool thumbnailFound = false;
+
+						var entry = entries[index];
+
+						do
 						{
-							thumbnailFound = true;
-							MainScreen.Logger.Log($"Generating cover for {comic} - Cover found. (File name: {entry.Key})");
+							if (entry.Key.EndsWith("jpg") || entry.Key.EndsWith(".png"))
+							{
+								thumbnailFound = true;
+								MainScreen.Logger.Log($"Generating cover for {comic} - Cover found. (File name: {entry.Key})");
+							}
+							else
+							{
+								MainScreen.Logger.Log($"Generating cover for {comic} - Cover not found. Retrying... (File name: {entry.Key})");
+								index++;
+								entry = entries[index];
+							}
 						}
-						else
+						while (!thumbnailFound);
+
+						string fileName = entry.Key;
+
+						if (entry.Key.Contains("\\"))
 						{
-							MainScreen.Logger.Log($"Generating cover for {comic} - Cover not found. Retrying... (File name: {entry.Key})");
-							index++;
-							entry = entries[index];
+							fileName = entry.Key.Split('\\').Last();
 						}
+
+						entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
+						MainScreen.Logger.Log($"Generating cover for {comic} - Cover extracted");
+
+						using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
+						{
+							image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
+							MainScreen.Logger.Log($"Generating cover for {comic} - Thumnail generated from cover");
+						}
+
+						File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
+
+						MainScreen.Logger.Log($"Generating cover for {comic} - Complete");
+						GlobalFunctions.SaveLogsAndClear();
+
+						return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 					}
-					while (!thumbnailFound);
-
-					string fileName = entry.Key;
-
-					if (entry.Key.Contains("\\"))
-					{
-						fileName = entry.Key.Split('\\').Last();
-					}
-
-					entry.WriteToFile(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, new SharpCompress.Common.ExtractionOptions() { ExtractFullPath = false, Overwrite = true });
-					MainScreen.Logger.Log($"Generating cover for {comic} - Cover extracted");
-
-					using (var image = await GlobalFunctions.CompressImage(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName, 15))
-					{
-						image.Save(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
-						MainScreen.Logger.Log($"Generating cover for {comic} - Thumnail generated from cover");
-					}
-
-					File.Delete(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + fileName);
-
-					MainScreen.Logger.Log($"Generating cover for {comic} - Complete");
-					GlobalFunctions.SaveLogsAndClear();
-
-					return await Task.FromResult(MainScreen.ThumbnailPath + "\\" + comicSeriesId + "\\" + comicSeriesId + "-" + comicNumber);
 				}
+
+				MainScreen.Logger.Log($"Generating cover for {comic} [NO COVER FOUND]");
+				GlobalFunctions.SaveLogsAndClear();
+
+				return await Task.FromResult("");
 			}
-
-			MainScreen.Logger.Log($"Generating cover for {comic} [NO COVER FOUND]");
-			GlobalFunctions.SaveLogsAndClear();
-
-			return await Task.FromResult("");
+			catch (Exception e)
+            {
+				MessageBox.Show($"There was an error generating comic cover... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MainScreen.Logger.Log(e.Message);
+				GlobalFunctions.SaveLogsAndClear();
+			}
 		}
 
 		/// <summary>
