@@ -236,41 +236,52 @@ namespace ComicPeeps
 		// Read the ComicIssue and return the images
 		public static Task<string[]> ReadComic(ComicIssue issue)
 		{
-			string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.SeriesId + "\\" + issue.IssueId).FullName;
-
-			MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber}");
-
-			if (issue.Location.ToLower().EndsWith(".cbz"))
+			try
 			{
-				using (ZipArchive archive = ZipFile.OpenRead(issue.Location))
+				string dir = Directory.CreateDirectory(MainScreen.ComicExtractLocation + "\\" + issue.SeriesId + "\\" + issue.IssueId).FullName;
+
+				MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber}");
+
+				if (issue.Location.ToLower().EndsWith(".cbz"))
 				{
-					archive.ExtractToDirectory(dir);
+					using (ZipArchive archive = ZipFile.OpenRead(issue.Location))
+					{
+						archive.ExtractToDirectory(dir);
 
-					MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber} - Comic extracted");
+						MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber} - Comic extracted");
 
-					var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
-					Array.Sort(result);
+						var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
+						Array.Sort(result);
 
-					MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber} - Complete");
-					MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
-					MainScreen.Logger.ClearLogs();
+						MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber} - Complete");
+						MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
+						MainScreen.Logger.ClearLogs();
 
-					return Task.FromResult(result);
+						return Task.FromResult(result);
+					}
 				}
-			}
-			else if (issue.Location.ToLower().EndsWith(".cbr"))
-			{
-				using (RarArchive archive = RarArchive.Open(issue.Location))
+				else if (issue.Location.ToLower().EndsWith(".cbr"))
 				{
-					archive.WriteToDirectory(dir);
+					using (RarArchive archive = RarArchive.Open(issue.Location))
+					{
+						archive.WriteToDirectory(dir);
 
-					var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
-					Array.Sort(result);
-					return Task.FromResult(result);
+						var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
+						Array.Sort(result);
+						return Task.FromResult(result);
+					}
 				}
-			}
 
-			return Task.FromResult(new string[0]);
+				return Task.FromResult(new string[0]);
+			}
+			catch (Exception e)
+            {
+				MessageBox.Show($"There was an error opening comic... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MainScreen.Logger.Log(e.Message);
+				GlobalFunctions.SaveLogsAndClear();
+
+				return Task.FromResult(new string[0]);
+			}
 		}
 
 		/// <summary>
