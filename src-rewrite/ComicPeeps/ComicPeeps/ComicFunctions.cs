@@ -322,7 +322,9 @@ namespace ComicPeeps
 			}
 			catch (Exception e)
 			{
-				Console.WriteLine($"There was an error: {e.Message}");
+				MessageBox.Show($"There was an error adding comic... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MainScreen.Logger.Log(e.Message);
+				GlobalFunctions.SaveLogsAndClear();
 
 				return await Task.FromResult(false);
 			}
@@ -347,103 +349,130 @@ namespace ComicPeeps
 		/// <returns></returns>
 		public static async Task<bool> UpdateComic(ComicSeries series)
 		{
-			if (Directory.Exists(series.FolderPath))
+			try
 			{
-				var files = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories)
-							.Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz"))
-							.ToArray();
-
-				MainScreen.Logger.Log($"Updating comic {series.ComicName} - Collecting files");
-
-				Array.Sort(files);
-
-				// There a new comics
-				if (files.Length > series.Issues.Count)
+				if (Directory.Exists(series.FolderPath))
 				{
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - More files found than original");
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Updating existing comics");
+					var files = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories)
+								.Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz"))
+								.ToArray();
 
-					// Update the existing comics.
-					for (int i = 0; i < series.Issues.Count; i++)
+					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Collecting files");
+
+					Array.Sort(files);
+
+					// There a new comics
+					if (files.Length > series.Issues.Count)
 					{
-						series.Issues[i].Location = files[i];
-						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Issue {series.Issues[i].IssueNumber} : {series.Issues[i].Location}");
-						series.Issues[i].Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1);
-					}
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - More files found than original");
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Updating existing comics");
 
-					// Add any new comics
-					for (int i = series.Issues.Count; i < files.Length; i++)
-					{
-						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Adding new issues");
-
-						ComicIssue issue = new ComicIssue()
+						// Update the existing comics.
+						for (int i = 0; i < series.Issues.Count; i++)
 						{
-							Location = files[i],
-							ComicName = series.ComicName,
-							IssueNumber = series.Issues.Count + 1,
-							Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1)
-						};
-						issue.IssueId += $"-{issue.IssueNumber}";
+							series.Issues[i].Location = files[i];
+							MainScreen.Logger.Log($"Updating comic {series.ComicName} - Issue {series.Issues[i].IssueNumber} : {series.Issues[i].Location}");
+							series.Issues[i].Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1);
+						}
 
-						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Location = {files[i]}, Issue = {issue.IssueNumber}, Id = {issue.IssueId}");
+						// Add any new comics
+						for (int i = series.Issues.Count; i < files.Length; i++)
+						{
+							MainScreen.Logger.Log($"Updating comic {series.ComicName} - Adding new issues");
 
-						series.Issues.Add(issue);
+							ComicIssue issue = new ComicIssue()
+							{
+								Location = files[i],
+								ComicName = series.ComicName,
+								IssueNumber = series.Issues.Count + 1,
+								Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1)
+							};
+							issue.IssueId += $"-{issue.IssueNumber}";
+
+							MainScreen.Logger.Log($"Updating comic {series.ComicName} - Location = {files[i]}, Issue = {issue.IssueNumber}, Id = {issue.IssueId}");
+
+							series.Issues.Add(issue);
+						}
+
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Cleaning up issues");
+						UpdateIssues(series);
+
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Complete");
+						MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
+						MainScreen.Logger.ClearLogs();
+
+						return true;
 					}
-
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Cleaning up issues");
-					UpdateIssues(series);
-
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Complete");
-					MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
-					MainScreen.Logger.ClearLogs();
-
-					return true;
-				}
-				else if (files.Length < series.Issues.Count)
-				{
-					// There are less comics
-
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Less files found than original");
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Updating existing comics");
-
-					// Update the existing comics
-					for (int i = 0; i < files.Length; i++)
+					else if (files.Length < series.Issues.Count)
 					{
-						series.Issues[i].Location = files[i];
-						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Issue {series.Issues[i].IssueNumber} : {series.Issues[i].Location}");
-						series.Issues[i].Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1);
-					}
+						// There are less comics
 
-					// Remove the rest of the issues
-					for (int i = files.Length; i < series.Issues.Count; i++)
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Less files found than original");
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Updating existing comics");
+
+						// Update the existing comics
+						for (int i = 0; i < files.Length; i++)
+						{
+							series.Issues[i].Location = files[i];
+							MainScreen.Logger.Log($"Updating comic {series.ComicName} - Issue {series.Issues[i].IssueNumber} : {series.Issues[i].Location}");
+							series.Issues[i].Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1);
+						}
+
+						// Remove the rest of the issues
+						for (int i = files.Length; i < series.Issues.Count; i++)
+						{
+							MainScreen.Logger.Log($"Updating comic {series.ComicName} - Removing issue {series.Issues[i].IssueNumber} with the ex-location of {series.Issues[i].Location}");
+							series.Issues.Remove(series.Issues[i]);
+						}
+
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Cleaning up issues");
+						UpdateIssues(series);
+
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Complete");
+						MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
+						MainScreen.Logger.ClearLogs();
+
+						return true;
+					}
+					else
 					{
-						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Removing issue {series.Issues[i].IssueNumber} with the ex-location of {series.Issues[i].Location}");
-						series.Issues.Remove(series.Issues[i]);
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Same amount of files found");
+
+						// Equal amount. Just update them
+						for (int i = 0; i < series.Issues.Count; i++)
+						{
+							series.Issues[i].Location = files[i];
+							MainScreen.Logger.Log($"Updating comic {series.ComicName} - Issue {series.Issues[i].IssueNumber} : {series.Issues[i].Location}");
+							series.Issues[i].Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1);
+						}
+
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Cleaning up issues");
+						UpdateIssues(series);
+
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Complete");
+						MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
+						MainScreen.Logger.ClearLogs();
+
+						return true;
 					}
-
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Cleaning up issues");
-					UpdateIssues(series);
-
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Complete");
-					MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
-					MainScreen.Logger.ClearLogs();
-
-					return true;
 				}
 				else
 				{
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Same amount of files found");
+					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Comic no longer exists.");
 
-					// Equal amount. Just update them
-					for (int i = 0; i < series.Issues.Count; i++)
+					if (MessageBox.Show("This directory no longer exists. Do you want to remove the comic from your directory?", "Directory not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
 					{
-						series.Issues[i].Location = files[i];
-						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Issue {series.Issues[i].IssueNumber} : {series.Issues[i].Location}");
-						series.Issues[i].Thumbnail = await GenerateCover(files[i], series.ComicSeriesId, i + 1);
-					}
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Removing comic");
 
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Cleaning up issues");
-					UpdateIssues(series);
+						MainScreen.Logger.Log($"Updating comic {series.ComicName} - Complete");
+						MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
+						MainScreen.Logger.ClearLogs();
+
+						// Delete the comic
+						MainScreen.UserData.ComicSeries.Remove(series);
+
+						return false;
+					}
 
 					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Complete");
 					MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
@@ -452,29 +481,13 @@ namespace ComicPeeps
 					return true;
 				}
 			}
-            else
+			catch (Exception e)
             {
-				MainScreen.Logger.Log($"Updating comic {series.ComicName} - Comic no longer exists.");
-				
-				if (MessageBox.Show("This directory no longer exists. Do you want to remove the comic from your directory?", "Directory not found", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1) == DialogResult.Yes)
-				{
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Removing comic");
+				MessageBox.Show($"There was an error updating comic... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MainScreen.Logger.Log(e.Message);
+				GlobalFunctions.SaveLogsAndClear();
 
-					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Complete");
-					MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
-					MainScreen.Logger.ClearLogs();
-
-					// Delete the comic
-					MainScreen.UserData.ComicSeries.Remove(series);
-				
-					return false;
-				}
-
-				MainScreen.Logger.Log($"Updating comic {series.ComicName} - Complete");
-				MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
-				MainScreen.Logger.ClearLogs();
-
-				return true;
+				return false;
 			}
 		}
 
