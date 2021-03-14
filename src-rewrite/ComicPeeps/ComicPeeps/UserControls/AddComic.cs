@@ -134,7 +134,9 @@ namespace ComicPeeps.UserControls
             }
             catch (Exception e)
             {
-                Console.WriteLine($"Error: {e.Message}");
+                MessageBox.Show($"There was an error adding comic series... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MainScreen.Logger.Log(e.Message);
+                GlobalFunctions.SaveLogsAndClear();
 
                 return await Task.FromResult(false);
             }
