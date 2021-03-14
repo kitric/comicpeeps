@@ -211,11 +211,25 @@ namespace ComicPeeps
 
 		public static ComicInfo DesrializeComicInfo(string filePath)
 		{
-			using (Stream S = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+			try
 			{
-				XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
+				using (Stream S = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+				{
+					XmlSerializer xmlSer = new XmlSerializer(typeof(ComicInfo));
 
-				return (ComicInfo)xmlSer.Deserialize(S);
+					return (ComicInfo)xmlSer.Deserialize(S);
+				}
+			}
+			catch (Exception e)
+            {
+				MessageBox.Show($"There was an error retrieving comic info... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MainScreen.Logger.Log(e.Message);
+				GlobalFunctions.SaveLogsAndClear();
+
+				return new ComicInfo()
+				{
+					Summary = "This comic does not have a summary"
+				};
 			}
 		}
 
