@@ -50,9 +50,13 @@ namespace ComicPeeps
 
 				return null;
 			}
-            catch
+            catch (Exception e)
             {
-				throw new Exception("File missing: " + ImageFilePath);
+				MessageBox.Show($"There was an error loading an image... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MainScreen.Logger.Log(e.Message);
+				SaveLogsAndClear();
+
+				return null;
 			}
 		}
 
@@ -76,10 +80,14 @@ namespace ComicPeeps
 
 				return null;
 			}
-			catch
+			catch (Exception e)
             {
-				throw new Exception("File missing: " + ImageFilePath);
-            }
+				MessageBox.Show($"There was an error loading an image... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MainScreen.Logger.Log(e.Message);
+				SaveLogsAndClear();
+
+				return null;
+			}
         }
 
 		/// <summary>
