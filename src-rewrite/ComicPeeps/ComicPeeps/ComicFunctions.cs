@@ -499,6 +499,9 @@ namespace ComicPeeps
 			}
 			catch
 			{
+				MainScreen.Logger.Log(e.Message);
+				GlobalFunctions.SaveLogsAndClear();
+
 				return null;
 			}
 		}
