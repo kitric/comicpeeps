@@ -15,5 +15,11 @@ namespace ComicPeeps
             ".jpeg",
             ".bmp"
         };
+
+        public static string[] ComicFileTypes = new string[]
+        {
+            ".cbr",
+            ".cbz"
+        };
     }
 }

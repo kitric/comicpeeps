@@ -303,7 +303,7 @@ namespace ComicPeeps
 			{
 				comicSeries.Issues.Clear();
 
-				var issues = Directory.EnumerateFiles(comicSeries.FolderPath, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz")).ToArray();
+				var issues = Directory.EnumerateFiles(comicSeries.FolderPath, "*.*", SearchOption.AllDirectories).Where(s => SupportedFileTypes.ComicFileTypes.Contains(Path.GetExtension(s).ToLower())).ToArray();
 				MainScreen.Logger.Log($"Adding comic issues: Found {issues.Length} issues");
 
 				Array.Sort(issues);
@@ -363,7 +363,7 @@ namespace ComicPeeps
 				if (Directory.Exists(series.FolderPath))
 				{
 					var files = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories)
-								.Where(s => s.ToLower().EndsWith(".cbr") || s.ToLower().EndsWith(".cbz"))
+								.Where(s => SupportedFileTypes.ComicFileTypes.Contains(Path.GetExtension(s).ToLower()))
 								.ToArray();
 
 					MainScreen.Logger.Log($"Updating comic {series.ComicName} - Collecting files");
