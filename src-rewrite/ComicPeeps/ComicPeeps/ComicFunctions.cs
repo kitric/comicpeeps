@@ -35,7 +35,8 @@ namespace ComicPeeps
 
 						do
 						{
-							if (entry.FullName.EndsWith("jpg") || entry.FullName.EndsWith(".png"))
+							string extension = Path.GetExtension(entry.FullName).ToLower();
+							if (SupportedFileTypes.ImageFileTypes.Contains(extension))
 							{
 								thumbnailFound = true;
 								MainScreen.Logger.Log($"Generating cover for {comic} - Cover found. (File name: {entry.FullName})");
@@ -91,7 +92,8 @@ namespace ComicPeeps
 
 						do
 						{
-							if (entry.Key.EndsWith("jpg") || entry.Key.EndsWith(".png"))
+							string extension = Path.GetExtension(entry.Key).ToLower();
+							if (SupportedFileTypes.ImageFileTypes.Contains(extension))
 							{
 								thumbnailFound = true;
 								MainScreen.Logger.Log($"Generating cover for {comic} - Cover found. (File name: {entry.Key})");
@@ -497,7 +499,7 @@ namespace ComicPeeps
 			{
 				return MainScreen.UserData.ComicSeries.Where(comic => comic.ComicSeriesId == id).First();
 			}
-			catch
+			catch (Exception e)
 			{
 				MainScreen.Logger.Log(e.Message);
 				GlobalFunctions.SaveLogsAndClear();
