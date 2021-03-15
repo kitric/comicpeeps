@@ -85,7 +85,19 @@ namespace ComicPeeps.UserControls
                 pnlPages.VerticalScroll.Value = 0;
                 currentPage++;
                 pbPageImage.Image.Dispose();
-                pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
+
+                if (File.Exists(images[currentPage]))
+                {
+                    pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
+                }
+                else
+                {
+                    using (Image image = Properties.Resources.errorImage)
+                    {
+                        pbPageImage.Image = Properties.Resources.errorImage;
+                    }
+                }
+
                 tbPageInput.Text = $"{currentPage + 1}";
 
                 if (currentPage + 1 > comicIssue.Pages - 2)
@@ -108,7 +120,19 @@ namespace ComicPeeps.UserControls
                 pnlPages.VerticalScroll.Value = 0;
                 currentPage--;
                 pbPageImage.Image.Dispose();
-                pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
+
+                if (File.Exists(images[currentPage]))
+                {
+                    pbPageImage.Image = await GlobalFunctions.CompressImage(images[currentPage], MainScreen.UserData.Settings.CompressSize);
+                }
+                else
+                {
+                    using (Image image = Properties.Resources.errorImage)
+                    {
+                        pbPageImage.Image = Properties.Resources.errorImage;
+                    }
+                }
+
                 tbPageInput.Text = $"{currentPage + 1}";
                 if (MainScreen.UserData.Settings.UseAutoRead)
                 {

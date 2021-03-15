@@ -60,6 +60,30 @@ namespace ComicPeeps
 			}
 		}
 
+		public static async Task<Bitmap> CompressImage(Image image, int CompressSize)
+		{
+			try
+			{
+				Bitmap bmp = new Bitmap(image.Width / CompressSize, image.Height / CompressSize);
+				Stopwatch watch = new Stopwatch();
+				watch.Start();
+				using (Graphics g = Graphics.FromImage(bmp))
+				{
+					g.DrawImage(image, new Rectangle(0, 0, bmp.Width, bmp.Height));
+				}
+
+				return await Task.FromResult(bmp);
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show($"There was an error loading an image... Please see logs for more details: {MainScreen.LogFile}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				MainScreen.Logger.Log(e.Message);
+				SaveLogsAndClear();
+
+				return null;
+			}
+		}
+
 		public static async Task<Bitmap> LocationToImage(string ImageFilePath)
         {
 			try
