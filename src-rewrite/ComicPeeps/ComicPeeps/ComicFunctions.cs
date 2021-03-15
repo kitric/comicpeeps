@@ -252,7 +252,7 @@ namespace ComicPeeps
 
 						MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber} - Comic extracted");
 
-						var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
+						var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => SupportedFileTypes.ImageFileTypes.Contains(Path.GetExtension(s).ToLower())).ToArray();
 						Array.Sort(result);
 
 						MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber} - Complete");
@@ -268,8 +268,15 @@ namespace ComicPeeps
 					{
 						archive.WriteToDirectory(dir);
 
-						var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => s.ToLower().EndsWith(".png") || s.ToLower().EndsWith(".jpg")).ToArray();
+						MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber} - Comic extracted");
+
+						var result = Directory.EnumerateFiles(dir, "*.*", SearchOption.AllDirectories).Where(s => SupportedFileTypes.ImageFileTypes.Contains(Path.GetExtension(s).ToLower())).ToArray();
 						Array.Sort(result);
+
+						MainScreen.Logger.Log($"Reading comic issue {issue.ComicName} {issue.IssueNumber} - Complete");
+						MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
+						MainScreen.Logger.ClearLogs();
+
 						return Task.FromResult(result);
 					}
 				}
