@@ -115,6 +115,7 @@ namespace ComicPeeps.UserControls.Components
             if (Directory.Exists(MainScreen.ComicInfoPath + "\\" + comicSeries.ComicSeriesId))
                 Directory.Delete(MainScreen.ComicInfoPath + "\\" + comicSeries.ComicSeriesId, true);
             MainScreen.Logger.Log($"Removing comic {comicSeries.ComicName}: Cached ComicInfo removed");
+            // Remove it 
             MainScreen.UserData.ComicSeries.Remove(comicSeries);
             MainScreen.Logger.Log($"Removing comic {comicSeries.ComicName}: Comic deleted from library");
             MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
