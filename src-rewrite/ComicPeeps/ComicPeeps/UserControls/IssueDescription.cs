@@ -32,13 +32,13 @@ namespace ComicPeeps.UserControls
 
         private async void IssueDescription_Load(object sender, EventArgs e)
         {
-            if (!File.Exists(MainScreen.ComicInfoPath + "\\" + comicIssue.ComicName + "\\" + comicIssue.IssueNumber + "\\ComicInfo.xml"))
+            if (!File.Exists(MainScreen.ComicInfoPath + "\\" + comicIssue.SeriesId + "\\" + comicIssue.IssueId + "\\ComicInfo.xml"))
             {
                 info = ComicFunctions.GetComicInfo(comicIssue);
             }
             else
             {
-                info = ComicFunctions.DesrializeComicInfo(MainScreen.ComicInfoPath + "\\" + comicIssue.ComicName + "\\" + comicIssue.IssueNumber + "\\ComicInfo.xml");
+                info = ComicFunctions.DesrializeComicInfo(MainScreen.ComicInfoPath + "\\" + comicIssue.SeriesId + "\\" + comicIssue.IssueId + "\\ComicInfo.xml");
             }
 
             lblTitle.Text = comicIssue.ComicName.ToLower() + " - issue " + comicIssue.IssueNumber;

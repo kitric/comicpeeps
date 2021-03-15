@@ -148,13 +148,13 @@ namespace ComicPeeps
 		}
 
 		/// <summary>
-		/// Must call `Directory.Delete(MainScreen.ComicInfoPath + "\\" + issue.ComicName);` after this
+		/// Must call `Directory.Delete(MainScreen.ComicInfoPath + "\\" + issue.SeriesId);` after this
 		/// </summary>
 		/// <param name="issue"></param>
 		/// <returns></returns>
 		public static ComicInfo GetComicInfo(ComicIssue issue)
 		{
-			string dir = Directory.CreateDirectory(MainScreen.ComicInfoPath + "\\" + issue.ComicName + "\\" + issue.IssueNumber).FullName;
+			string dir = Directory.CreateDirectory(MainScreen.ComicInfoPath + "\\" + issue.SeriesId + "\\" + issue.IssueId).FullName;
 
 			if (issue.Location.ToLower().EndsWith(".cbz"))
 			{
@@ -360,6 +360,11 @@ namespace ComicPeeps
 		{
 			try
 			{
+				// Delete all ComicInfo for the comic
+				// MainScreen.ComicInfoPath + "\\" + seriesID
+				if (Directory.Exists(MainScreen.ComicInfoPath + "\\" + series.ComicSeriesId))
+					Directory.Delete(MainScreen.ComicInfoPath + "\\" + series.ComicSeriesId, true);
+
 				if (Directory.Exists(series.FolderPath))
 				{
 					var files = Directory.EnumerateFiles(series.FolderPath, "*.*", SearchOption.AllDirectories)
