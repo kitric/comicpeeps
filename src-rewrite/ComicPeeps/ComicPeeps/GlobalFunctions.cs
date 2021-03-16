@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using GitHubUpdate;
 
 namespace ComicPeeps
 {
@@ -156,6 +157,28 @@ namespace ComicPeeps
         {
 			MainScreen.Logger.SaveLogs(MainScreen.LogFile, true);
 			MainScreen.Logger.ClearLogs();
+		}
+
+		public static void CheckForUpdates()
+		{
+			try
+			{
+				var checker = new UpdateChecker("kitric", "comicpeeps");
+
+				if (checker.CheckUpdate().Result != UpdateType.None)
+				{
+					var result = new UpdateNotifyDialog(checker).ShowDialog();
+
+					if (result == DialogResult.Yes)
+					{
+						checker.DownloadAsset("ComicPeeps.msi");
+					}
+				}
+			}
+			catch
+			{
+				MessageBox.Show("There was an error trying to check for updates. Please check your internet connection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
 		}
 	}
 }
