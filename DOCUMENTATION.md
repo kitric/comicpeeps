@@ -22,7 +22,7 @@ ComicPeeps allows you to keep all of your comics in one application. It also kee
 
 This is what your file sytem should look like (the naming of the issues in this example does not matter):
 
-```csharp
+```
 comics/
    Absolute Carnage/
       issue1.cbr
@@ -46,7 +46,7 @@ This option allows you to add a whole directory to your library. This directory 
 
 The name of your comic files/directories doesn't actually matter, as long as the issues are ordered accordingly. For example:
 
-```csharp
+```
 comics/
    Venom (2018)/
       Venom 2018 01.cbr
