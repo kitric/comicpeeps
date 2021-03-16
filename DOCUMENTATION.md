@@ -1,7 +1,5 @@
 # ComicPeeps Documentation
 
----
-
 ### Contents:
 
 - [Library Management](https://github.com/kitric/comicpeeps/blob/main/DOCUMENTATION.md#library-management)
