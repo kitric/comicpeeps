@@ -9,10 +9,10 @@ Tags: ComicPeeps, Documentation, Project
 
 ### Contents:
 
-- [Library Management]()
-- [Comic Reading]()
-- [Settings]()
-- [Issue Tracking]()
+- [Library Management](https://github.com/kitric/comicpeeps/blob/main/DOCUMENTATION.md#library-management)
+- [Comic Reading](https://github.com/kitric/comicpeeps/blob/main/DOCUMENTATION.md#comic-reading)
+- [Settings](https://github.com/kitric/comicpeeps/blob/main/DOCUMENTATION.md#settings)
+- [Issue Tracking](https://github.com/kitric/comicpeeps/blob/main/DOCUMENTATION.md#issue-tracking)
 
 ---
 
