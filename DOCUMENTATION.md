@@ -1,8 +1,3 @@
-# Documentation
-
-Created: Mar 5, 2021 9:49 AM
-Tags: ComicPeeps, Documentation, Project
-
 # ComicPeeps Documentation
 
 ---
