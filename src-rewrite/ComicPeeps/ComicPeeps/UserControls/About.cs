@@ -38,5 +38,20 @@ namespace ComicPeeps.UserControls
         {
             System.Diagnostics.Process.Start("https://kitric.github.io");
         }
+
+        private void sharpCompress_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/adamhathcock/sharpcompress");
+        }
+
+        private void dotNetLogger_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/crxssed7/dotnet-logger");
+        }
+
+        private void gitHubUpdate_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/nixxquality/GitHubUpdate");
+        }
     }
 }
