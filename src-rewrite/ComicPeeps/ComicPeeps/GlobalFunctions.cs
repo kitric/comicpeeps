@@ -159,13 +159,13 @@ namespace ComicPeeps
 			MainScreen.Logger.ClearLogs();
 		}
 
-		public static void CheckForUpdates()
+		public static async void CheckForUpdates()
 		{
 			try
 			{
 				var checker = new UpdateChecker("kitric", "comicpeeps");
 
-				if (checker.CheckUpdate().Result != UpdateType.None)
+				if (await checker.CheckUpdate() != UpdateType.None)
 				{
 					var result = new UpdateNotifyDialog(checker).ShowDialog();
 

@@ -168,6 +168,8 @@ namespace ComicPeeps
                 }
             }
 
+            GlobalFunctions.CheckForUpdates();
+
             //LoadFileWatchers();
         }
 
