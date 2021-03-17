@@ -1,0 +1,18 @@
+Test b-1.0.0
+
+Welcome to the first ComicPeeps test version! This guide is optional, if you to prefer to just use the app normally then thats fine, but all the features will be listed here.
+As this is the first release, every single feature will need to be tested, so lets get started!
+
+Reading
+ - Open a file from the home page (double click)
+ - Open a file from the windows file explorer
+ - Reader experience
+
+Library
+ - Adding an individual comic directory
+ - Adding a whole root directory
+ - Updating comics
+ - Removing comics
+
+Settings
+ - All the settings are explained in the DOCS, however they could do with some extra tests
