@@ -16,6 +16,7 @@ Library
  - Adding a whole root directory
  - Updating comics
  - Removing comics
+ - Viewing metadata
 
 Settings
  - All the settings are explained in the DOCS, however they could do with some extra tests
