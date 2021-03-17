@@ -169,7 +169,7 @@ namespace ComicPeeps
             }
 
             if (GlobalFunctions.TestVer)
-                MessageBox.Show($"Hi!\n\nThis is a test version (version b-{Application.ProductVersion})! Consult TESTGUIDE.txt to see a list of features that need testing. Also, don't forget to submit feedback via the Google Form!\n\nThanks - crxssed @ Kitric", "Test build", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Hi!\n\nThis is a test version (version b-{Application.ProductVersion})! Consult TESTGUIDE_b-{Application.ProductVersion}.txt to see a list of features that need testing. Also, don't forget to submit feedback via the Google Form!\n\nThanks - crxssed @ Kitric", "Test build", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 GlobalFunctions.CheckForUpdates();
 
