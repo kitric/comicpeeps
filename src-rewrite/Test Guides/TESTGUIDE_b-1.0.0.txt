@@ -16,3 +16,6 @@ Library
 
 Settings
  - All the settings are explained in the DOCS, however they could do with some extra tests
+ - Exporting library as CSV
+ - Exporting library as JSON
+ - Exporting library as XML
