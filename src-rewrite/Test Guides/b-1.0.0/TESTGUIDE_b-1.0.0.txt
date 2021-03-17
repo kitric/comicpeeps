@@ -4,15 +4,19 @@ Welcome to the first ComicPeeps test version! This guide is optional, if you to 
 As this is the first release, every single feature will need to be tested, so lets get started!
 
 Reading
- - Open a file from the home page (double click)
- - Open a file from the windows file explorer
+ - Opening files from the home page (double click)
+ - Opening files from the windows file explorer
  - Reader experience
+    - Navigation with arrow keys
+    - Navigation with left/right buttons
+    - Navigation with page number input box
 
 Library
  - Adding an individual comic directory
  - Adding a whole root directory
  - Updating comics
  - Removing comics
+ - Viewing metadata
 
 Settings
  - All the settings are explained in the DOCS, however they could do with some extra tests
