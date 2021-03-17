@@ -18,6 +18,8 @@ namespace ComicPeeps
 {
     public static class GlobalFunctions
     {
+		public static bool TestVer = true;
+
 		public static void HideScrollBars(Panel panel)
 		{
 			panel.VerticalScroll.Maximum = 0;
