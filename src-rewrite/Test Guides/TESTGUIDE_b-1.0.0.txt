@@ -20,4 +20,4 @@ Settings
  - Exporting library as JSON
  - Exporting library as XML
 
-Have any feedback? Check out the Google Form via this link: https://forms.gle/J2JxXB3tkVFBn3DK6  or the {}.url file
+Have any feedback? Check out the Google Form via this link: https://forms.gle/J2JxXB3tkVFBn3DK6  or the ComicPeeps Test b-1.0.0 - Feedback Form.url file
