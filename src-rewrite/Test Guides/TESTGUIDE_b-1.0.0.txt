@@ -19,3 +19,5 @@ Settings
  - Exporting library as CSV
  - Exporting library as JSON
  - Exporting library as XML
+
+Have any feedback? Check out the Google Form via this link:   or the {}.url file
