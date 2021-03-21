@@ -25,3 +25,5 @@ Settings
  - Exporting library as XML
 
 Have any feedback? Check out the Google Form via this link: https://forms.gle/J2JxXB3tkVFBn3DK6  or the ComicPeeps Test b-1.0.0 - Feedback Form.url file
+
+Kitric Discord: https://discord.com/invite/QdyKeVBBnm
