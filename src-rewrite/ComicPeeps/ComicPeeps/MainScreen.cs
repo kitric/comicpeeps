@@ -156,7 +156,8 @@ namespace ComicPeeps
 
             if (args.Length > 1)
             {
-                if (args[1].ToLower().EndsWith(".cbr") || args[1].ToLower().EndsWith(".cbz"))
+                string ext = Path.GetExtension(args[1]).ToLower();
+                if (SupportedFileTypes.ComicFileTypes.Contains(ext))
                 {
                     ComicIssue issue = new ComicIssue()
                     {
@@ -166,10 +167,14 @@ namespace ComicPeeps
 
                     OpenReader(issue);
                 }
+                else
+                {
+                    MessageBox.Show($"Could not open file: {args[1]}");
+                }
             }
 
             if (GlobalFunctions.TestVer)
-                MessageBox.Show($"Hi!\n\nThis is a test version (version b-{Application.ProductVersion})! Consult TESTGUIDE_b-{Application.ProductVersion}.txt to see a list of features that need testing. Also, don't forget to submit feedback via the Google Form!\n\nThanks - crxssed @ Kitric", "Test build", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Hi!\n\nThis is a test version (version b-{Application.ProductVersion})! Consult TESTGUIDE_b-{Application.ProductVersion}.txt to see a list of features that need testing. Also, don't forget to submit feedback via the Google Form, or join the Discord to contact the devs directly (linked in guide file)!\n\nThanks - crxssed @ Kitric", "Test build", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 GlobalFunctions.CheckForUpdates();
 

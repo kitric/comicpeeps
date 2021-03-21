@@ -145,6 +145,7 @@ namespace ComicPeeps
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(976, 579);
             this.Name = "MainScreen";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ComicPeeps";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainScreen_FormClosing);
             this.Load += new System.EventHandler(this.MainScreen_Load);
