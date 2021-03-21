@@ -177,8 +177,6 @@ namespace ComicPeeps
                 MessageBox.Show($"Hi!\n\nThis is a test version (version b-{Application.ProductVersion})! Consult TESTGUIDE_b-{Application.ProductVersion}.txt to see a list of features that need testing. Also, don't forget to submit feedback via the Google Form, or join the Discord to contact the devs directly (linked in guide file)!\n\nThanks - crxssed @ Kitric", "Test build", MessageBoxButtons.OK, MessageBoxIcon.Information);
             else
                 GlobalFunctions.CheckForUpdates();
-
-            //LoadFileWatchers();
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
