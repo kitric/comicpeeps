@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComicPeeps", "ComicPeeps\ComicPeeps.csproj", "{B29FDB89-3476-4316-96BD-37B6375761EC}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ComicPeepsSetup", "ComicPeepsSetup\ComicPeepsSetup.vdproj", "{0994484C-62CE-46B5-BD49-DEE704A91B73}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,8 @@ Global
 		{B29FDB89-3476-4316-96BD-37B6375761EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B29FDB89-3476-4316-96BD-37B6375761EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B29FDB89-3476-4316-96BD-37B6375761EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0994484C-62CE-46B5-BD49-DEE704A91B73}.Debug|Any CPU.ActiveCfg = Debug
+		{0994484C-62CE-46B5-BD49-DEE704A91B73}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
