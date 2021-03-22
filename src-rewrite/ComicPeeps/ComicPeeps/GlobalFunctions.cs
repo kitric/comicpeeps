@@ -18,7 +18,7 @@ namespace ComicPeeps
 {
     public static class GlobalFunctions
     {
-		public static bool TestVer = true;
+		public static bool TestVer = false;
 
 		public static void HideScrollBars(Panel panel)
 		{
