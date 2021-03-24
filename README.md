@@ -50,6 +50,8 @@ This project would not be possible without the help of:
 - [GitHubUpdate (nixxquality)](https://github.com/nixxquality/GitHubUpdate)
 - And of course the [Kitric](https://github.com/kitric) team!
 
+Thanks - crxssed
+
 ## Final Notes
 
 Want to learn more about ComicPeeps? Check it out on the [Kitric Website](https://kitric.github.io/projects/comicpeeps/)
