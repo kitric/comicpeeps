@@ -17,6 +17,8 @@ ComicPeeps has a wide variety of features, such as:
     - Library history and page auto bookmarking
     - Metadata reading (editing coming soon!)
     - Built in issue tracking
+- Data management
+    - Export library data as CSV, JSON (integration), XML (integration)
 
 ## Upcoming features
 
