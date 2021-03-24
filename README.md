@@ -51,7 +51,3 @@ This project would not be possible without the help of:
 - And of course the [Kitric](https://github.com/kitric) team!
 
 Thanks - crxssed :heart:
-
-## Final Notes
-
-Want to learn more about ComicPeeps? Check it out on the [Kitric Website](https://kitric.github.io/projects/comicpeeps/)
