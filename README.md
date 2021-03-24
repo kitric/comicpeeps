@@ -2,7 +2,8 @@
 
 # ComicPeeps
 
-The Digital Comic Book Reader!
+The Digital Comic Book Reader! <br>
+Part of the [Kitric](https://github.com/kitric) family :smile:
 
 ## Features
 
