@@ -1,6 +1,7 @@
 ![Header](header.png)
 
 # ComicPeeps
+
 The Digital Comic Book Reader!
 
 ## Features
@@ -10,8 +11,18 @@ ComicPeeps has a wide variety of features, such as:
     - Auto flipping pages
     - Custom image compression size
     - JPEG, JPG, PNG and BMP image support
+    - Immersive fullscreen reading
 - Library management
     - Library history and page auto bookmarking
+    - Metadata reading (editing coming soon!)
+
+## Upcoming features
+
+A few planned features for future updates:
+- PDF reading
+- CBZ metadata tagging/editing
+
+## Screenshots
 
 ![Home](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn01.PNG?raw=true)
 ![Library](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn02.PNG?raw=true)
