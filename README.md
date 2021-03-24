@@ -30,3 +30,10 @@ A few planned features for future updates:
 ![Settings](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn03.PNG?raw=true)
 ![Comic Details](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn04.PNG?raw=true)
 ![Comic Reader](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn05.PNG?raw=true)
+
+## Credits
+
+This project would not be possible without the help of: 
+- [SharpCompress (adamhathcock)](https://github.com/adamhathcock/sharpcompress)
+- [GitHubUpdate (nixxquality)](https://github.com/nixxquality/GitHubUpdate)
+- And of course the [Kitric](https://github.com/kitric) team!
