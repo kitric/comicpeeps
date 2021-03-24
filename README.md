@@ -50,7 +50,7 @@ This project would not be possible without the help of:
 - [GitHubUpdate (nixxquality)](https://github.com/nixxquality/GitHubUpdate)
 - And of course the [Kitric](https://github.com/kitric) team!
 
-Thanks - crxssed
+Thanks - crxssed :heart:
 
 ## Final Notes
 
