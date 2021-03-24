@@ -22,6 +22,7 @@ ComicPeeps has a wide variety of features, such as:
 A few planned features for future updates:
 - PDF reading
 - CBZ metadata tagging/editing
+- More filetypes
 
 ## Screenshots
 
