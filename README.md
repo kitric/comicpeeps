@@ -1,22 +1,20 @@
+![Header](header.png)
+
 # ComicPeeps
-The Digital Comic Book Reader. [Learn More](https://kitric.github.io/projects/comicpeeps.html)
+The Digital Comic Book Reader!
 
-![Home](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn01.PNG?raw=true)<br>
-Home Page
-<hr>
+## Features
 
-![Library](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn02.PNG?raw=true)<br>
-Library Page
-<hr>
+ComicPeeps has a wide variety of features, such as:
+- CBR/CBZ file reading
+    - Auto flipping pages
+    - Custom image compression size
+    - JPEG, JPG, PNG and BMP image support
+- Library management
+    - Library history and page auto bookmarking
 
-![Settings](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn03.PNG?raw=true)<br>
-Settings Page
-<hr>
-
-![Comic Details](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn04.PNG?raw=true)<br>
-Issue Details Page
-<hr>
-
-![Comic Reader](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn05.PNG?raw=true)<br>
-Comic Reader. This part of the application is always in immersive fullscreen
-<hr>
+![Home](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn01.PNG?raw=true)
+![Library](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn02.PNG?raw=true)
+![Settings](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn03.PNG?raw=true)
+![Comic Details](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn04.PNG?raw=true)
+![Comic Reader](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn05.PNG?raw=true)
