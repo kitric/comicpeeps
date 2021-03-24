@@ -25,6 +25,14 @@ A few planned features for future updates:
 - CBZ metadata tagging/editing
 - More filetypes
 
+## Downloads
+
+Currently ComicPeeps is only available on Windows, and can be downloaded from the [releases](https://github.com/kitric/comicpeeps/releases/latest) page, or the [website](https://kitric.github.io/projects/comicpeeps/).
+
+## Installation
+
+Installing ComicPeeps is pretty easy, just run the installation file like any other application.
+
 ## Screenshots
 
 ![Home](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn01.PNG?raw=true)
@@ -39,3 +47,7 @@ This project would not be possible without the help of:
 - [SharpCompress (adamhathcock)](https://github.com/adamhathcock/sharpcompress)
 - [GitHubUpdate (nixxquality)](https://github.com/nixxquality/GitHubUpdate)
 - And of course the [Kitric](https://github.com/kitric) team!
+
+## Final Notes
+
+Want to learn more about ComicPeeps? Check it out on the [Kitric Website](https://kitric.github.io/projects/comicpeeps/)
