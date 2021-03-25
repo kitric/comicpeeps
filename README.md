@@ -1,3 +1,5 @@
+![GitHub release (latest by date)](https://img.shields.io/github/downloads/kitric/comicpeeps/latest/total?label=Downloads&style=for-the-badge)
+
 ![Header](header.png)
 
 # ComicPeeps
