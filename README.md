@@ -51,11 +51,11 @@ Installing ComicPeeps is pretty easy, just run the installation file like any ot
 
 ## Screenshots
 
-![Home](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn01.PNG?raw=true)
-![Library](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn02.PNG?raw=true)
-![Settings](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn03.PNG?raw=true)
-![Comic Details](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn04.PNG?raw=true)
-![Comic Reader](https://github.com/kitric/comicpeeps/blob/main/src-rewrite/ComicPeeps/Screenshots/scrn05.PNG?raw=true)
+![Home](src-rewrite/ComicPeeps/Screenshots/scrn01.PNG)
+![Library](src-rewrite/ComicPeeps/Screenshots/scrn02.PNG)
+![Settings](src-rewrite/ComicPeeps/Screenshots/scrn03.PNG)
+![Comic Details](src-rewrite/ComicPeeps/Screenshots/scrn04.PNG)
+![Comic Reader](src-rewrite/ComicPeeps/Screenshots/scrn05.PNG)
 
 ## Credits
 
