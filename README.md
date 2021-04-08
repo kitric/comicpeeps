@@ -46,6 +46,10 @@ A few planned features for future updates:
 
 Currently ComicPeeps is only available on Windows, and can be downloaded from the [releases](https://github.com/kitric/comicpeeps/releases/latest) page, or the [website](https://kitric.github.io/projects/comicpeeps/).
 
+## Documentation
+
+Documentation for ComicPeeps is available on the [wiki]() page.
+
 ## Installation
 
 Installing ComicPeeps is pretty easy, just run the installation file like any other application.
