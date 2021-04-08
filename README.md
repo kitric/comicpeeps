@@ -40,7 +40,7 @@ A few planned features for future updates:
 - PDF reading
 - CBZ metadata tagging/editing
 - More filetypes
-- Store data in a database instead of a single file - should be reduce load on the update function
+- Store data in a database instead of a single file - should reduce load on the update function
 
 ## Downloads
 
