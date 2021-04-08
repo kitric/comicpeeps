@@ -48,7 +48,7 @@ Currently ComicPeeps is only available on Windows, and can be downloaded from th
 
 ## Documentation
 
-Documentation for ComicPeeps is available on the [wiki]() page.
+Documentation for ComicPeeps is available on the [wiki](https://github.com/kitric/comicpeeps/wiki) page.
 
 ## Installation
 
@@ -56,11 +56,11 @@ Installing ComicPeeps is pretty easy, just run the installation file like any ot
 
 ## Screenshots
 
-![Home](src-rewrite/ComicPeeps/Screenshots/scrn01.PNG)
-![Library](src-rewrite/ComicPeeps/Screenshots/scrn02.PNG)
-![Settings](src-rewrite/ComicPeeps/Screenshots/scrn03.PNG)
-![Comic Details](src-rewrite/ComicPeeps/Screenshots/scrn04.PNG)
-![Comic Reader](src-rewrite/ComicPeeps/Screenshots/scrn05.PNG)
+![Home](src/ComicPeeps/Screenshots/scrn01.PNG)
+![Library](src/ComicPeeps/Screenshots/scrn02.PNG)
+![Settings](src/ComicPeeps/Screenshots/scrn03.PNG)
+![Comic Details](src/ComicPeeps/Screenshots/scrn04.PNG)
+![Comic Reader](src/ComicPeeps/Screenshots/scrn05.PNG)
 
 ## Credits
 
