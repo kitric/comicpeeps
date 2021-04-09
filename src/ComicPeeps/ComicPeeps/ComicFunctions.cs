@@ -290,14 +290,12 @@ namespace ComicPeeps
                     {
 						foreach (var page in document.GetPages())
                         {
-							IPdfImage[] images = page.GetImages().ToArray();
-							for (int i = 0; i < images.Length; i++)
+							IEnumerable<IPdfImage> images = page.GetImages();
+							foreach (var image in images)
                             {
-								results.Add(GetImageFromBytes(images[i].RawBytes.ToArray(), page.Number));
+								results.Add(GetImageFromBytes(image.RawBytes.ToArray(), page.Number));
                             }
 						}
-
-						// return Task.FromResult(new string[] { "C:\\Users\\tanve\\Downloads\\unknown.png" });
                     }
 					return Task.FromResult(results.ToArray());
 				}
