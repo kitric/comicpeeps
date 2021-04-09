@@ -67,7 +67,7 @@ Installing ComicPeeps is pretty easy, just run the installation file like any ot
 This project would not be possible without the help of: 
 |Library|Author|
 |---|---|
-|[SharpCompress](https://github.com/adamhathcock/sharpcompress)|@adamhathcock|
+|[SharpCompress](https://github.com/adamhathcock/sharpcompress)|[@adamhathcock](https://github.com/adamhathcock)|
 |[GitHubUpdate](https://github.com/nixxquality/GitHubUpdate)|@nixxquality|
 
 And of course the [Kitric](https://github.com/kitric) team!
