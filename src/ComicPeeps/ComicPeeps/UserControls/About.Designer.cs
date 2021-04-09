@@ -40,6 +40,7 @@ namespace ComicPeeps.UserControls
             this.sharpCompress = new System.Windows.Forms.Label();
             this.dotNetLogger = new System.Windows.Forms.Label();
             this.gitHubUpdate = new System.Windows.Forms.Label();
+            this.pdfPig = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mattbull)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nordic)).BeginInit();
@@ -152,7 +153,7 @@ namespace ComicPeeps.UserControls
             this.sharpCompress.Cursor = System.Windows.Forms.Cursors.Hand;
             this.sharpCompress.Font = new System.Drawing.Font("Century Gothic", 10.4F);
             this.sharpCompress.ForeColor = System.Drawing.Color.White;
-            this.sharpCompress.Location = new System.Drawing.Point(207, 483);
+            this.sharpCompress.Location = new System.Drawing.Point(170, 483);
             this.sharpCompress.Name = "sharpCompress";
             this.sharpCompress.Size = new System.Drawing.Size(115, 19);
             this.sharpCompress.TabIndex = 4;
@@ -167,7 +168,7 @@ namespace ComicPeeps.UserControls
             this.dotNetLogger.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dotNetLogger.Font = new System.Drawing.Font("Century Gothic", 10.4F);
             this.dotNetLogger.ForeColor = System.Drawing.Color.White;
-            this.dotNetLogger.Location = new System.Drawing.Point(328, 483);
+            this.dotNetLogger.Location = new System.Drawing.Point(291, 483);
             this.dotNetLogger.Name = "dotNetLogger";
             this.dotNetLogger.Size = new System.Drawing.Size(103, 19);
             this.dotNetLogger.TabIndex = 4;
@@ -182,7 +183,7 @@ namespace ComicPeeps.UserControls
             this.gitHubUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.gitHubUpdate.Font = new System.Drawing.Font("Century Gothic", 10.4F);
             this.gitHubUpdate.ForeColor = System.Drawing.Color.White;
-            this.gitHubUpdate.Location = new System.Drawing.Point(437, 483);
+            this.gitHubUpdate.Location = new System.Drawing.Point(400, 483);
             this.gitHubUpdate.Name = "gitHubUpdate";
             this.gitHubUpdate.Size = new System.Drawing.Size(111, 19);
             this.gitHubUpdate.TabIndex = 4;
@@ -190,12 +191,28 @@ namespace ComicPeeps.UserControls
             this.gitHubUpdate.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.gitHubUpdate.Click += new System.EventHandler(this.gitHubUpdate_Click);
             // 
+            // pdfPig
+            // 
+            this.pdfPig.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pdfPig.AutoSize = true;
+            this.pdfPig.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pdfPig.Font = new System.Drawing.Font("Century Gothic", 10.4F);
+            this.pdfPig.ForeColor = System.Drawing.Color.White;
+            this.pdfPig.Location = new System.Drawing.Point(517, 483);
+            this.pdfPig.Name = "pdfPig";
+            this.pdfPig.Size = new System.Drawing.Size(51, 19);
+            this.pdfPig.TabIndex = 5;
+            this.pdfPig.Text = "PdfPig";
+            this.pdfPig.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.pdfPig.Click += new System.EventHandler(this.pdfPig_Click);
+            // 
             // About
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.pdfPig);
             this.Controls.Add(this.gitHubUpdate);
             this.Controls.Add(this.dotNetLogger);
             this.Controls.Add(this.sharpCompress);
@@ -232,5 +249,6 @@ namespace ComicPeeps.UserControls
         private System.Windows.Forms.Label sharpCompress;
         private System.Windows.Forms.Label dotNetLogger;
         private System.Windows.Forms.Label gitHubUpdate;
+        private System.Windows.Forms.Label pdfPig;
     }
 }

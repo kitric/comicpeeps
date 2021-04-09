@@ -53,5 +53,10 @@ namespace ComicPeeps.UserControls
         {
             System.Diagnostics.Process.Start("https://github.com/nixxquality/GitHubUpdate");
         }
+
+        private void pdfPig_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://github.com/UglyToad/PdfPig");
+        }
     }
 }
