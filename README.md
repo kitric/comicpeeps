@@ -68,7 +68,7 @@ This project would not be possible without the help of:
 |Library|Author|
 |---|---|
 |[SharpCompress](https://github.com/adamhathcock/sharpcompress)|[@adamhathcock](https://github.com/adamhathcock)|
-|[GitHubUpdate](https://github.com/nixxquality/GitHubUpdate)|@nixxquality|
+|[GitHubUpdate](https://github.com/nixxquality/GitHubUpdate)|[@nixxquality](https://github.com/nixxquality)|
 
 And of course the [Kitric](https://github.com/kitric) team!
 
