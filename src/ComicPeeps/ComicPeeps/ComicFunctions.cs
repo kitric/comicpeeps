@@ -285,9 +285,9 @@ namespace ComicPeeps
 				}
 				else if (issue.Location.ToLower().EndsWith(".pdf"))
                 {
+					List<string> results = new List<string>();
 					using (PdfDocument document = PdfDocument.Open(issue.Location))
                     {
-						List<string> results = new List<string>();
 						foreach (var page in document.GetPages())
                         {
 							IPdfImage[] images = page.GetImages().ToArray();
@@ -298,9 +298,9 @@ namespace ComicPeeps
 						}
 
 						// return Task.FromResult(new string[] { "C:\\Users\\tanve\\Downloads\\unknown.png" });
-						return Task.FromResult(results.ToArray());
                     }
-                }
+					return Task.FromResult(results.ToArray());
+				}
 
 				return Task.FromResult(new string[0]);
 			}
