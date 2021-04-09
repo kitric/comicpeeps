@@ -293,7 +293,7 @@ namespace ComicPeeps
 							IEnumerable<IPdfImage> images = page.GetImages();
 							foreach (var image in images)
                             {
-								results.Add(GetImageFromBytes(image.RawBytes.ToArray(), page.Number));
+								results.Add(GetImageFromBytes(image.RawBytes.ToArray(), page.Number, dir));
                             }
 						}
                     }
@@ -312,16 +312,16 @@ namespace ComicPeeps
 			}
 		}
 
-		public static string GetImageFromBytes(byte[] bytes, int pageNumber)
+		public static string GetImageFromBytes(byte[] bytes, int pageNumber, string dir)
         {
 			using (var ms = new MemoryStream(bytes))
 			{
 				using (Image img = Image.FromStream(ms))
                 {
-					img.Save($"{pageNumber}.png");
+					img.Save(dir + $"\\{pageNumber}.png");
 				}
 			}
-			return $"{pageNumber}.png";
+			return dir + $"\\{pageNumber}.png";
 		}
 
 		/// <summary>
