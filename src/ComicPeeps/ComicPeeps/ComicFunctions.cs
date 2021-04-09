@@ -3,6 +3,7 @@ using SharpCompress.Archives;
 using SharpCompress.Archives.Rar;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -10,6 +11,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
+using UglyToad.PdfPig;
+using UglyToad.PdfPig.Content;
 
 namespace ComicPeeps
 {
@@ -280,6 +283,24 @@ namespace ComicPeeps
 						return Task.FromResult(result);
 					}
 				}
+				else if (issue.Location.ToLower().EndsWith(".pdf"))
+                {
+					using (PdfDocument document = PdfDocument.Open(issue.Location))
+                    {
+						List<string> results = new List<string>();
+						foreach (var page in document.GetPages())
+                        {
+							IPdfImage[] images = page.GetImages().ToArray();
+							for (int i = 0; i < images.Length; i++)
+                            {
+								results.Add(GetImageFromBytes(images[i].RawBytes.ToArray(), page.Number));
+                            }
+						}
+
+						// return Task.FromResult(new string[] { "C:\\Users\\tanve\\Downloads\\unknown.png" });
+						return Task.FromResult(results.ToArray());
+                    }
+                }
 
 				return Task.FromResult(new string[0]);
 			}
@@ -291,6 +312,18 @@ namespace ComicPeeps
 
 				return Task.FromResult(new string[0]);
 			}
+		}
+
+		public static string GetImageFromBytes(byte[] bytes, int pageNumber)
+        {
+			using (var ms = new MemoryStream(bytes))
+			{
+				using (Image img = Image.FromStream(ms))
+                {
+					img.Save($"{pageNumber}.png");
+				}
+			}
+			return $"{pageNumber}.png";
 		}
 
 		/// <summary>

@@ -23,7 +23,7 @@ namespace ComicPeeps.UserControls
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Comic Files|*.cbr;*.cbz";
+                ofd.Filter = "Comic Files|*.cbr;*.cbz;*.pdf";
                 ofd.Title = "Open comic";
 
                 if (ofd.ShowDialog() == DialogResult.OK)

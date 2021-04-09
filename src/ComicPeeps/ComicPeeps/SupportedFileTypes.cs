@@ -19,7 +19,8 @@ namespace ComicPeeps
         public static string[] ComicFileTypes = new string[]
         {
             ".cbr",
-            ".cbz"
+            ".cbz",
+            ".pdf"
         };
     }
 }

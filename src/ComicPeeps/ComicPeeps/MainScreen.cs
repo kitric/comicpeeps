@@ -157,6 +157,7 @@ namespace ComicPeeps
             if (args.Length > 1)
             {
                 string ext = Path.GetExtension(args[1]).ToLower();
+                MessageBox.Show(ext);
                 if (SupportedFileTypes.ComicFileTypes.Contains(ext))
                 {
                     ComicIssue issue = new ComicIssue()
