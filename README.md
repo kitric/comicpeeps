@@ -26,7 +26,7 @@ ComicPeeps has a wide variety of features, such as:
 - Data management
     - Export library data as CSV, JSON (integration), XML (integration)
 
-## Current supported file formats:
+## Current supported file formats
 - **Comic files**
     - CBR
     - CBZ
