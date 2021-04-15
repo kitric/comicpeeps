@@ -9,6 +9,8 @@
 The Digital Comic Book Reader! <br>
 Part of the [Kitric](https://github.com/kitric) family :smile:
 
+[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=kitric&repo=comicpeeps&theme=github_dark&hide_border=true&show_owner=true)](https://github.com/kitric/comicpeeps)
+
 ## Features
 
 ComicPeeps has a wide variety of features, such as:
